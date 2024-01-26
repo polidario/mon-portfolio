@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import HeroSection from './components/HeroSection.vue'
 import ImageComparison from './components/ImageComparison.vue';
+import TwoColumnText from './components/TwoColumnText.vue';
 import { useTheme } from 'vuetify'
 
 const theme = useTheme()
@@ -15,7 +16,10 @@ function toggleTheme () {
   <v-layout class="rounded rounded-md" theme="dark">
     <v-navigation-drawer>
       <v-list>
-        <v-list-item title="Menu"></v-list-item>
+        <v-list-subheader class="font-weight-bold text-h6">MENU</v-list-subheader>
+        <v-list-item link="#" title="Home"></v-list-item>
+        <v-list-item link="#" title="About me"></v-list-item>
+        <v-list-item link="#" title="My projects"></v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -27,7 +31,7 @@ function toggleTheme () {
 
     <v-main class="d-flex flex-column align-center justify-center mt-16" style="min-height: 300px;">
       <div :style="{ maxWidth: '1080px', padding: '10px' }">
-        <ImageComparison rightImage="https://images.unsplash.com/photo-1598875791852-8bb153e713f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWgelHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2010&q=80"/>
+        <ImageComparison />
       </div>
       
       <HeroSection 
@@ -36,6 +40,8 @@ function toggleTheme () {
         body="I develop and teach people how to code through online courses and YouTube videos. I think it's fun!"
         color="primary"
       />
+
+      <TwoColumnText />
     </v-main>
   </v-layout>
   <RouterView />
