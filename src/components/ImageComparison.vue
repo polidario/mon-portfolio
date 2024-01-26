@@ -1,10 +1,15 @@
 <script setup>
 import Image1 from '@/assets/weeklyhow.webp'
 import Image2 from '@/assets/portfolio-banner.jpg'
+
+import { useTheme } from 'vuetify'
+
+const theme = useTheme()
+
 </script>
 
 <template>
-    <div class="image-container" ref="containerRef">
+    <div :class="theme.global.current.value.dark ? 'image-container image-container-glow' : 'image-container'" ref="containerRef">
         <img
             :alt="leftImageAlt"
             :src="Image1"
@@ -210,6 +215,11 @@ import Image2 from '@/assets/portfolio-banner.jpg'
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped lang="scss">
+  .image-container-glow {
+    -webkit-box-shadow:0px 0px 145px 0px rgba(110,175,255,0.25);
+    -moz-box-shadow: 0px 0px 145px 0px rgba(110,175,255,0.25);
+    box-shadow: 0px 0px 145px 0px rgba(110,175,255,0.25);
+  }
   .image-container {
     box-sizing: border-box;
     position: relative;
