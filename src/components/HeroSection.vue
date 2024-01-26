@@ -33,6 +33,7 @@ defineProps({
         href="https://linkedin.com/in/polidario" 
         target="_blank"
         prepend-icon="mdi-linkedin"
+        size="x-large"
       >
         Let's connect!
       </v-btn>

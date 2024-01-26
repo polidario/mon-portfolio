@@ -3,12 +3,17 @@ import { RouterView } from 'vue-router'
 import HeroSection from './components/HeroSection.vue'
 import ImageComparison from './components/ImageComparison.vue';
 import TwoColumnText from './components/TwoColumnText.vue';
+import ContactMe from './components/ContactMe.vue'
 import { useTheme } from 'vuetify'
 
 const theme = useTheme()
 
 function toggleTheme () {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+}
+
+function handleGoTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 
@@ -18,8 +23,9 @@ function toggleTheme () {
       <v-list>
         <v-list-subheader class="font-weight-bold text-h6">MENU</v-list-subheader>
         <v-list-item link="#" title="Home"></v-list-item>
-        <v-list-item link="#" title="About me"></v-list-item>
-        <v-list-item link="#" title="My projects"></v-list-item>
+        <v-list-item @click="handleGoTo('aboutMe')" title="About me"></v-list-item>
+        <v-list-item @click="handleGoTo('myProjects')" title="My projects"></v-list-item>
+        <v-list-item @click="handleGoTo('contactMe')" title="Contact me"></v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -42,6 +48,7 @@ function toggleTheme () {
       />
 
       <TwoColumnText />
+      <ContactMe />
     </v-main>
   </v-layout>
   <RouterView />
