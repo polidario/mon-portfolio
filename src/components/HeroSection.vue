@@ -17,7 +17,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="hero-section d-flex flex-column align-center justify-center ga-10 mt-4">
+  <div class="hero-section d-flex flex-column align-center justify-center ga-10 mt-4 mb-16">
     <div class="d-flex flex-column ga-10 pa-5">
       <h2 class="d-flex flex-column text-lg-h2 text-md-h4 text-sm-h5 text-center">
         <span>{{ title }}</span>
