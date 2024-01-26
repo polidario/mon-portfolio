@@ -23,7 +23,7 @@ const skillsItems = [
 </script>
 
 <template>
-    <div class="my-16">
+    <div id="aboutMe" class="my-16">
         <div class="d-my-5">
             <h2 class="text-lg-h2 text-md-h4 text-sm-h5 text-center">Get to know me.</h2>
         </div>
