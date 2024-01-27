@@ -101,4 +101,18 @@ const contactList = [
     width: 100%;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+    #contactMe {
+        scale: .75;
+        opacity: 0;
+        animation: fade-in linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+    }
+
+    @keyframes fade-in {
+        to { scale: 1; opacity: 1; }
+    }
+}
 </style>

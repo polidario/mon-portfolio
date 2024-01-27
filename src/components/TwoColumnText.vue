@@ -63,6 +63,10 @@ const skillsItems = [
 </template>
 
 <style>
+#aboutMe {
+  scroll-margin-top: 100px;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -84,5 +88,19 @@ const skillsItems = [
     flex-direction: column;
     width: 100%;
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    #aboutMe {
+        scale: .75;
+        opacity: 0;
+        animation: fade-in linear forwards;
+        animation-timeline: view();
+        animation-range: entry;
+    }
+
+    @keyframes fade-in {
+        to { scale: 1; opacity: 1; }
+    }
 }
 </style>
