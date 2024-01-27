@@ -48,7 +48,7 @@ const contactList = [
                         <div class="pa-10">
                             <v-item-group
                                     v-model="model"
-                                    class="d-flex justify-space-around px-6 pt-2 pb-6"
+                                    class="d-flex justify-space-around px-6 pt-2 pb-6 ga-5"
                                 >
                                 <v-item
                                     v-for="(contact, i) in contactList"
@@ -92,10 +92,6 @@ const contactList = [
     padding-right: 20px;
 }
 
-.text-glow {
-    text-shadow: rgb(110, 175, 255) 0px 0px 100px;
-}
-
 @media only screen and (max-width: 960px) {
   .text-container {
     width: 100%;
@@ -113,6 +109,18 @@ const contactList = [
 
     @keyframes fade-in {
         to { scale: 1; opacity: 1; }
+    }
+}
+
+.v-overlay--active .v-overlay__scrim { display: none; }
+.v-overlay--active {
+    backdrop-filter: blur(2px);
+    background: rgb(0 0 0 / 0.8);
+}
+
+@media (prefers-color-scheme: dark) {
+    .v-overlay--active {
+        background: rgb(0 0 0 / 0.4);
     }
 }
 </style>
