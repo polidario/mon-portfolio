@@ -4,9 +4,23 @@ import HeroSection from './components/HeroSection.vue'
 import ImageComparison from './components/ImageComparison.vue';
 import TwoColumnText from './components/TwoColumnText.vue';
 import ContactMe from './components/ContactMe.vue'
+import InfiniteScroll from './components/InfiniteScroll.vue';
 import { useTheme } from 'vuetify'
 
 const theme = useTheme()
+
+const techIcons = [
+  'mdi-language-html5',
+  'mdi-language-javascript',
+  'mdi-react',
+  'mdi-vuejs',
+  'mdi-language-php',
+  'mdi-git',
+  'mdi-language-typescript',
+  'mdi-github',
+  'mdi-bootstrap',
+  'mdi-unity',
+]
 
 function toggleTheme () {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
@@ -22,7 +36,7 @@ function handleGoTo(id) {
     <v-navigation-drawer>
       <v-list>
         <v-list-subheader class="font-weight-bold text-h6">MENU</v-list-subheader>
-        <v-list-item link="#" title="Home"></v-list-item>
+        <v-list-item title="Home"></v-list-item>
         <v-list-item @click="handleGoTo('aboutMe')" title="About me"></v-list-item>
         <v-list-item @click="handleGoTo('myProjects')" title="My projects"></v-list-item>
         <v-list-item @click="handleGoTo('contactMe')" title="Contact me"></v-list-item>
@@ -48,7 +62,11 @@ function handleGoTo(id) {
       />
 
       <TwoColumnText />
+
+      <InfiniteScroll :icons="techIcons"/>
+
       <ContactMe />
+
     </v-main>
   </v-layout>
   <RouterView />
