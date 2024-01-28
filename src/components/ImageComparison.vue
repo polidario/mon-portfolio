@@ -39,127 +39,126 @@ const theme = useTheme()
 
     export default {
         mounted() {
-        // get and set `imageWidth` when the container size changed
-        // (including first time rendering)
-        //
-        // eslint-disable-next-line
-        new ResizeSensor(this.$refs.containerRef, () => {
-            this.getAndSetImageWidth();
-        });
-    
-        const containerElement = this.$refs.containerRef;
-    
-        // for mobile
-        containerElement.addEventListener('touchstart', this.startSliding);
-        window.addEventListener('touchend', this.finishSliding);
-    
-        // for desktop
-        if (this.hover) {
-            containerElement.addEventListener('mouseenter', this.startSliding);
-            containerElement.addEventListener('mouseleave', this.finishSliding);
-        } else {
-            containerElement.addEventListener('mousedown', this.startSliding);
-            window.addEventListener('mouseup', this.finishSliding);
-        }
+            // get and set `imageWidth` when the container size changed
+            // (including first time rendering)
+            //
+            // eslint-disable-next-line
+            new ResizeSensor(this.$refs.containerRef, () => {
+                this.getAndSetImageWidth();
+            });
+        
+            const containerElement = this.$refs.containerRef;
+        
+            // for mobile
+            containerElement.addEventListener('touchstart', this.startSliding);
+            window.addEventListener('touchend', this.finishSliding);
+        
+            // for desktop
+            if (this.hover) {
+                containerElement.addEventListener('mouseenter', this.startSliding);
+                containerElement.addEventListener('mouseleave', this.finishSliding);
+            } else {
+                containerElement.addEventListener('mousedown', this.startSliding);
+                window.addEventListener('mouseup', this.finishSliding);
+            }
         },
         beforeUnmount() {
-        this.finishSliding();
-        window.removeEventListener('mouseup', this.finishSliding);
-        window.removeEventListener('touchend', this.finishSliding);
+            this.finishSliding();
+            window.removeEventListener('mouseup', this.finishSliding);
+            window.removeEventListener('touchend', this.finishSliding);
         },
         props: {
-        leftImage: {
-            type: String,
-            default: '',
-        },
-        leftImageAlt: {
-            type: String,
-            default: null,
-        },
-        leftLabel: {
-            type: String,
-            default: '',
-        },
-        // under image
-        rightImage: {
-            type: String,
-            default: '',
-        },
-        rightImageAlt: {
-            type: String,
-            default: null,
-        },
-        rightLabel: {
-            type: String,
-            default: '',
-        },
-        hover: {
-            type: Boolean,
-            default: false,
-        },
-        handleSize: {
-            type: Number,
-            default: 40,
-        },
-        sliderLineWidth: {
-            type: Number,
-            default: 2,
-        },
-        sliderPositionPercentage: {
-            type: Number,
-            default: 0.5,
-        },
+            leftImage: {
+                type: String,
+                default: '',
+            },
+            leftImageAlt: {
+                type: String,
+                default: null,
+            },
+            leftLabel: {
+                type: String,
+                default: '',
+            },
+            rightImage: {
+                type: String,
+                default: '',
+            },
+            rightImageAlt: {
+                type: String,
+                default: null,
+            },
+            rightLabel: {
+                type: String,
+                default: '',
+            },
+            hover: {
+                type: Boolean,
+                default: false,
+            },
+            handleSize: {
+                type: Number,
+                default: 40,
+            },
+            sliderLineWidth: {
+                type: Number,
+                default: 2,
+            },
+            sliderPositionPercentage: {
+                type: Number,
+                default: 0.5,
+            },
         },
         methods: {
-        getAndSetImageWidth() {
-            // @ts-ignore
-            this.imageWidth = this.$refs.rightImageRef.getBoundingClientRect().width;
-            this.rightLabelWidth = this.$refs.rightLabelRef.getBoundingClientRect().width;
-        },
-        startSliding(e) {
-            // Prevent default behavior other than mobile scrolling
-            if (!('touches' in e)) {
-            e.preventDefault();
-            }
-    
-            // Slide the image even if you just click or tap (not drag)
-            this.updateSliderPosition(e);
-    
-            window.addEventListener('mousemove', this.updateSliderPosition);
-            window.addEventListener('touchmove', this.updateSliderPosition);
-        },
-        finishSliding() {
-            window.removeEventListener('mousemove', this.updateSliderPosition);
-            window.removeEventListener('touchmove', this.updateSliderPosition);
-        },
-        updateSliderPosition(event) {
-            const e = event || window.event;
-    
-            // Calc Cursor Position from the left edge of the viewport
-            const cursorXfromViewport = e.touches ? e.touches[0].pageX : e.pageX;
-    
-            // Calc Cursor Position from the left edge of the window (consider any page scrolling)
-            const cursorXfromWindow = cursorXfromViewport - window.pageXOffset;
-    
-            // Calc Cursor Position from the left edge of the image
-            const imagePosition = this.$refs.rightImageRef.getBoundingClientRect();
-            let pos = cursorXfromWindow - imagePosition.left;
-    
-            const minPos = 0 + this.sliderLineWidth / 2;
-            const maxPos = this.imageWidth - this.sliderLineWidth / 2;
-    
-            if (pos < minPos) pos = minPos;
-            if (pos > maxPos) pos = maxPos;
-    
-            this.positionPct = pos / this.imageWidth;
-        },
+            getAndSetImageWidth() {
+                // @ts-ignore
+                this.imageWidth = this.$refs.rightImageRef.getBoundingClientRect().width;
+                this.rightLabelWidth = this.$refs.rightLabelRef.getBoundingClientRect().width;
+            },
+            startSliding(e) {
+                // Prevent default behavior other than mobile scrolling
+                if (!('touches' in e)) {
+                e.preventDefault();
+                }
+        
+                // Slide the image even if you just click or tap (not drag)
+                this.updateSliderPosition(e);
+        
+                window.addEventListener('mousemove', this.updateSliderPosition);
+                window.addEventListener('touchmove', this.updateSliderPosition);
+            },
+            finishSliding() {
+                window.removeEventListener('mousemove', this.updateSliderPosition);
+                window.removeEventListener('touchmove', this.updateSliderPosition);
+            },
+            updateSliderPosition(event) {
+                const e = event || window.event;
+        
+                // Calc Cursor Position from the left edge of the viewport
+                const cursorXfromViewport = e.touches ? e.touches[0].pageX : e.pageX;
+        
+                // Calc Cursor Position from the left edge of the window (consider any page scrolling)
+                const cursorXfromWindow = cursorXfromViewport - window.pageXOffset;
+        
+                // Calc Cursor Position from the left edge of the image
+                const imagePosition = this.$refs.rightImageRef.getBoundingClientRect();
+                let pos = cursorXfromWindow - imagePosition.left;
+        
+                const minPos = 0 + this.sliderLineWidth / 2;
+                const maxPos = this.imageWidth - this.sliderLineWidth / 2;
+        
+                if (pos < minPos) pos = minPos;
+                if (pos > maxPos) pos = maxPos;
+        
+                this.positionPct = pos / this.imageWidth;
+            },
         },
         data() {
-        return {
-            // slider position percentage(0 to 1)
-            positionPct: this.sliderPositionPercentage || 0.5,
-            imageWidth: 0,
-        };
+            return {
+                // slider position percentage(0 to 1)
+                positionPct: this.sliderPositionPercentage || 0.5,
+                imageWidth: 0,
+            };
         },
         computed: {
         // eslint-disable

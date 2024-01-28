@@ -48,10 +48,10 @@ const skillsItems = [
           <v-list lines="one" style="background: none;">
             <v-list-subheader class="font-weight-bold text-h6">{{ skill.title }}</v-list-subheader>
             <v-list-item
-              v-for="item in skill.children"
-              :key="item"
+              v-for="(item, j) in skill.children"
+              :key="j"
               :title="item.title"
-              :prepend-icon="mdi-check"
+              :prepend-icon="item.icon"
             >
             <template v-slot:prepend>
               <v-icon :icon="item.icon"></v-icon>
