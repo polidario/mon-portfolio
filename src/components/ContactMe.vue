@@ -26,7 +26,7 @@ const contactList = [
 <template>
     <div id="contactMe" class="my-16">
         <div class="d-my-5">
-            <h2 class="text-lg-h2 text-md-h4 text-sm-h5 text-center">Let's Get In Touch</h2>
+            <h2 class="text-lg-h2 text-md-h4 text-sm-h5 text-center">Let's get in touch!</h2>
         </div>
 
         <v-divider class="my-5"></v-divider>

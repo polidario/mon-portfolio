@@ -6,6 +6,7 @@ import TwoColumnText from './components/TwoColumnText.vue';
 import ContactMe from './components/ContactMe.vue'
 import InfiniteScroll from './components/InfiniteScroll.vue';
 import { useTheme } from 'vuetify'
+import CardWithImage from './components/CardWithImage.vue';
 
 const theme = useTheme()
 
@@ -64,6 +65,11 @@ function handleGoTo(id) {
       <TwoColumnText />
 
       <InfiniteScroll :icons="techIcons"/>
+
+      <div id="myProjects">
+        <CardWithImage />
+      </div>
+      
 
       <ContactMe />
 
