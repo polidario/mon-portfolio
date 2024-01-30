@@ -6,6 +6,7 @@ import TwoColumnText from './components/TwoColumnText.vue';
 import ContactMe from './components/ContactMe.vue'
 import InfiniteScroll from './components/InfiniteScroll.vue';
 import { useTheme } from 'vuetify'
+import NavigationBar from './components/NavigationBar.vue';
 
 const theme = useTheme()
 
@@ -25,26 +26,13 @@ const techIcons = [
 function toggleTheme () {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 }
-
-function handleGoTo(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
-}
 </script>
 
 <template>
   <v-layout class="rounded rounded-md" theme="dark">
-    <v-navigation-drawer>
-      <v-list>
-        <v-list-subheader class="font-weight-bold text-h6">MENU</v-list-subheader>
-        <v-list-item title="Home"></v-list-item>
-        <v-list-item @click="handleGoTo('aboutMe')" title="About me"></v-list-item>
-        <v-list-item @click="handleGoTo('myProjects')" title="My projects"></v-list-item>
-        <v-list-item @click="handleGoTo('contactMe')" title="Contact me"></v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
     <v-app-bar title="Hello World! 👋" :elevation="2">
       <template v-slot:append>
+        <NavigationBar />
         <v-btn class="primary" :icon="theme.global.current.value.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent'" @click="toggleTheme"></v-btn>
       </template>
     </v-app-bar>
