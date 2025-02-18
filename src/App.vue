@@ -1,9 +1,12 @@
 <script setup>
 import { RouterView } from 'vue-router'
 
+import Image1 from '@/assets/bernard-polidario-a.jpg'
+
 import FadeInSection from './components/FadeInSection.vue';
 import HeroSection from './components/HeroSection.vue'
 import ImageComparison from './components/ImageComparison.vue';
+import GridFold from './components/GridFold.vue';
 import TwoColumnText from './components/TwoColumnText.vue';
 import ContactMe from './components/ContactMe.vue'
 import InfiniteScroll from './components/InfiniteScroll.vue';
@@ -54,6 +57,21 @@ function toggleTheme () {
       
       <FadeInSection>
         <HeadingTitle :title="'Get to know me.'" />
+      </FadeInSection>
+
+      <FadeInSection>
+        <GridFold>
+          <template #title>
+            <h2 class="text-h1 font-weight-bold">6 Yrs.</h2>
+            <div class="py-3">
+              <p class="text-h4">of developing web applications that makes people's lives easier</p>
+            </div>
+          </template>
+
+          <template #image>
+            <img :src="Image1" class="grid-images" />
+          </template>
+        </GridFold>
       </FadeInSection>
 
       <TwoColumnText />

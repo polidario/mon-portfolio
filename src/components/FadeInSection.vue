@@ -1,6 +1,6 @@
 <template>
     <div
-      :class="['fade-in-section', { 'is-visible': isVisible, 'is-hidden': !isVisible }]"
+      :class="['section', { 'is-visible': isVisible, 'is-hidden': !isVisible }]"
       ref="domRef"
     >
       <slot></slot>
@@ -13,53 +13,57 @@
   export default {
     name: 'FadeInSection',
     setup() {
-      const isVisible = ref(false);
-      const domRef = ref(null);
-  
-      onMounted(() => {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            // Update visibility based on intersection
-            isVisible.value = entry.isIntersecting;
-          });
-        });
-  
-        if (domRef.value) {
-          observer.observe(domRef.value);
+        const isVisible = ref(false);
+        const domRef = ref(null);
+
+        const options = {
+            rootMargin: '0px 0px -25% 0px',
+            threshold: 0.25
         }
-  
-        onUnmounted(() => {
-          if (domRef.value) {
-            observer.unobserve(domRef.value);
-          }
+        
+        onMounted(() => {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    isVisible.value = entry.isIntersecting;
+                });
+            }, options);
+    
+            if (domRef.value) {
+            observer.observe(domRef.value);
+            }
+    
+            onUnmounted(() => {
+            if (domRef.value) {
+                observer.unobserve(domRef.value);
+            }
+            });
         });
-      });
-  
-      return {
-        isVisible,
-        domRef,
-      };
+    
+        return {
+            isVisible,
+            domRef,
+        };
     },
   };
   </script>
   
 <style scoped>
-.fade-in-section {
+.section {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1.3s ease-out, transform 0.9s ease-out;
+    scale: 0.85;
+    transition: opacity 1.3s ease-out, scale 0.9s ease-in-out;
 
     margin-top: 5em;
 }
   
-.fade-in-section.is-visible {
+.section.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    scale: 1;
 }
   
-.fade-in-section.is-hidden {
+.section.is-hidden {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1.3s ease-out, transform 0.9s ease-out;
+    scale: 0.85;
+    transition: opacity 1.3s ease-out, scale 0.9s ease-in-out;
 }
 </style>
