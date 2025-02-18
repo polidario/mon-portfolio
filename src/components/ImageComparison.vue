@@ -228,7 +228,7 @@ const theme = useTheme()
     width: 100%;
     overflow: hidden;
     aspect-ratio: 16/9;
-    border-radius: 8px;
+    border-radius: var(--space-4);
   }
   
   .left-image {

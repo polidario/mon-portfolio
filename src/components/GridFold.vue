@@ -1,4 +1,7 @@
 <script setup>
+import { useSlots } from 'vue'
+const slots = useSlots()
+
 defineProps({
 })
 </script>
@@ -10,6 +13,10 @@ defineProps({
         </div>
         <div class="grid-item-b">
             <slot name="image"></slot>
+        </div>
+
+        <div v-if="slots.overlay" class="overlay-card">
+            <slot name="overlay"></slot>
         </div>
     </div>
 </template>
@@ -40,6 +47,12 @@ defineProps({
 @media only screen and (max-width: 980px) {
     .grid-fold {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1400px) {
+    .grid-fold {
+        max-width: 1400px;
     }
 }
 </style>

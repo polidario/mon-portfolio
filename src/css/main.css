@@ -19,6 +19,8 @@
     --space-18: 12rem;
     --space-19: 12.5rem;
     --space-20: 15rem;
+
+    --will-change-override: none;
 }
 
 html {
@@ -30,4 +32,86 @@ html {
     height: auto;
     width: 100%;
     aspect-ratio: 4/5;
+
+    border-radius: var(--space-4);
+}
+
+.card-text {
+    position: absolute;
+    left: calc(66% - 708px / 2);
+    top:calc(85% - 286px / 2);
+    overflow: visible;
+    width: 708px;
+    height: 286px;
+    z-index: 1;
+}
+
+.card-text .cursor {
+    height: 116px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 116px;
+}
+
+.card-text .content {
+    display: flex;
+    align-items: center;
+    background-color: #171717cf;
+    backdrop-filter: blur(10px);
+    border-radius: var(--space-4);
+    flex: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap:var(--space-12);
+    height: min-content;
+    justify-content: center;
+    overflow: hidden;
+    padding: var(--space-4);
+    position: absolute;
+    bottom: 2px;
+    will-change: var(--will-change-override, transform);
+}
+
+.card-text .content .text {
+    font-size: 1.5rem !important;
+    font-weight: 400;
+    line-height: 2rem;
+    letter-spacing: 0.0073529412em !important;
+    font-family: "Roboto", sans-serif;
+    text-transform: none !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .card-text {
+        height: 294px;
+        left: calc(50% - 390px / 2);
+        top:calc(78% - 294px / 2);
+        overflow: visible;
+        
+    }
+
+    .card-text .content .text {
+        font-size: 1.25rem !important;
+        line-height: 1.75rem;
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    .card-text {
+        left: calc(50% - 100% / 2);
+        top:calc(80% - 294px / 2);
+        width: 100%;
+    }
+
+    .card-text .cursor {
+        display: none;
+    }
+
+    .card-text .content {
+        bottom: unset;
+        top: 90%;
+        transform: translateY(-50%);
+        width: 100%;
+    }
 }

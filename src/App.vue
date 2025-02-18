@@ -14,6 +14,9 @@ import HeadingTitle from './components/HeadingTitle.vue';
 import { useTheme } from 'vuetify'
 import NavigationBar from './components/NavigationBar.vue';
 
+
+import IconCursor from './components/icons/IconCursor.vue';
+
 const theme = useTheme()
 
 const techIcons = [
@@ -70,6 +73,17 @@ function toggleTheme () {
 
           <template #image>
             <img :src="Image1" class="grid-images" />
+          </template>
+
+          <template #overlay>
+              <div class="card-text">
+                <div class="cursor">
+                  <IconCursor />
+                </div>
+                <div class="content">
+                  <p class="text">I specialize in designing intuitive interfaces and efficient systems, creating engaging experiences for online platforms. My focus is on seamless functionality and memorable user interactions.</p>
+                </div>
+              </div>
           </template>
         </GridFold>
       </FadeInSection>
