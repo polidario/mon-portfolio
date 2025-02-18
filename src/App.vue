@@ -1,10 +1,13 @@
 <script setup>
 import { RouterView } from 'vue-router'
+
+import FadeInSection from './components/FadeInSection.vue';
 import HeroSection from './components/HeroSection.vue'
 import ImageComparison from './components/ImageComparison.vue';
 import TwoColumnText from './components/TwoColumnText.vue';
 import ContactMe from './components/ContactMe.vue'
 import InfiniteScroll from './components/InfiniteScroll.vue';
+import HeadingTitle from './components/HeadingTitle.vue';
 import { useTheme } from 'vuetify'
 import NavigationBar from './components/NavigationBar.vue';
 
@@ -48,6 +51,10 @@ function toggleTheme () {
         body="I design web apps for human satisfaction"
         color="primary"
       />
+      
+      <FadeInSection>
+        <HeadingTitle :title="'Get to know me.'" />
+      </FadeInSection>
 
       <TwoColumnText />
 

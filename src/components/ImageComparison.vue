@@ -9,29 +9,32 @@ const theme = useTheme()
 </script>
 
 <template>
-    <div :class="theme.global.current.value.dark ? 'image-container image-container-glow' : 'image-container'" ref="containerRef">
-        <img
-            :alt="leftImageAlt"
-            :src="Image1"
-            :style="leftImageStyle"
-            class="left-image"
-            ref="leftImageRef"
-        />
-        <div :style="leftImageStyle" class="left-label">{{leftLabel}}</div>
-    
-        <img :alt="rightImageAlt" :src="Image2" class="right-image" ref="rightImageRef" />
+    <div class="mb-8">
+        <div :class="theme.global.current.value.dark ? 'image-container image-container-glow' : 'image-container'" ref="containerRef">
+            <img
+                :alt="leftImageAlt"
+                :src="Image1"
+                :style="leftImageStyle"
+                class="left-image"
+                ref="leftImageRef"
+            />
+            <div :style="leftImageStyle" class="left-label">{{leftLabel}}</div>
+        
+            <img :alt="rightImageAlt" :src="Image2" class="right-image" ref="rightImageRef" />
 
-        <div :style="rightLabelStyle" ref="rightLabelRef" class="right-label">{{rightLabel}}</div>
-    
-        <div :style="sliderStyle" class="vci-slider">
-            <div :style="sliderLineStyle" class="line"></div>
-            <div :style="sliderHandleStyle" class="handle">
-            <div :style="sliderLeftArrowStyle" class="left-arrow"></div>
-            <div :style="sliderRightArrowStyle" class="right-arrow"></div>
+            <div :style="rightLabelStyle" ref="rightLabelRef" class="right-label">{{rightLabel}}</div>
+        
+            <div :style="sliderStyle" class="vci-slider">
+                <div :style="sliderLineStyle" class="line"></div>
+                <div :style="sliderHandleStyle" class="handle">
+                <div :style="sliderLeftArrowStyle" class="left-arrow"></div>
+                <div :style="sliderRightArrowStyle" class="right-arrow"></div>
+                </div>
+                <div :style="sliderLineStyle" class="line"></div>
             </div>
-            <div :style="sliderLineStyle" class="line"></div>
         </div>
     </div>
+    
 </template>
     
 <script>

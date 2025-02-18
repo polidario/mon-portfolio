@@ -27,10 +27,6 @@ const skillsItems = [
 
 <template>
   <div id="aboutMe" class="my-16">
-    <div class="d-my-5">
-        <h2 class="text-lg-h2 text-md-h4 text-sm-h5 text-center">Get to know me.</h2>
-    </div>
-
     <v-sheet :class="theme.global.current.value.dark ? 'row row-animated my-16 mx-auto' : 'row my-16 mx-auto'">
       <v-sheet class="column ma-2 pa-10">
         <div class="text-subtitle-1 ">
