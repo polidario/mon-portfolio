@@ -45,7 +45,7 @@ function toggleTheme () {
       <HeroSection 
         title="Hi, I'm Bernard Polidario" 
         subtext="A Frontend Developer" 
-        body="I develop and teach people how to code through online courses and YouTube videos. I think it's fun!"
+        body="I design web apps for human satisfaction"
         color="primary"
       />
 

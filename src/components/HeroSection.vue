@@ -21,9 +21,14 @@ defineProps({
     <div class="d-flex flex-column ga-10 pa-5">
       <h2 class="d-flex flex-column text-lg-h2 text-md-h4 text-sm-h5 text-center">
         <span>{{ title }}</span>
-        <span class="font-weight-bold">{{ subtext }}</span>
+        <span class="font-weight-bold mt-4">
+          {{ subtext }}
+        </span>
       </h2>
-      <p class="text-md-subtitle-1 font-weight-medium">{{ body }}</p>
+      <div class="d-flex flex-rows ga-5">
+        <v-icon icon="mdi-creation"></v-icon> 
+        <p class="text-h3 font-weight-medium">{{ body }}</p>
+      </div>
     </div>
     
     <div class="d-flex flex-column ga-3">
@@ -42,7 +47,7 @@ defineProps({
         variant="text"
         class="rounded-pill font-weight-bold text-capitalize"
       >
-        Contact me
+        Hit me up!
       </v-btn>
     </div>
     
