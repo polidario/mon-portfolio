@@ -22,7 +22,7 @@ const vuetify = createVuetify({
         variables: {}, // ✅ required to avoid Vuetify crash
 
         colors: {
-          primary: colors.red.darken1
+          primary: colors.blue.darken1
         },
       },
       dark: {
@@ -30,8 +30,8 @@ const vuetify = createVuetify({
         variables: {}, // ✅ required to avoid Vuetify crash
 
         colors: {
-          "textPrimary": colors.red.darken1,
-          primary: colors.red.base,
+          "textPrimary": colors.blue.darken1,
+          primary: colors.blue.base,
         },
       }
     }

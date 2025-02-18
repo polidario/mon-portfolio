@@ -81,7 +81,7 @@ function toggleTheme () {
                   <IconCursor />
                 </div>
                 <div class="content">
-                  <p class="text">I specialize in designing intuitive interfaces and efficient systems, creating engaging experiences for online platforms. My focus is on seamless functionality and memorable user interactions.</p>
+                  <p class="text">I specialize in Frontend Development, crafting intuitive, engaging user experiences. Skilled in coding, multimedia design, and content creation. I focus on delivering seamless functionality and meaningful interactions.</p>
                 </div>
               </div>
           </template>
