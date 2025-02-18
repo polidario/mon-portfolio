@@ -9,10 +9,10 @@ defineProps({
 <template>
     <div class="grid-fold">
         <div class="grid-item-a">
-            <slot name="title"></slot>
+            <slot name="item_a"></slot>
         </div>
-        <div class="grid-item-b">
-            <slot name="image"></slot>
+        <div v-if="slots.item_b" class="grid-item-b">
+            <slot name="item_b"></slot>
         </div>
 
         <div v-if="slots.overlay" class="overlay-card">

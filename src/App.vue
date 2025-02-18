@@ -10,7 +10,7 @@ import GridFold from './components/GridFold.vue';
 import TwoColumnText from './components/TwoColumnText.vue';
 import ContactMe from './components/ContactMe.vue'
 import InfiniteScroll from './components/InfiniteScroll.vue';
-import HeadingTitle from './components/HeadingTitle.vue';
+
 import { useTheme } from 'vuetify'
 import NavigationBar from './components/NavigationBar.vue';
 
@@ -60,14 +60,14 @@ function toggleTheme () {
       
       <FadeInSection>
         <GridFold>
-          <template #title>
+          <template #item_a>
             <h2 class="text-h1 font-weight-bold">6 Yrs.</h2>
             <div class="py-3">
               <p class="text-h4">of developing web applications that makes people's lives easier</p>
             </div>
           </template>
 
-          <template #image>
+          <template #item_b>
             <img :src="Image1" class="grid-images" />
           </template>
 
@@ -80,6 +80,22 @@ function toggleTheme () {
                   <p class="text">I specialize in Frontend Development, crafting intuitive, engaging user experiences. Skilled in coding, multimedia design, and content creation. I focus on delivering seamless functionality and meaningful interactions.</p>
                 </div>
               </div>
+          </template>
+        </GridFold>
+      </FadeInSection>
+
+      <FadeInSection>
+        <GridFold>
+          <template #item_a>
+            <h2 class="text-h1 font-weight-bold">The Stacks</h2>
+            <div class="py-3">
+              <p class="text-h4">that I use to build web applications</p>
+            </div>
+
+            <GridFold>
+              <template #item_a></template>
+              <template #item_b></template>
+            </GridFold>
           </template>
         </GridFold>
       </FadeInSection>
