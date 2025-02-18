@@ -1,21 +1,20 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView } from 'vue-router';
+import { defineAsyncComponent } from 'vue';
 
-import Image1 from '@/assets/bernard-polidario-a.jpg'
+import Image1 from '@/assets/bernard-polidario-a.jpg';
 
-import FadeInSection from './components/FadeInSection.vue';
-import HeroSection from './components/HeroSection.vue'
-import ImageComparison from './components/ImageComparison.vue';
-import GridFold from './components/GridFold.vue';
-import TwoColumnText from './components/TwoColumnText.vue';
-import ContactMe from './components/ContactMe.vue'
-import InfiniteScroll from './components/InfiniteScroll.vue';
+const FadeInSection = defineAsyncComponent(() => import('./components/FadeInSection.vue'));
+const HeroSection = defineAsyncComponent(() => import('./components/HeroSection.vue'));
+const ImageComparison = defineAsyncComponent(() => import('./components/ImageComparison.vue'));
+const GridFold = defineAsyncComponent(() => import('./components/GridFold.vue'));
+const TwoColumnText = defineAsyncComponent(() => import('./components/TwoColumnText.vue'));
+const ContactMe = defineAsyncComponent(() => import('./components/ContactMe.vue'));
+const NavigationBar = defineAsyncComponent(() => import('./components/NavigationBar.vue'));
+const IconCursor = defineAsyncComponent(() => import('./components/icons/IconCursor.vue'));
+const InfiniteScroll = defineAsyncComponent(() => import('./components/InfiniteScroll.vue'));
 
 import { useTheme } from 'vuetify'
-import NavigationBar from './components/NavigationBar.vue';
-
-
-import IconCursor from './components/icons/IconCursor.vue';
 
 const theme = useTheme()
 
