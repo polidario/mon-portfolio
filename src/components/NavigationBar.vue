@@ -9,9 +9,8 @@ function handleGoTo(id) {
 
 <template>
   <div v-show="!mobile">
-    <v-btn text="Home"></v-btn>
-    <v-btn @click="handleGoTo('aboutMe')" text="About me"></v-btn>
-    <v-btn @click="handleGoTo('myProjects')" text="My projects"></v-btn>
-    <v-btn @click="handleGoTo('contactMe')" text="Contact me"></v-btn>
+    <v-btn @click="handleGoTo('myProjects')" text="Projects"></v-btn>
+    <v-btn @click="handleGoTo('aboutMe')" text="About"></v-btn>
+    <v-btn @click="handleGoTo('contactMe')" text="Contact"></v-btn>
   </div>
 </template>
