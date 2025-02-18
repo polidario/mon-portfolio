@@ -53,7 +53,7 @@
     scale: 0.85;
     transition: opacity 1.3s ease-out, scale 0.9s ease-in-out;
 
-    margin-top: 5em;
+    margin-top: var(--space-4);
 }
   
 .section.is-visible {

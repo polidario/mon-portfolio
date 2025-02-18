@@ -59,10 +59,6 @@ function toggleTheme () {
       />
       
       <FadeInSection>
-        <HeadingTitle :title="'Get to know me.'" />
-      </FadeInSection>
-
-      <FadeInSection>
         <GridFold>
           <template #title>
             <h2 class="text-h1 font-weight-bold">6 Yrs.</h2>
