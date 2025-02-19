@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { RouterView } from 'vue-router';
 import { defineAsyncComponent } from 'vue';
 
@@ -18,8 +18,13 @@ const InfiniteScroll = defineAsyncComponent(() => import('./components/InfiniteS
 // Icons
 const IconCursor = defineAsyncComponent(() => import('./components/icons/IconCursor.vue'));
 const IconJavascript = defineAsyncComponent(() => import('./components/icons/tech/IconJavascript.vue'));
+const IconTypescript = defineAsyncComponent(() => import('./components/icons/tech/IconTypescript.vue'));
 const IconHTML = defineAsyncComponent(() => import('./components/icons/tech/IconHTML.vue'));
 const IconCSS = defineAsyncComponent(() => import('./components/icons/tech/IconCSS.vue'));
+const IconUnity = defineAsyncComponent(() => import('./components/icons/tech/IconUnity.vue'));
+const IconPython = defineAsyncComponent(() => import('./components/icons/tech/IconPython.vue'));
+const IconSupabase = defineAsyncComponent(() => import('./components/icons/tech/IconSupabase.vue'));
+const IconFigma = defineAsyncComponent(() => import('./components/icons/tech/IconFigma.vue'));
 
 import { useTheme } from 'vuetify'
 
@@ -38,7 +43,7 @@ const techIcons = [
   'mdi-unity',
 ]
 
-const techStack = [
+const techStackA = [
   {
     title: 'Javascript',
     description: 'Programming Language',
@@ -46,17 +51,50 @@ const techStack = [
     icon: IconJavascript,
   },
   {
+    title: 'CSS',
+    description: 'Cascading Style Sheets',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+    icon: IconCSS,
+  },
+  {
+    title: 'TypeScript',
+    description: 'High-level programming language',
+    url: 'https://www.typescriptlang.org/',
+    icon: IconTypescript,
+  },
+  {
+    title: 'Unity',
+    description: 'Game Development Engine',
+    url: 'https://unity.com/',
+    icon: IconUnity,
+  },
+]
+
+const techStackB = [
+  {
     title: 'HTML',
     description: 'Hypertext Markup Language',
     url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
     icon: IconHTML,
   },
   {
-    title: 'CSS',
-    description: 'Cascading Style Sheets',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
-    icon: IconCSS,
-  }
+    title: 'Python',
+    description: 'Programming Language',
+    url: 'https://www.python.org/',
+    icon: IconPython,
+  },
+  {
+    title: 'Supabase',
+    description: 'Dedicated Postgres Database',
+    url: 'https://supabase.io/',
+    icon: IconSupabase,
+  },
+  {
+    title: 'Figma',
+    description: 'Collaborative Interface Design Tool',
+    url: 'https://www.figma.com/',
+    icon: IconFigma,
+  },
 ]
 
 function toggleTheme () {
@@ -118,18 +156,10 @@ function toggleTheme () {
         />
         <GridFold>
           <template #item_a>
-            <IconList v-for="item in techStack" :key="item.title" :title="item.title" :description="item.description">
-              <template #icon>
-                <component :is="item.icon" />
-              </template>
-            </IconList>
+            <IconList :items="techStackA" />
           </template>
           <template #item_b>
-            <IconList :title="'HTML'" :description="'Hypertext Markup Language'">
-              <template #icon>
-                <IconHTML />
-              </template>
-            </IconList>
+            <IconList :items="techStackB" />
           </template>
         </GridFold>
       </FadeInSection>
