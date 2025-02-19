@@ -18,7 +18,10 @@ const theme = useTheme()
                 class="left-image"
                 ref="leftImageRef"
             />
-            <div :style="leftImageStyle" class="left-label">{{leftLabel}}</div>
+            
+            <div :style="leftImageStyle" class="left-label">
+                <v-btn :href="'https://youtube.com/@weeklyhow'">Watch on YouTube</v-btn>
+            </div>
         
             <img :alt="rightImageAlt" :src="Image2" class="right-image" ref="rightImageRef" />
 
@@ -119,31 +122,31 @@ const theme = useTheme()
                 this.rightLabelWidth = this.$refs.rightLabelRef.getBoundingClientRect().width;
             },
             startSliding(e) {
-                // Prevent default behavior other than mobile scrolling
                 if (!('touches' in e)) {
-                e.preventDefault();
+                    e.preventDefault();
                 }
-        
-                // Slide the image even if you just click or tap (not drag)
-                this.updateSliderPosition(e);
-        
+
+                if (e.target.classList.contains('handle')) {
+                    this.isSliding = true;
+                    this.updateSliderPosition(e);
+                }
+
                 window.addEventListener('mousemove', this.updateSliderPosition);
                 window.addEventListener('touchmove', this.updateSliderPosition);
             },
             finishSliding() {
+                this.isSliding = false;
                 window.removeEventListener('mousemove', this.updateSliderPosition);
                 window.removeEventListener('touchmove', this.updateSliderPosition);
             },
             updateSliderPosition(event) {
+                if (!this.isSliding) return;
+                
                 const e = event || window.event;
         
-                // Calc Cursor Position from the left edge of the viewport
                 const cursorXfromViewport = e.touches ? e.touches[0].pageX : e.pageX;
-        
-                // Calc Cursor Position from the left edge of the window (consider any page scrolling)
                 const cursorXfromWindow = cursorXfromViewport - window.pageXOffset;
         
-                // Calc Cursor Position from the left edge of the image
                 const imagePosition = this.$refs.rightImageRef.getBoundingClientRect();
                 let pos = cursorXfromWindow - imagePosition.left;
         
@@ -161,13 +164,14 @@ const theme = useTheme()
                 // slider position percentage(0 to 1)
                 positionPct: this.sliderPositionPercentage || 0.5,
                 imageWidth: 0,
+                isSliding: false,
             };
         },
         computed: {
         // eslint-disable
         leftImageStyle() {
             return {
-            clip: `rect(auto, ${this.imageWidth * this.positionPct}px, auto, auto)`,
+                clip: `rect(auto, ${this.imageWidth * this.positionPct}px, auto, auto)`,
             };
         },
         rightLabelStyle() {
@@ -181,9 +185,8 @@ const theme = useTheme()
         },
         sliderStyle() {
             return {
-            cursor: !this.hover && 'ew-resize',
-            left: this.imageWidth * this.positionPct - this.handleSize / 2 + 'px',
-            width: `${this.handleSize}px`,
+                left: this.imageWidth * this.positionPct - this.handleSize / 2 + 'px',
+                width: `${this.handleSize}px`,
             };
         },
         sliderLineStyle() {
@@ -288,6 +291,8 @@ const theme = useTheme()
       display: flex;
       flex: 1 0 auto;
       justify-content: center;
+      cursor: ew-resize;
+      background-color: #171717;
     }
   
     .left-arrow {
