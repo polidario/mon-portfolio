@@ -20,6 +20,9 @@
     --space-19: 12.5rem;
     --space-20: 15rem;
 
+    /* Colors */
+    --color-gray: #373737;
+
     --will-change-override: none;
 }
 

@@ -12,8 +12,14 @@ const GridFold = defineAsyncComponent(() => import('./components/GridFold.vue'))
 const TwoColumnText = defineAsyncComponent(() => import('./components/TwoColumnText.vue'));
 const ContactMe = defineAsyncComponent(() => import('./components/ContactMe.vue'));
 const NavigationBar = defineAsyncComponent(() => import('./components/NavigationBar.vue'));
-const IconCursor = defineAsyncComponent(() => import('./components/icons/IconCursor.vue'));
+const IconList = defineAsyncComponent(() => import('./components/IconList.vue'));
 const InfiniteScroll = defineAsyncComponent(() => import('./components/InfiniteScroll.vue'));
+
+// Icons
+const IconCursor = defineAsyncComponent(() => import('./components/icons/IconCursor.vue'));
+const IconJavascript = defineAsyncComponent(() => import('./components/icons/tech/IconJavascript.vue'));
+const IconHTML = defineAsyncComponent(() => import('./components/icons/tech/IconHTML.vue'));
+const IconCSS = defineAsyncComponent(() => import('./components/icons/tech/IconCSS.vue'));
 
 import { useTheme } from 'vuetify'
 
@@ -30,6 +36,27 @@ const techIcons = [
   'mdi-github',
   'mdi-bootstrap',
   'mdi-unity',
+]
+
+const techStack = [
+  {
+    title: 'Javascript',
+    description: 'Programming Language',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+    icon: IconJavascript,
+  },
+  {
+    title: 'HTML',
+    description: 'Hypertext Markup Language',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+    icon: IconHTML,
+  },
+  {
+    title: 'CSS',
+    description: 'Cascading Style Sheets',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+    icon: IconCSS,
+  }
 ]
 
 function toggleTheme () {
@@ -89,12 +116,20 @@ function toggleTheme () {
           title="The Stacks"
           subtitle="that I use to build web applications"
         />
-      </FadeInSection>
-      
-      <FadeInSection>
         <GridFold>
           <template #item_a>
-            
+            <IconList v-for="item in techStack" :key="item.title" :title="item.title" :description="item.description">
+              <template #icon>
+                <component :is="item.icon" />
+              </template>
+            </IconList>
+          </template>
+          <template #item_b>
+            <IconList :title="'HTML'" :description="'Hypertext Markup Language'">
+              <template #icon>
+                <IconHTML />
+              </template>
+            </IconList>
           </template>
         </GridFold>
       </FadeInSection>
