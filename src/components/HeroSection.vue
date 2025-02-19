@@ -102,7 +102,7 @@ onMounted(() => {
 
 .hero-section .title {
   font-size: 3.75rem;
-  font-weight: 400;
+  font-weight: bold;
   line-height: 1;
   letter-spacing: -0.0083333333em;
   transition: opacity 0.1s;
