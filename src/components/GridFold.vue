@@ -27,11 +27,6 @@ defineProps({
     align-items: center;
     grid-template-columns: auto auto;
     gap: var(--space-9);
-
-    padding-top: var(--space-17);
-    padding-left: var(--space-12);
-    padding-right: var(--space-12);
-    padding-bottom: var(--space-12);
 }
 
 @media only screen and (max-width: 768px) {

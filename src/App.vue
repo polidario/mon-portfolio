@@ -4,6 +4,7 @@ import { defineAsyncComponent } from 'vue';
 
 import Image1 from '@/assets/bernard-polidario-a.jpg';
 
+const HeadingTitle = defineAsyncComponent(() => import('./components/HeadingTitle.vue'));
 const FadeInSection = defineAsyncComponent(() => import('./components/FadeInSection.vue'));
 const HeroSection = defineAsyncComponent(() => import('./components/HeroSection.vue'));
 const ImageComparison = defineAsyncComponent(() => import('./components/ImageComparison.vue'));
@@ -45,7 +46,7 @@ function toggleTheme () {
       </template>
     </v-app-bar>
 
-    <v-main class="d-flex flex-column align-center justify-center mt-16" style="min-height: 300px;">
+    <v-main class="d-flex flex-column align-center justify-center ga-16 mt-16" style="min-height: 300px;">
       <div :style="{ maxWidth: '1080px', padding: '10px' }">
         <ImageComparison />
       </div>
@@ -84,17 +85,16 @@ function toggleTheme () {
       </FadeInSection>
 
       <FadeInSection>
+        <HeadingTitle 
+          title="The Stacks"
+          subtitle="that I use to build web applications"
+        />
+      </FadeInSection>
+      
+      <FadeInSection>
         <GridFold>
           <template #item_a>
-            <h2 class="text-h1 font-weight-bold">The Stacks</h2>
-            <div class="py-3">
-              <p class="text-h4">that I use to build web applications</p>
-            </div>
-
-            <GridFold>
-              <template #item_a></template>
-              <template #item_b></template>
-            </GridFold>
+            
           </template>
         </GridFold>
       </FadeInSection>
