@@ -97,7 +97,7 @@ const techStackB = [
 <template>
   <v-layout class="d-block" theme="dark">
     <Header />
-    <v-main class="d-flex flex-column align-center justify-center ga-16 mt-16" style="min-height: 300px;">
+    <v-main class="d-flex flex-column align-center justify-center ga-16" style="min-height: 300px;">
       <FadeInSection :useMargin="false">
         <div :style="{ maxWidth: '1080px' }">
           <ImageComparison />

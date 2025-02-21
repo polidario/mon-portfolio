@@ -257,6 +257,12 @@ const theme = useTheme()
     width: 100%;
     aspect-ratio: 16/9;
   }
+
+  .right-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   
   .right-label {
     position: absolute;
@@ -321,6 +327,9 @@ const theme = useTheme()
         width: 100%;
         height: auto;
     }
-    
+
+    .right-image img {
+        object-position: right;
+    }
   }
   </style>
