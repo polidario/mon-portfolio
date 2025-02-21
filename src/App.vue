@@ -4,6 +4,7 @@ import { defineAsyncComponent } from 'vue';
 
 import Image1 from '@/assets/bernard-polidario-a.jpg';
 
+const Header = defineAsyncComponent(() => import('./components/Header.vue'));
 const HeadingTitle = defineAsyncComponent(() => import('./components/HeadingTitle.vue'));
 const FadeInSection = defineAsyncComponent(() => import('./components/FadeInSection.vue'));
 const HeroSection = defineAsyncComponent(() => import('./components/HeroSection.vue'));
@@ -96,26 +97,16 @@ const techStackB = [
     icon: IconFigma,
   },
 ]
-
-function toggleTheme () {
-  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
-}
 </script>
 
 <template>
-  <v-layout class="rounded rounded-md" theme="dark">
-    <v-app-bar title="Hello World! 👋" :elevation="2">
-      <template v-slot:append>
-        <NavigationBar />
-        <v-btn class="primary" :icon="theme.global.current.value.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent'" @click="toggleTheme"></v-btn>
-      </template>
-    </v-app-bar>
-
+  <v-layout class="d-block" theme="dark">
+    <Header />
     <v-main class="d-flex flex-column align-center justify-center ga-16 mt-16" style="min-height: 300px;">
       <div :style="{ maxWidth: '1080px', padding: '10px' }">
         <ImageComparison />
       </div>
-      
+
       <HeroSection 
         title="Hi, I'm Bernard Polidario" 
         subtext="A Frontend Developer" 
