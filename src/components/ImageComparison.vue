@@ -20,10 +20,11 @@ const theme = useTheme()
             />
             
             <div :style="leftImageStyle" class="left-label">
-                <v-btn :href="'https://youtube.com/@weeklyhow'">Watch on YouTube</v-btn>
             </div>
         
-            <img :alt="rightImageAlt" :src="Image2" class="right-image" ref="rightImageRef" />
+            <div class="right-image">
+                <img :alt="rightImageAlt" :src="Image2" ref="rightImageRef" />
+            </div>
 
             <div :style="rightLabelStyle" ref="rightLabelRef" class="right-label">{{rightLabel}}</div>
         
@@ -218,8 +219,7 @@ const theme = useTheme()
     };
   </script>
   
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
-  <style scoped lang="scss">
+<style scoped lang="scss">
   .image-container-glow {
     -webkit-box-shadow:0px 0px 145px 0px rgba(110,175,255,0.25);
     -moz-box-shadow: 0px 0px 145px 0px rgba(110,175,255,0.25);
@@ -304,5 +304,23 @@ const theme = useTheme()
       height: '0px';
       width: '0px';
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    .image-container {
+      border-radius: 0;
+      aspect-ratio: 4/5;
+    }
+
+    .left-image {
+      aspect-ratio: 4/5;
+    }
+
+    .right-image {
+        aspect-ratio: 4/5;
+        width: 100%;
+        height: auto;
+    }
+    
   }
   </style>

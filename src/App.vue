@@ -113,7 +113,7 @@ const techStackB = [
       />
       
       <FadeInSection>
-        <GridFold>
+        <GridFold id="aboutMe">
           <template #item_a>
             <h2 class="text-h1 font-weight-bold">6 Yrs.</h2>
             <div class="py-3">
