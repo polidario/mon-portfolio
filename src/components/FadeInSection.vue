@@ -1,6 +1,6 @@
 <template>
     <div
-      :class="['section', { 'is-visible': isVisible, 'is-hidden': !isVisible }]"
+      :class="['section', { 'is-visible': isVisible, 'is-hidden': !isVisible }, { 'margin': useMargin }]"
       ref="domRef"
     >
       <slot></slot>
@@ -12,6 +12,12 @@ import { ref, onMounted, onUnmounted } from 'vue';
   
 export default {
     name: 'FadeInSection',
+    props: {
+        useMargin: {
+            type: Boolean,
+            default: true,
+        },
+    },
     setup() {
         const isVisible = ref(false);
         const domRef = ref(null);
@@ -54,7 +60,9 @@ export default {
     transition: opacity 1.3s ease-out, scale 0.9s ease-in-out;
     width: 100%;
     max-width: 1080px;
+}
 
+.margin {
     margin-top: var(--space-16);
     margin-bottom: var(--space-16);
 }

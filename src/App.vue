@@ -10,11 +10,10 @@ const FadeInSection = defineAsyncComponent(() => import('./components/FadeInSect
 const HeroSection = defineAsyncComponent(() => import('./components/HeroSection.vue'));
 const ImageComparison = defineAsyncComponent(() => import('./components/ImageComparison.vue'));
 const GridFold = defineAsyncComponent(() => import('./components/GridFold.vue'));
-const TwoColumnText = defineAsyncComponent(() => import('./components/TwoColumnText.vue'));
 const ContactMe = defineAsyncComponent(() => import('./components/ContactMe.vue'));
-const NavigationBar = defineAsyncComponent(() => import('./components/NavigationBar.vue'));
 const IconList = defineAsyncComponent(() => import('./components/IconList.vue'));
 const InfiniteScroll = defineAsyncComponent(() => import('./components/InfiniteScroll.vue'));
+const CursorFollower = defineAsyncComponent(() => import('./components/CursorFollower.vue'));
 
 // Icons
 const IconCursor = defineAsyncComponent(() => import('./components/icons/IconCursor.vue'));
@@ -26,10 +25,6 @@ const IconUnity = defineAsyncComponent(() => import('./components/icons/tech/Ico
 const IconPython = defineAsyncComponent(() => import('./components/icons/tech/IconPython.vue'));
 const IconSupabase = defineAsyncComponent(() => import('./components/icons/tech/IconSupabase.vue'));
 const IconFigma = defineAsyncComponent(() => import('./components/icons/tech/IconFigma.vue'));
-
-import { useTheme } from 'vuetify'
-
-const theme = useTheme()
 
 const techIcons = [
   'mdi-language-html5',
@@ -103,9 +98,12 @@ const techStackB = [
   <v-layout class="d-block" theme="dark">
     <Header />
     <v-main class="d-flex flex-column align-center justify-center ga-16 mt-16" style="min-height: 300px;">
-      <div :style="{ maxWidth: '1080px', padding: '10px' }">
-        <ImageComparison />
-      </div>
+      <FadeInSection :useMargin="false">
+        <div :style="{ maxWidth: '1080px' }">
+          <ImageComparison />
+        </div>
+      </FadeInSection>
+      
 
       <HeroSection 
         title="Hi, I'm Bernard Polidario" 
@@ -130,7 +128,9 @@ const techStackB = [
           <template #overlay>
               <div class="card-text">
                 <div class="cursor">
-                  <IconCursor />
+                  <CursorFollower>
+                    <IconCursor />
+                  </CursorFollower>
                 </div>
                 <div class="content">
                   <p class="text">I specialize in Frontend Development, crafting intuitive, engaging user experiences. Skilled in coding, multimedia design, and content creation. I focus on delivering seamless functionality and meaningful interactions.</p>
@@ -154,8 +154,6 @@ const techStackB = [
           </template>
         </GridFold>
       </FadeInSection>
-
-      <TwoColumnText />
 
       <InfiniteScroll :icons="techIcons"/>
 
