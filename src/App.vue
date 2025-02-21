@@ -16,7 +16,7 @@ const InfiniteScroll = defineAsyncComponent(() => import('./components/InfiniteS
 const CursorFollower = defineAsyncComponent(() => import('./components/CursorFollower.vue'));
 
 // Icons
-const IconCursor = defineAsyncComponent(() => import('./components/icons/IconCursor.vue'));
+const IconSmiley = defineAsyncComponent(() => import('./components/icons/IconSmiley.vue'));
 const IconJavascript = defineAsyncComponent(() => import('./components/icons/tech/IconJavascript.vue'));
 const IconTypescript = defineAsyncComponent(() => import('./components/icons/tech/IconTypescript.vue'));
 const IconHTML = defineAsyncComponent(() => import('./components/icons/tech/IconHTML.vue'));
@@ -129,7 +129,7 @@ const techStackB = [
               <div class="card-text">
                 <div class="cursor">
                   <CursorFollower>
-                    <IconCursor />
+                    <IconSmiley />
                   </CursorFollower>
                 </div>
                 <div class="content">
