@@ -63,7 +63,9 @@ export default defineComponent({
             <div class="action-button-section">
                 <a href="#">GET MY CV</a>
             </div>
-            <button type="button" class="nav-toggle-button" aria-label="Toggle Navigation" v-on:click="toggleNav">Menu</button>
+            <button type="button" class="nav-toggle-button" aria-label="Toggle Navigation" v-on:click="toggleNav">
+                <v-icon icon="mdi-menu"></v-icon>
+            </button>
         </nav>
     </header>
 </template>
@@ -89,6 +91,7 @@ nav .nav-links {
 }
 
 nav .nav-mobile-close {
+    display: none;
     flex-basis: 25%;
 }
 
@@ -126,6 +129,7 @@ nav .nav-mobile-section {
 }
 
 nav .nav-toggle-button {
+    color: var(--link-color);
     display: none;
     padding: var(--space-6) var(--space-8);
     align-items: center;
@@ -172,6 +176,10 @@ nav .nav-toggle-button {
     }
 
     nav .nav-toggle-button {
+        display: flex;
+    }
+
+    nav .nav-mobile-close {
         display: flex;
     }
 

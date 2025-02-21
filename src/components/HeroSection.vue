@@ -76,13 +76,6 @@ onMounted(() => {
       >
         Let's connect!
       </v-btn>
-
-      <v-btn 
-        variant="text"
-        class="rounded-pill font-weight-bold text-capitalize"
-      >
-        Hit me up!
-      </v-btn>
     </div>
     
   </div>
@@ -120,17 +113,22 @@ onMounted(() => {
 
 @media only screen and (max-width: 980px) {
   .hero-section .title {
-    font-size: 1.75em;
+    font-size: 2.25em;
     font-weight: bold;
+    text-align: center;
   }
 
-  .hero-section #body i {
+  .hero-section #hero_section__body i {
     position: absolute;
-    top: -30px;
+    font-size: var(--text-xl);
+    top: -70px;
+    left: -40px;
+    z-index: -1;
+    opacity: 0.25;
   }
 
   .hero-section .body-text {
-    font-size: 2.25em;
+    font-size: 1.75em;
     font-weight: bold;
     text-align: center;
   }
