@@ -86,6 +86,7 @@ onMounted(() => {
     position: absolute;
     top: 100px;
     display: flex;
+    gap: 40px;
 }
 
 .blush {

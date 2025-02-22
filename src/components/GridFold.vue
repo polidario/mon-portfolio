@@ -18,6 +18,10 @@ defineProps({
         <div v-if="slots.overlay" class="overlay-card">
             <slot name="overlay"></slot>
         </div>
+
+        <div v-if="slots.top_right_overlay" class="top-right-overlay">
+            <slot name="top_right_overlay"></slot>
+        </div>
     </div>
 </template>
 
@@ -27,15 +31,28 @@ defineProps({
     align-items: center;
     grid-template-columns: auto auto;
     gap: var(--space-9);
+
+    position: relative;
+}
+
+.top-right-overlay {
+    position: absolute;
+    top: -200px;
+    right: 50px;
 }
 
 @media only screen and (max-width: 768px) {
     .grid-fold {
-        gap: var(--space-7);
+        gap: var(--space-5);
         padding-top: var(--space-12);
         padding-left: var(--space-5);
         padding-right: var(--space-5);
         padding-bottom: var(--space-5);
+    }
+
+    .top-right-overlay {
+        top: -100px;
+        right: 0;
     }
 }
 

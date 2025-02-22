@@ -36,4 +36,12 @@ defineProps({
   font-weight: bold;
   width: 100%;
 }
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+  }
+}
+
 </style>

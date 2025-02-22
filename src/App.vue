@@ -13,10 +13,16 @@ const GridFold = defineAsyncComponent(() => import('./components/GridFold.vue'))
 const ContactMe = defineAsyncComponent(() => import('./components/ContactMe.vue'));
 const IconList = defineAsyncComponent(() => import('./components/IconList.vue'));
 const InfiniteScroll = defineAsyncComponent(() => import('./components/InfiniteScroll.vue'));
-const CursorFollower = defineAsyncComponent(() => import('./components/CursorFollower.vue'));
+
+//Animations
+const Floater = defineAsyncComponent(() => import('./components/animations/Floater.vue'));
+const ZoomInAndOut = defineAsyncComponent(() => import('./components/animations/ZoomInAndOut.vue'));
+const CursorFollower = defineAsyncComponent(() => import('./components/animations/CursorFollower.vue'));
 
 // Icons
+const IconCursor = defineAsyncComponent(() => import('./components/icons/IconCursor.vue'));
 const IconSmiley = defineAsyncComponent(() => import('./components/icons/IconSmiley.vue'));
+const IconHeart = defineAsyncComponent(() => import('./components/icons/IconHeart.vue'));
 const IconJavascript = defineAsyncComponent(() => import('./components/icons/tech/IconJavascript.vue'));
 const IconTypescript = defineAsyncComponent(() => import('./components/icons/tech/IconTypescript.vue'));
 const IconHTML = defineAsyncComponent(() => import('./components/icons/tech/IconHTML.vue'));
@@ -125,11 +131,19 @@ const techStackB = [
             <img :src="Image1" class="grid-images" />
           </template>
 
+          <template #top_right_overlay>
+              <div class="cursor">
+                <Floater>
+                  <IconSmiley />
+                </Floater>
+              </div>
+          </template>
+
           <template #overlay>
               <div class="card-text">
                 <div class="cursor">
                   <CursorFollower>
-                    <IconSmiley />
+                    <IconHeart :width="'400'" :height="'400'" :color="'#ff1f1f'" />
                   </CursorFollower>
                 </div>
                 <div class="content">
