@@ -4,8 +4,9 @@ import { onMounted, onUnmounted, ref } from 'vue';
 const cursor = ref<HTMLElement | null>(null);
 const maxDistance = 50;
 
-let originalPosition = { x: 0, y: 0 }
-let cursorPosition = { x: 0, y: 0 }
+let originalPosition = { x: 0, y: 0 };
+let cursorPosition = { x: 0, y: 0 };
+let animationFrameId: number | null = null;
 
 onMounted(() => {
     originalPosition.x = window.innerWidth / 2;
@@ -15,13 +16,12 @@ onMounted(() => {
 
     onUnmounted(() => {
         document.removeEventListener('mousemove', onMouseMove);
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
     });
-
 });
 
-
 const onMouseMove = (event: MouseEvent) => {
-    if(!cursor.value) return;
+    if (!cursor.value) return;
 
     const mouseX = event.clientX;
     const mouseY = event.clientY;
@@ -30,7 +30,7 @@ const onMouseMove = (event: MouseEvent) => {
     const distanceY = mouseY - originalPosition.y;
     const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
 
-    if(distance > maxDistance) {
+    if (distance > maxDistance) {
         const angle = Math.atan2(distanceY, distanceX);
         cursorPosition.x = originalPosition.x + (Math.cos(angle) * maxDistance);
         cursorPosition.y = originalPosition.y + (Math.sin(angle) * maxDistance);
@@ -40,12 +40,17 @@ const onMouseMove = (event: MouseEvent) => {
         cursorPosition.y += (mouseY - cursorPosition.y) * smoother;
     }
 
-    const translateX = cursorPosition.x - originalPosition.x;
-    const translateY = cursorPosition.y - originalPosition.y;
-
-    cursor.value.style.transform = `translate(${translateX}px, ${translateY}px)`;
-}
-
+    if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(() => {
+            if (cursor.value) {
+                const translateX = cursorPosition.x - originalPosition.x;
+                const translateY = cursorPosition.y - originalPosition.y;
+                cursor.value.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            }
+            animationFrameId = null;
+        });
+    }
+};
 </script>
 
 <template>
@@ -57,4 +62,7 @@ const onMouseMove = (event: MouseEvent) => {
 </template>
 
 <style scoped>
+.cursor-follower {
+    transition: transform 0.1s ease-out;
+}
 </style>
