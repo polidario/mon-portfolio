@@ -1,37 +1,23 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
 
-const angle = (cx: number, cy: number, ex: number, ey: number) => {
-    const dy = ey - cy;
-    const dx = ex - cx;
-    let theta = Math.atan2(dy, dx);
-    theta *= 180 / Math.PI;
-    return theta;
-}
-
 
 onMounted(() => {
     let eyes = document.querySelectorAll('.eye');
 
-    const eyeCenter = Array.from(eyes).map((eye) => {
-        const anchor = eye.getBoundingClientRect();
-        return {
-            eye,
-            centerX: anchor.left + anchor.width / 2,
-            centerY: anchor.top + anchor.height / 2,
-        }
-    });
-
     const moveHandler = (event: MouseEvent) => {
-        const mouseX = event.clientX;
-        const mouseY = event.clientY;
+        eyes.forEach((eye) => {
+            const rect = eye.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
 
-        requestAnimationFrame(() => {
-            eyeCenter.forEach(({ eye, centerX, centerY }) => {
-                const angleDeg = angle(centerX, centerY, mouseX, mouseY);
-                eye.style.transform = `rotate(${angleDeg}deg)`;
-            })
-        })
+            const deltaX = event.clientX - centerX;
+            const deltaY = event.clientY - centerY;
+
+            const angleDeg = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+
+            eye.setAttribute('style', `transform: rotate(${angleDeg}deg)`);
+        });
     }
 
     document.addEventListener('mousemove', moveHandler);
@@ -92,7 +78,7 @@ onMounted(() => {
     background-color: #000;
     border-radius: 50%;
     top: 50%;
-    left: 14px;
+    left: 75%;
     transform: translate(-50%, -50%);
 }
 
