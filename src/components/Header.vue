@@ -61,7 +61,7 @@ export default defineComponent({
                 </div>
             </div>
             <div class="action-button-section">
-                <a href="#">GET MY CV</a>
+                <a href="/cvs/bernard-polidario-resume.pdf" target="_blank">GET MY CV</a>
             </div>
             <button type="button" class="nav-toggle-button" aria-label="Toggle Navigation" v-on:click="toggleNav">
                 <v-icon icon="mdi-menu"></v-icon>
