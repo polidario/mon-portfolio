@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { RouterLink } from 'vue-router';
 
 export default defineComponent({
     name: 'Header',
@@ -36,7 +37,9 @@ export default defineComponent({
     <header class="header">
         <nav aria-expanded="false">
             <div class="nav-logo-section" id="nav-logo-section">
-                <span>BP</span>
+                <router-link to="/">
+                    <span>BP</span>
+                </router-link>
             </div>
             <div class="nav-mobile-section">
                 <div class="nav-links nav-mobile-close">
@@ -45,8 +48,8 @@ export default defineComponent({
                     </button>
                 </div>
                 <div class="nav-links nav-texts">
-                    <a href="#myProjects">WORK</a>
-                    <a href="#aboutMe">ABOUT</a>
+                    <router-link to="/work">WORK</router-link>
+                    <router-link to="/about">ABOUT</router-link>
                 </div>
                 <div class="nav-links nav-icons">
                     <a href="https://www.linkedin.com/in/polidario/" target="_blank" rel="noopener noreferrer">
