@@ -2,11 +2,13 @@
 import { defineAsyncComponent } from 'vue';
 import { RouterView } from 'vue-router';
 
+const AnnouncementBar = defineAsyncComponent(() => import('@/components/AnnouncementBar.vue'));
 const Header = defineAsyncComponent(() => import('@/components/Header.vue'));
 </script>
 
 <template>
   <v-layout class="d-block" theme="dark">
+    <AnnouncementBar message="This website is going through a redesign 😱. Please bear with me. ❤️" />
     <Header />
 
     <RouterView v-slot="{ Component, route }">
