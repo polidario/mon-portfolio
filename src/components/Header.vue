@@ -39,7 +39,7 @@ export default defineComponent({
         <nav aria-expanded="false">
             <div class="nav-logo-section" id="nav-logo-section">
                 <RouterLink to="/">
-                    <span>BP: {{ isToggled }}</span>
+                    <span>BP</span>
                 </RouterLink>
             </div>
             <div class="nav-mobile-section">
