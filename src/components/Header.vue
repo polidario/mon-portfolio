@@ -10,6 +10,7 @@ export default defineComponent({
             if(!nav) return;
 
             this.isToggled = !this.isToggled;
+
             nav.setAttribute('aria-expanded', this.isToggled.toString());
 
             if(this.isToggled) {
@@ -37,9 +38,9 @@ export default defineComponent({
     <header class="header">
         <nav aria-expanded="false">
             <div class="nav-logo-section" id="nav-logo-section">
-                <router-link to="/">
-                    <span>BP</span>
-                </router-link>
+                <RouterLink to="/">
+                    <span>BP: {{ isToggled }}</span>
+                </RouterLink>
             </div>
             <div class="nav-mobile-section">
                 <div class="nav-links nav-mobile-close">
@@ -48,8 +49,8 @@ export default defineComponent({
                     </button>
                 </div>
                 <div class="nav-links nav-texts">
-                    <router-link to="/work">WORK</router-link>
-                    <router-link to="/about">ABOUT</router-link>
+                    <RouterLink to="/work">WORK</RouterLink>
+                    <RouterLink to="/about">ABOUT</RouterLink>
                 </div>
                 <div class="nav-links nav-icons">
                     <a href="https://www.linkedin.com/in/polidario/" target="_blank" rel="noopener noreferrer">
@@ -170,6 +171,7 @@ nav .nav-toggle-button {
         transform: translateX(100%);
         transition: transform 1s ease-in-out;
         flex-direction: column;
+        animation: fadeIn 1s;
         
         z-index: 100;
     }
@@ -188,6 +190,18 @@ nav .nav-toggle-button {
 
     nav .nav-texts, nav .nav-icons {
         gap: var(--space-7);
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        99% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
     }
 }
 </style>
