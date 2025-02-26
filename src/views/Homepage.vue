@@ -137,7 +137,7 @@ const techStackB = [
         </template>
 
         <template #overlay>
-            <div class="card-text">
+            <div class="overlay-card-text">
               <div class="cursor">
                 <CursorFollower>
                   <IconHeart :width="'400'" :height="'400'" :color="'#ff1f1f'" />
