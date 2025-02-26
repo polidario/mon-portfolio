@@ -66,6 +66,8 @@ footer {
         justify-content: space-between;
         position: relative;
 
+        gap: var(--space-8);
+
         z-index: 1;
 
         .upper-footer-section {
@@ -105,7 +107,16 @@ footer {
         }
 
         .lower-footer-section {
-            color: var(--color-black);
+            .footer-content-text {
+                p {
+                    color: var(--color-gray);
+                    text-align: center;
+                    font-weight: var(--font-weight-bold);
+
+                    transition: color 1s ease-in-out;
+                }
+            }
+            
         }
     }
 }
@@ -115,7 +126,7 @@ footer::after {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 10vh;
+    top: 0;
     display: block;
     width: 100vw;
     height: 40vh;
@@ -125,13 +136,12 @@ footer::after {
     transition: border-radius 1s ease-in-out, height 1s ease-in-out, bottom 1s ease-in-out;
 }
 
-@media only screen and (max-width: 992px) {
+@media (max-width: 992px) {
     footer {
         padding: var(--space-8) var(--space-4);
         height: 100vh;
 
         .wrapper {
-
             .upper-footer-section {
                 flex-direction: column;
                 gap: var(--space-4);
@@ -146,6 +156,8 @@ footer::after {
 
                 .footer-content-quote {
                     flex-basis: 100%;
+
+                    display: none;
 
                     p {
                         font-size: var(--text-h5);
@@ -170,11 +182,32 @@ footer::after {
     }
 }
 
-@media only screen and (max-width: 1200px) {
+@media (max-width: 1200px) {
     footer::after {
-        height: 40vh;
-        bottom: 10vh;
-        border-radius: 0 0 30% 30%;
+        height: 80vh;
+        top: 0;
+        border-radius: 0;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    footer {
+        height: 80vh;
+
+        .upper-footer-section {
+            .footer-content-quote {
+                p {
+                    font-size: var(--text-h5);
+                }
+            }
+        }
+        .lower-footer-section {
+            .footer-content-text {
+                p {
+                    color: var(--color-white) !important;
+                }
+            }
+        }
     }
 }
 </style>
