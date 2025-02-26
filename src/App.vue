@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
 import { RouterView } from 'vue-router';
 
-const AnnouncementBar = defineAsyncComponent(() => import('@/components/AnnouncementBar.vue'));
-const Header = defineAsyncComponent(() => import('@/components/Header.vue'));
+import AnnouncementBar from '@/components/AnnouncementBar.vue';
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
@@ -11,19 +11,21 @@ const Header = defineAsyncComponent(() => import('@/components/Header.vue'));
     <AnnouncementBar message="This website is going through a redesign 😱. Please bear with me. ❤️" />
     <Header />
 
-    <RouterView v-slot="{ Component, route }">
-      <transition name="fade" mode="out-in" :duration="{
-        enter: 1000,
-        leave: 1000,
-      }">
-        <component :is="Component" :key="route.path"/>
-      </transition>
-    </RouterView>
+    <main>
+      <RouterView v-slot="{ Component, route }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" :key="route.path"/>
+        </transition>
+      </RouterView>
+    </main>
+    
+    <Footer />
+    
   </v-layout>
 </template>
 
-<style>
-.fade-enter-active, .fade-leave-fron, .fade-leave-active {
+<style scoped>
+.fade-enter-active, .fade-leave-active {
   opacity: 1;
   transition: opacity 1s ease;
 }
