@@ -114,11 +114,6 @@ nav .nav-logo-section {
     flex-basis: calc(100% / 3);
 }
 
-nav .nav-logo-section span {
-    font-size: 1.25rem;
-    font-weight: bold;
-}
-
 nav .action-button-section {
     display: flex;
     align-items: center;

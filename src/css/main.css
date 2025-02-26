@@ -32,8 +32,16 @@
     --text-p: 1rem;
     --text-small: 0.875rem;
 
+    --font-weight-bold: 700;
+    --font-weight-medium: 500;
+    --font-weight-regular: 400;
+
     /* Colors */
+    --color-white: #ffffff;
     --color-gray: #373737;
+    --color-black: #121212;
+
+    --background-color: #121212;
     
     --link-color: #a3a3a3;
     --link-color-hover: #e0e0e0;
@@ -54,6 +62,15 @@ a:hover {
     color: var(--link-color-hover);
 }
 
+/* Navigation */
+.nav-logo-section span,
+.footer-content-logo span {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+
+/* Components */
 .grid-images {
     display: block;
     height: auto;
