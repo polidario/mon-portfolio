@@ -62,6 +62,9 @@ export default defineComponent({
                     <a href="https://instagram.com/weeklyhow" target="_blank" rel="noopener noreferrer">
                         <v-icon icon="mdi-instagram"></v-icon>
                     </a>
+                    <a href="https://github.com/polidario" target="_blank" rel="noopener noreferrer">
+                        <v-icon icon="mdi-github"></v-icon>
+                    </a>
                 </div>
             </div>
             <div class="action-button-section">
