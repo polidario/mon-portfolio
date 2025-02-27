@@ -51,7 +51,7 @@ footer {
     width: 100%;
     height: 50vh;
     padding: var(--space-13);
-    background-color: var(--color-white);
+    background: linear-gradient(to bottom, rgb(18, 18, 18), rgba(26, 12, 49, 1));
     overflow: hidden;
     position: relative;
 
@@ -93,8 +93,13 @@ footer {
                 flex-basis: 25%;
 
                 p {
+                    color: var(--link-color);
                     font-size: var(--text-h4);
                     font-weight: var(--font-weight-bold);
+                }
+
+                span {
+                    color: var(--link-color);
                 }
             }
 
@@ -109,7 +114,7 @@ footer {
         .lower-footer-section {
             .footer-content-text {
                 p {
-                    color: var(--color-gray);
+                    color: var(--color-white);
                     text-align: center;
                     font-weight: var(--font-weight-bold);
 
@@ -119,21 +124,6 @@ footer {
             
         }
     }
-}
-
-footer::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    display: block;
-    width: 100vw;
-    height: 40vh;
-    background: linear-gradient(to bottom, rgb(18, 18, 18), rgba(26, 12, 49, 1));
-    border-radius: 0 0 30% 30%;
-
-    transition: border-radius 1s ease-in-out, height 1s ease-in-out, bottom 1s ease-in-out;
 }
 
 @media (max-width: 992px) {
@@ -168,25 +158,7 @@ footer::after {
                     justify-content: center;
                 }
             }
-
-            .lower-footer-section {
-                color: var(--color-white);
-                display: flex;
-                justify-content: center;
-            }
         }
-    }
-
-    footer::after {
-        border-radius: 0;
-    }
-}
-
-@media (max-width: 1200px) {
-    footer::after {
-        height: 80vh;
-        top: 0;
-        border-radius: 0;
     }
 }
 
@@ -198,13 +170,6 @@ footer::after {
             .footer-content-quote {
                 p {
                     font-size: var(--text-h5);
-                }
-            }
-        }
-        .lower-footer-section {
-            .footer-content-text {
-                p {
-                    color: var(--color-white) !important;
                 }
             }
         }
