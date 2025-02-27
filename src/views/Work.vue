@@ -14,17 +14,14 @@ import Alert from '@/components/Alert.vue';
     />
 
     <Card
-      title="My Portfolio"
-      summary="A collection of my projects"
-      image="https://picsum.photos/360/640?grayscale"
-      link="/portfolio"
+      title="WeeklyHow"
+      summary="A brand that I made to help people learn Shopify development"
+      image="/images/weeklyhow-homepage.png"
+      link="https://weeklyhow.com/"
+      link_text="Visit site"
+      category="Brand"
     />
-    <Card
-      title="My Blog"
-      summary="A collection of my thoughts"
-      image="https://picsum.photos/360/640?grayscale"
-      link="/blog"
-    />
+
   </div>
 </template>
   
