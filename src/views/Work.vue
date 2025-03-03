@@ -23,7 +23,7 @@ import FadeInSection from '@/components/FadeInSection.vue';
     <FadeInSection :useMargin="false">
       <Card
         title="Shopify Theme Project"
-        summary="A theme project developed during our live-coding sessions on WeeklyHow"
+        summary="A theme project developed during our live-coding sessions on WeeklyHow. (Password: weeklyhow)"
         image="/images/weeklyhow-live-coding-session-theme-dev.png"
         link="https://weeklyhow-live-coding-session.myshopify.com/"
         link_text="Visit store"
