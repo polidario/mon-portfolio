@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { PropType } from 'vue';
+import { BadgeType } from '@/types/Components';
+
 import Badge from './Badge.vue';
 
 defineProps({
@@ -16,6 +19,10 @@ defineProps({
     category: {
         type: String,
         default: 'Uncategorized'
+    },
+    category_type: {
+        type: String as PropType<BadgeType['type']>,
+        default: 'info'
     }
 })
 </script>
@@ -23,7 +30,7 @@ defineProps({
 <template>
     <div class="card">
         <div class="card-text">
-            <Badge :text="category" type="info" />
+            <Badge :text="category" :type="category_type" />
         
             <div>
                 <h2>{{ title }}</h2>

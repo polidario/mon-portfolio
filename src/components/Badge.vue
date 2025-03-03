@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { PropType } from 'vue';
-interface BadgeType {
-    type: 'info' | 'error' | 'success' | 'warning';
-}
+import { BadgeType } from '@/types/Components';
 
 defineProps({
     text: String,
