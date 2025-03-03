@@ -44,6 +44,18 @@ import FadeInSection from '@/components/FadeInSection.vue';
       />
     </FadeInSection>
 
+    <FadeInSection :useMargin="false">
+      <Card
+        title="Reminisce AI"
+        summary="A chat bot AI project that I made just for fun"
+        image="/images/reminisce-ai-app.png"
+        link="https://github.com/polidario/Reminisce-AI"
+        link_text="View on GitHub"
+        category="AI"
+        category_type="error"
+      />
+    </FadeInSection>
+
   </div>
 </template>
   
