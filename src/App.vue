@@ -2,19 +2,10 @@
 import { onMounted } from 'vue';
 import { RouterView } from 'vue-router';
 
-import { supabase } from '@/supabase/client';
 import AnnouncementBar from '@/components/AnnouncementBar.vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
-async function getUsers() {
-    const { data } = await supabase.from('users').select()
-    console.log(data)
-  }
-
-onMounted(() => {
-  getUsers()
-})
 </script>
 
 <template>
