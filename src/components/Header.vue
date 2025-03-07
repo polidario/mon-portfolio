@@ -49,7 +49,6 @@ export default defineComponent({
                 </div>
                 <div class="nav-links nav-texts">
                     <RouterLink to="/work">WORK</RouterLink>
-                    <RouterLink to="/about">ABOUT</RouterLink>
                 </div>
                 <div class="nav-links nav-icons">
                     <a href="https://www.linkedin.com/in/polidario/" target="_blank" rel="noopener noreferrer">
