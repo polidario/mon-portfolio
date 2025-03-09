@@ -61,20 +61,23 @@ defineProps({
 
     padding: var(--space-5);
     border-radius: 1%;
-    background-color: var(--color-white);
+    background-color: var(--color-dark-blue);
+    border: 1px solid var(--color-gray);
     
-    transition: 0.2s ease-in-out;
+    transition: 1s ease-in-out;
 
     .card-text {
         width: 100%;
-        color: var(--color-black);
+        color: var(--color-gray-400);
 
         padding-left: var(--space-4);
         padding-bottom: var(--space-4);
 
         h2 {
+            color: var(--color-white);
             font-size: var(--text-h4);
             font-weight: bold;
+            line-height: 3rem;
         }
 
         .link {
@@ -102,12 +105,18 @@ defineProps({
             aspect-ratio: 4/5;
             object-fit: cover;
             border-radius: 2%;
+            filter: grayscale(100%);
+            transition: .25s ease-in-out;
+
+            &:hover {
+                filter: grayscale(0%);
+            }
         }
+
     }
 }
 
 .card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transform: scale(0.98);
 }
 </style>

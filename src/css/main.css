@@ -38,7 +38,9 @@
 
     /* Colors */
     --color-white: #ffffff;
+    --color-dark-blue: #1f2226;
     --color-gray: #373737;
+    --color-gray-400: #99a1af;
     --color-black: #121212;
 
     --color-info: rgba(101, 156, 246, 0.47);
