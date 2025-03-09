@@ -68,8 +68,14 @@ import FadeInSection from '@/components/FadeInSection.vue';
   margin: 0 auto;
 
   justify-content: center;
-  align-items: center;
+  align-items: start;
 
+}
+
+@media (width >= 64rem) {
+  .work-grid {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
 }
 
 </style>
