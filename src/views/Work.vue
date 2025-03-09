@@ -72,9 +72,9 @@ import FadeInSection from '@/components/FadeInSection.vue';
 
 }
 
-@media (width >= 64rem) {
+@media only screen and (max-width: 768px) {
   .work-grid {
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
 
