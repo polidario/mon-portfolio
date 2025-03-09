@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import Card from '@/components/Card.vue';
-import Alert from '@/components/Alert.vue';
 import FadeInSection from '@/components/FadeInSection.vue';
 
 </script>
 
 <template>
-  <div class="container">
-    <h1>My Work</h1>
-
+  <div class="container-fluid work-grid">
     <FadeInSection :useMargin="false">
       <Card
         title="WeeklyHow"
@@ -60,18 +57,19 @@ import FadeInSection from '@/components/FadeInSection.vue';
 </template>
   
 <style scoped>
-.container {
+.work-grid {
   min-height: 100vh;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(512px, 1fr));
+  gap: var(--space-5);
+
+  padding: var(--space-5);
+  margin: 0 auto;
+
   justify-content: center;
   align-items: center;
 
-  gap: var(--space-5);
-
-  margin-top: var(--space-15);
-  margin-bottom: var(--space-15);
 }
 
 </style>

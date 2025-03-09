@@ -29,6 +29,9 @@ defineProps({
 
 <template>
     <div class="card">
+        <div class="card-image">
+            <img :src="image" alt="Card image">
+        </div>
         <div class="card-text">
             <Badge :text="category" :type="category_type" />
         
@@ -43,19 +46,14 @@ defineProps({
             </div>
             
         </div>
-
-        <div class="card-image">
-            <img :src="image" alt="Card image">
-        </div>
     </div>
 </template>
 
 <style scoped lang="scss">
 .card {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: end;
     gap: var(--space-5);
 
     width: 100%;
@@ -68,14 +66,14 @@ defineProps({
     transition: 0.2s ease-in-out;
 
     .card-text {
-        width: 50%;
+        width: 100%;
         color: var(--color-black);
 
-        padding-left: var(--space-8);
-        padding-bottom: var(--space-8);
+        padding-left: var(--space-4);
+        padding-bottom: var(--space-4);
 
         h2 {
-            font-size: var(--text-h2);
+            font-size: var(--text-h4);
             font-weight: bold;
         }
 
@@ -98,10 +96,10 @@ defineProps({
     }
 
     .card-image {
-        width: 50%;
+        width: 100%;
         img {
             width: 100%;
-            aspect-ratio: 9/12;
+            aspect-ratio: 4/5;
             object-fit: cover;
             border-radius: 2%;
         }

@@ -87,6 +87,13 @@ a:hover {
     padding-right: var(--space-4);
 }
 
+.container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+}
+
 
 /* Components */
 .grid-images {
