@@ -61,8 +61,12 @@ defineProps({
 
     padding: var(--space-5);
     border-radius: 1%;
-    background-color: var(--color-dark-blue);
-    border: 1px solid var(--color-gray);
+    background: rgb(35,28,48);
+    background: -moz-linear-gradient(318deg, rgb(32, 29, 37) 0%, rgb(57, 57, 57) 100%);
+    background: -webkit-linear-gradient(318deg, rgba(32, 29, 37) 0%, rgba(57, 57, 57) 100%);
+    background: linear-gradient(318deg, rgba(32, 29, 37) 0%, rgba(57, 57, 57) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#231c30",endColorstr="#4f4f4f",GradientType=1);
+    border: 2px solid var(--color-gray);
     
     transition: 1s ease-in-out;
 

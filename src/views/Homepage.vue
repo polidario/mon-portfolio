@@ -15,11 +15,9 @@ const InfiniteScroll = defineAsyncComponent(() => import('@/components/InfiniteS
 
 //Animations
 const Floater = defineAsyncComponent(() => import('@/components/animations/Floater.vue'));
-const ZoomInAndOut = defineAsyncComponent(() => import('@/components/animations/ZoomInAndOut.vue'));
 const CursorFollower = defineAsyncComponent(() => import('@/components/animations/CursorFollower.vue'));
 
 // Icons
-const IconCursor = defineAsyncComponent(() => import('@/components/icons/IconCursor.vue'));
 const IconSmiley = defineAsyncComponent(() => import('@/components/icons/IconSmiley.vue'));
 const IconHeart = defineAsyncComponent(() => import('@/components/icons/IconHeart.vue'));
 const IconJavascript = defineAsyncComponent(() => import('@/components/icons/tech/IconJavascript.vue'));
@@ -115,7 +113,7 @@ const techStackB = [
       color="primary"
     />
     
-    <FadeInSection>
+    <FadeInSection :useMargin="false">
       <GridFold id="aboutMe">
         <template #item_a>
           <h2 class="text-h1 font-weight-bold">6 Yrs.</h2>
@@ -144,7 +142,7 @@ const techStackB = [
                 </CursorFollower>
               </div>
               <div class="content">
-                <p class="text">I specialize in Frontend Development, crafting intuitive, engaging user experiences. Skilled in coding, multimedia design, and content creation. I focus on delivering seamless functionality and meaningful interactions.</p>
+                <p class="text">I specialize in Frontend Development, crafting intuitive, engaging user experiences. Skilled in coding, multimedia design, and content creation.</p>
               </div>
             </div>
         </template>
