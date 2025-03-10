@@ -149,6 +149,9 @@ const techStackB = [
       </GridFold>
     </FadeInSection>
 
+    
+    <img src="/images/gradient-highlight.webp" class="position-absolute bottom-0 left-0 w-100 h-100 z-back" />
+
     <FadeInSection>
       <HeadingTitle 
         title="The Stacks"

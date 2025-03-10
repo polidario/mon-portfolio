@@ -77,7 +77,6 @@ onMounted(() => {
         Let's connect!
       </v-btn>
     </div>
-    
   </div>
 </template>
 
