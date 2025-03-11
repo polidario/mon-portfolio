@@ -16,6 +16,7 @@
     "@supabase/supabase-js": "^2.49.1",
     "css-element-queries": "^1.2.3",
     "dotenv": "^16.4.7",
+    "motion": "^12.4.12",
     "pinia": "^2.1.7",
     "sass-loader": "^16.0.5",
     "vue": "^3.3.11",
