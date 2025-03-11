@@ -2,7 +2,7 @@
 import { PropType } from 'vue';
 import { BadgeType } from '@/types/Components';
 
-import Badge from './Badge.vue';
+import BadgeWithIcon from './BadgeWithIcon.vue';
 
 defineProps({
     title: String,
@@ -33,7 +33,7 @@ defineProps({
             <img :src="image" alt="Card image">
         </div>
         <div class="card-text">
-            <Badge :text="category" :type="category_type" />
+            <BadgeWithIcon :text="category" :type="category_type" />
         
             <div>
                 <h2>{{ title }}</h2>

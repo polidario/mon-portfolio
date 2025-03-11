@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Card from '@/components/Card.vue';
+import CardWithImage from '@/components/CardWithImage.vue';
 import FadeInSection from '@/components/FadeInSection.vue';
 
 </script>
@@ -7,7 +7,7 @@ import FadeInSection from '@/components/FadeInSection.vue';
 <template>
   <div class="container-fluid work-grid">
     <FadeInSection :useMargin="false">
-      <Card
+      <CardWithImage
         title="WeeklyHow"
         summary="A brand that I made to help people learn Shopify development"
         image="/images/weeklyhow-homepage.png"
@@ -18,7 +18,7 @@ import FadeInSection from '@/components/FadeInSection.vue';
     </FadeInSection>
     
     <FadeInSection :useMargin="false">
-      <Card
+      <CardWithImage
         title="Shopify Theme Project"
         summary="A theme project developed during our live-coding sessions on WeeklyHow. (Password: weeklyhow)"
         image="/images/weeklyhow-live-coding-session-theme-dev.png"
@@ -30,7 +30,7 @@ import FadeInSection from '@/components/FadeInSection.vue';
     </FadeInSection>
 
     <FadeInSection :useMargin="false">
-      <Card
+      <CardWithImage
         title="Charli3"
         summary="Website built using Squarespace for promoting my music"
         image="/images/bernard-polidario-music-artist-homepage.png"
@@ -42,7 +42,7 @@ import FadeInSection from '@/components/FadeInSection.vue';
     </FadeInSection>
 
     <FadeInSection :useMargin="false">
-      <Card
+      <CardWithImage
         title="Reminisce AI"
         summary="A chat bot AI project that I made just for fun"
         image="/images/reminisce-ai-app.png"

@@ -1,5 +1,6 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
+import { animate, inView } from 'motion';
 
 defineProps({
   title: {
@@ -17,41 +18,45 @@ defineProps({
   }
 })
 
-const domRef = ref(null);
-
-const rate = 0.95;
-
 onMounted(() => {
   const title = document.querySelector('#hero_section__title');
   const body = document.querySelector('#hero_section__body');
   const linkedinButton = document.querySelector('#hero_section__linkedin_button');
-  const actionButtons = document.querySelector('#hero_section__buttons');
 
-  document.addEventListener('scroll', () => {
-    const titleRect = title.getBoundingClientRect();
-    const bodyRect = body.getBoundingClientRect();
-    const linkedinButtonRect = linkedinButton.getBoundingClientRect();
-    const buttonsRect = actionButtons.getBoundingClientRect();
-    
-    // Calculate the distance of the elements from the center of the screen
-    const viewportCenter = window.innerHeight / 2;
-    const titleOpacity = 1 - Math.min(Math.abs(viewportCenter - titleRect.top) / (viewportCenter * rate), 1);
-    const bodyOpacity = 1 - Math.min(Math.abs(viewportCenter - bodyRect.top) / (viewportCenter * rate), 1);
-    const linkedInButtonGlow = 1 - Math.min(Math.abs(viewportCenter - linkedinButtonRect.top) / (viewportCenter * rate), 1);
-    const actionButtonsOpacity = 1 - Math.min(Math.abs(viewportCenter - buttonsRect.top) / (viewportCenter * rate), 1);
-    
-    // Apply opacity based on the scroll position
-    title.style.opacity = titleOpacity;
-    body.style.opacity = bodyOpacity;
-    linkedinButton.style.boxShadow = `0 0 ${linkedInButtonGlow * 50}px rgba(0, 120, 200, ${linkedInButtonGlow})`;
-    actionButtons.style.opacity = actionButtonsOpacity;
+  inView('.hero-section', () => {
+    animate(title, {
+      opacity: [0, 1],
+      translateY: [20, 0],
+    }, {
+      duration: 1,
+      delay: 0.25,
+      easing: 'ease-in-out',
+    });
+
+    animate(body, {
+      opacity: [0, 1],
+      translateY: [20, 0],
+    }, {
+      duration: 1,
+      delay: 0.5,
+      easing: 'ease-in-out',
+    });
+
+    animate(linkedinButton, {
+      opacity: [0, 1],
+      translateY: [20, 0],
+    }, {
+      duration: 1,
+      delay: 0.75,
+      easing: 'ease-in-out',
+    });
   });
 });
 
 </script>
 
 <template>
-  <div ref="domRef" class="hero-section d-flex flex-column align-center justify-center ga-10 mt-16">
+  <div class="hero-section d-flex flex-column align-center justify-center ga-10 mt-16">
     <div class="d-flex flex-column ga-10 pa-5">
       <div class="text-wrapper">
         <h2 id="hero_section__title" class="title">{{ title }}</h2>

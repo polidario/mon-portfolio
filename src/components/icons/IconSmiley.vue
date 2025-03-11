@@ -41,7 +41,7 @@ onMounted(() => {
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .smile-emoji {
     position: relative;
     width: 200px;
@@ -120,5 +120,43 @@ onMounted(() => {
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
     top: 120px;
+}
+
+@media only screen and (max-width: 768px) {
+    .smile-emoji {
+        width: 150px;
+        height: 150px;
+
+        .eyes .eye {
+            width: 40px;
+            height: 40px;
+        }
+
+        .eyes .eye::before {
+            width: 25px;
+            height: 25px;
+        }
+
+        .blushes {
+            top: 70px;
+        }
+
+        .blush {
+            width: 40px;
+            height: 10px;
+        }
+    }
+
+    .smile-emoji::before {
+        width: 60px;
+        height: 30px;
+        top: 90px;
+    }
+
+    .smile-emoji::after {
+        width: 50px;
+        height: 5px;
+        top: 90px;
+    }
 }
 </style>

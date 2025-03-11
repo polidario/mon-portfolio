@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'Header',
+    name: 'NavHeader',
     methods: {
         toggleNav() {
             const nav = document.querySelector('nav');
