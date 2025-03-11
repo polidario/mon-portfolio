@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Component, defineComponent, PropType } from 'vue';
+import { animate, stagger, inView } from 'motion';
 
 interface IconListItem {
     title: string;
@@ -14,6 +15,13 @@ export default defineComponent({
             type: Array as PropType<IconListItem[]>,
             required: true,
         },
+    },
+    mounted() {
+        this.$el.querySelectorAll('.list-item').forEach((item: HTMLElement) => {
+            inView(item, () => {
+                animate(item, { opacity: 1, y: [100, 0] }, { delay: stagger(1, { ease: [.32, .23, .4, .9]}) });
+            });
+        });
     },
 });
 </script>
