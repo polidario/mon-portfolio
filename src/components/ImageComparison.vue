@@ -1,15 +1,25 @@
 <script setup>
 import Image1 from '@/assets/weeklyhow.webp'
 import Image2 from '@/assets/portfolio-banner.jpg'
-
+import { animate } from 'motion';
 import { useTheme } from 'vuetify'
 
 const theme = useTheme()
 
+onMounted(() => {
+    animate('#image_comparison', {
+        opacity: [0, 1],
+        translateY: [100, 0],
+    }, {
+        duration: 0.5,
+        delay: 0.5,
+        easing: 'ease-in-out',
+    })
+})
 </script>
 
 <template>
-    <div class="mb-8">
+    <div id="image_comparison" class="mb-8">
         <div :class="theme.global.current.value.dark ? 'image-container image-container-glow' : 'image-container'" ref="containerRef">
             <img
                 :alt="leftImageAlt"
@@ -43,6 +53,7 @@ const theme = useTheme()
     
 <script>
     import { ResizeSensor } from 'css-element-queries';
+import { onMounted } from 'vue';
 
     export default {
         mounted() {
