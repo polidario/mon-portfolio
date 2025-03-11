@@ -22,9 +22,8 @@ onMounted(() => {
   const title = document.querySelector('#hero_section__title');
   const body = document.querySelector('#hero_section__body');
   const linkedinButton = document.querySelector('#hero_section__linkedin_button');
-  const actionButtons = document.querySelector('#hero_section__buttons');
 
-  inView('.hero-section', (element) => {
+  inView('.hero-section', () => {
     animate(title, {
       opacity: [0, 1],
       translateY: [20, 0],

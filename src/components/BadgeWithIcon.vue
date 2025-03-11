@@ -4,10 +4,7 @@ import { BadgeType } from '@/types/Components';
 
 defineProps({
     text: String,
-    type: {
-        type: String as PropType<BadgeType['type']>,
-        default: 'info'
-    }
+    type: String as PropType<BadgeType['type']>,
 })
 </script>
 

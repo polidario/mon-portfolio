@@ -129,7 +129,6 @@ import { onMounted } from 'vue';
         },
         methods: {
             getAndSetImageWidth() {
-                // @ts-ignore
                 this.imageWidth = this.$refs.rightImageRef.getBoundingClientRect().width;
                 this.rightLabelWidth = this.$refs.rightLabelRef.getBoundingClientRect().width;
             },

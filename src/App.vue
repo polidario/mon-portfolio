@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import { RouterView } from 'vue-router';
 
 import AnnouncementBar from '@/components/AnnouncementBar.vue';
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
+import NavHeader from '@/components/NavHeader.vue';
+import MainFooter from '@/components/MainFooter.vue';
 
 </script>
 
 <template>
   <v-layout class="d-block" theme="dark">
     <AnnouncementBar message="This website is going through a redesign 😱. Please bear with me. ❤️" />
-    <Header />
+    <NavHeader />
 
     <main>
       <RouterView v-slot="{ Component, route }">
@@ -21,7 +20,7 @@ import Footer from '@/components/Footer.vue';
       </RouterView>
     </main>
     
-    <Footer />
+    <MainFooter />
     
   </v-layout>
 </template>

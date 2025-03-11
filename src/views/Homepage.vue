@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { defineAsyncComponent, onMounted } from 'vue';
+import { defineAsyncComponent } from 'vue';
 
 import Image1 from '@/assets/bernard-polidario-a.jpg';
 
 // Components
 const HeadingTitle = defineAsyncComponent(() => import('@/components/HeadingTitle.vue'));
-const FadeInSection = defineAsyncComponent(() => import('@/components/FadeInSection.vue'));
 const HeroSection = defineAsyncComponent(() => import('@/components/HeroSection.vue'));
 const ImageComparison = defineAsyncComponent(() => import('@/components/ImageComparison.vue'));
 const GridFold = defineAsyncComponent(() => import('@/components/GridFold.vue'));
@@ -14,7 +13,7 @@ const IconList = defineAsyncComponent(() => import('@/components/IconList.vue'))
 const InfiniteScroll = defineAsyncComponent(() => import('@/components/InfiniteScroll.vue'));
 
 //Animations
-const Floater = defineAsyncComponent(() => import('@/components/animations/Floater.vue'));
+const ObjectFloater = defineAsyncComponent(() => import('@/components/animations/ObjectFloater.vue'));
 const CursorFollower = defineAsyncComponent(() => import('@/components/animations/CursorFollower.vue'));
 
 // Icons
@@ -124,9 +123,9 @@ const techStackB = [
 
       <template #top_right_overlay>
           <div class="cursor">
-            <Floater>
+            <ObjectFloater>
               <IconSmiley />
-            </Floater>
+            </ObjectFloater>
           </div>
       </template>
 
