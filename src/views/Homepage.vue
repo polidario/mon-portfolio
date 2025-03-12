@@ -80,7 +80,8 @@ onMounted( async () => {
               </CursorFollower>
             </div>
             <div class="content">
-              <p class="text">I specialize in Frontend Development, crafting intuitive, engaging user experiences. Skilled in coding, multimedia design, and content creation.</p>
+              <h2 class="text-h5 font-weight-bold">Skilled in coding, loves sharing</h2>
+              <p class="text">I've been in a relationship with coding since I was young, I'd marry this if I could.</p>
             </div>
           </div>
       </template>
