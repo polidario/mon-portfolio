@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { defineAsyncComponent, onMounted, ref } from 'vue';
+import { supabase } from '@/supabase/client';
+
+import type { IconListItem } from '@/types/Components';
 
 import Image1 from '@/assets/bernard-polidario-a.jpg';
 
@@ -20,17 +23,19 @@ const CursorFollower = defineAsyncComponent(() => import('@/components/animation
 const IconSmiley = defineAsyncComponent(() => import('@/components/icons/IconSmiley.vue'));
 const IconHeart = defineAsyncComponent(() => import('@/components/icons/IconHeart.vue'));
 
-const techIcons = ref([])
+const techIcons = ref<IconListItem[]>([])
 
 onMounted( async () => {
-  techIcons.value = await fetch('http://localhost:3001/stacks', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then(res => {
-    return res.json()
-  })
+  try {
+    const { data } = await supabase.from('stacks').select()
+    if (!data) {
+      throw new Error('No data found')
+    } else {
+      techIcons.value = data
+    }
+  } catch (error) {
+    console.error(error)
+  }
 })
 </script>
 

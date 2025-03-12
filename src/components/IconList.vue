@@ -1,15 +1,8 @@
 <script lang="ts">
-import { Component, defineComponent, PropType } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { animate, stagger, inView } from 'motion';
+import type { IconListItem } from '@/types/Components';
 
-interface IconListItem {
-    id: number;
-    name: string;
-    description?: string;
-    url?: string;
-    icon?: string;
-    colored_icon?: string;
-}
 
 export default defineComponent({
     props: {
@@ -19,7 +12,6 @@ export default defineComponent({
         },
     },
     mounted() {
-        console.log(this.items);
         this.$el.querySelectorAll('.list-item').forEach((item: HTMLElement) => {
             inView(item, () => {
                 animate(item, { opacity: 1, y: [100, 0] }, { delay: stagger(1, { ease: [.32, .23, .4, .9]}) });
@@ -30,7 +22,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div  class="list-items__container">
+    <div  class="list-items__container" v-if="items.length">
         <div v-for="item in items" :key="item.id" class="list-item">
             <div class="list-item__body">
                 <div :style="{
@@ -53,6 +45,9 @@ export default defineComponent({
             </div>
         </div>
     </div>
+    <div v-else class="list-items__empty">
+        <p class="">No items found</p>
+    </div>
     
 </template>
 
@@ -62,6 +57,7 @@ export default defineComponent({
     gap: var(--space-5);
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 1fr);
+    padding: 0 .75rem;
 }
 
 .list-item {
@@ -100,5 +96,28 @@ export default defineComponent({
 .list-item__title p {
     font-size: 1.25rem;
     font-weight: 400;
+}
+
+.list-items__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-5);
+    padding: var(--space-5);
+
+    border-radius: 1rem;
+}
+
+.list-items__empty p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-gray-400)
+}
+
+@media only screen and (max-width: 768px) {
+    .list-items__container {
+        grid-template-columns: 1fr;
+        padding: 0 .75rem;
+    }
 }
 </style>
