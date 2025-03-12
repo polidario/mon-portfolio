@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, onMounted, ref } from 'vue';
 
 import Image1 from '@/assets/bernard-polidario-a.jpg';
 
@@ -19,81 +19,19 @@ const CursorFollower = defineAsyncComponent(() => import('@/components/animation
 // Icons
 const IconSmiley = defineAsyncComponent(() => import('@/components/icons/IconSmiley.vue'));
 const IconHeart = defineAsyncComponent(() => import('@/components/icons/IconHeart.vue'));
-const IconJavascript = defineAsyncComponent(() => import('@/components/icons/tech/IconJavascript.vue'));
-const IconTypescript = defineAsyncComponent(() => import('@/components/icons/tech/IconTypescript.vue'));
-const IconHTML = defineAsyncComponent(() => import('@/components/icons/tech/IconHTML.vue'));
-const IconCSS = defineAsyncComponent(() => import('@/components/icons/tech/IconCSS.vue'));
-const IconUnity = defineAsyncComponent(() => import('@/components/icons/tech/IconUnity.vue'));
-const IconPython = defineAsyncComponent(() => import('@/components/icons/tech/IconPython.vue'));
-const IconSupabase = defineAsyncComponent(() => import('@/components/icons/tech/IconSupabase.vue'));
-const IconFigma = defineAsyncComponent(() => import('@/components/icons/tech/IconFigma.vue'));
 
-const techIcons = [
-  'mdi-language-html5',
-  'mdi-language-javascript',
-  'mdi-react',
-  'mdi-vuejs',
-  'mdi-language-php',
-  'mdi-git',
-  'mdi-language-typescript',
-  'mdi-github',
-  'mdi-bootstrap',
-  'mdi-unity',
-]
+const techIcons = ref([])
 
-const techStackA = [
-  {
-    title: 'Javascript',
-    description: 'Programming Language',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-    icon: IconJavascript,
-  },
-  {
-    title: 'CSS',
-    description: 'Cascading Style Sheets',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
-    icon: IconCSS,
-  },
-  {
-    title: 'TypeScript',
-    description: 'High-level programming language',
-    url: 'https://www.typescriptlang.org/',
-    icon: IconTypescript,
-  },
-  {
-    title: 'Unity',
-    description: 'Game Development Engine',
-    url: 'https://unity.com/',
-    icon: IconUnity,
-  },
-]
-
-const techStackB = [
-  {
-    title: 'HTML',
-    description: 'Hypertext Markup Language',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
-    icon: IconHTML,
-  },
-  {
-    title: 'Python',
-    description: 'Programming Language',
-    url: 'https://www.python.org/',
-    icon: IconPython,
-  },
-  {
-    title: 'Supabase',
-    description: 'Dedicated Postgres Database',
-    url: 'https://supabase.io/',
-    icon: IconSupabase,
-  },
-  {
-    title: 'Figma',
-    description: 'Collaborative Interface Design Tool',
-    url: 'https://www.figma.com/',
-    icon: IconFigma,
-  },
-]
+onMounted( async () => {
+  techIcons.value = await fetch('http://localhost:3001/stacks', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(res => {
+    return res.json()
+  })
+})
 </script>
 
 <template>
@@ -150,14 +88,8 @@ const techStackB = [
         title="The Stacks"
         subtitle="that I use to build web applications"
       />
-      <GridFold>
-        <template #item_a>
-          <IconList :items="techStackA" />
-        </template>
-        <template #item_b>
-          <IconList :items="techStackB" />
-        </template>
-      </GridFold>
+      
+    <IconList :items="techIcons" />
 
     <InfiniteScroll :icons="techIcons"/>
 

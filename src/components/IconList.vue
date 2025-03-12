@@ -3,10 +3,12 @@ import { Component, defineComponent, PropType } from 'vue';
 import { animate, stagger, inView } from 'motion';
 
 interface IconListItem {
-    title: string;
+    id: number;
+    name: string;
     description?: string;
     url?: string;
-    icon: Component;
+    icon?: string;
+    colored_icon?: string;
 }
 
 export default defineComponent({
@@ -17,6 +19,7 @@ export default defineComponent({
         },
     },
     mounted() {
+        console.log(this.items);
         this.$el.querySelectorAll('.list-item').forEach((item: HTMLElement) => {
             inView(item, () => {
                 animate(item, { opacity: 1, y: [100, 0] }, { delay: stagger(1, { ease: [.32, .23, .4, .9]}) });
@@ -28,18 +31,17 @@ export default defineComponent({
 
 <template>
     <div  class="list-items__container">
-        <div v-for="item in items" :key="item.title" class="list-item">
+        <div v-for="item in items" :key="item.id" class="list-item">
             <div class="list-item__body">
                 <div :style="{
                     width: '4rem',
                     height: '4rem',
                     borderRadius: '25%',
-                }">
-                    <component :is="item.icon" />
+                }" v-html="item.colored_icon">
                 </div>
 
                 <div class="list-item__title">
-                    <span class="text-h5">{{ item.title }}</span>
+                    <span class="text-h5">{{ item.name }}</span>
                     <p>{{ item.description }}</p>
                 </div>
                 
@@ -58,7 +60,8 @@ export default defineComponent({
 .list-items__container {
     display: grid;
     gap: var(--space-5);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 }
 
 .list-item {
