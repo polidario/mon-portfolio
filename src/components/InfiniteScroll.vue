@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue';
 
-defineProps({
+const props = defineProps({
   icons: {
     type: Array,
     required: true
@@ -40,8 +40,8 @@ onMounted(() => {
     <div class="scroller">
         <div class="scroller-inner">
             <v-sheet 
-                v-for="(icon, i) in icons" 
-                :key="i"
+                v-for="{ id, icon } in icons" 
+                :key="id"
                 class="scroller-item px-5 py-2"
                 rounded
                 :elevation="10"

@@ -1,10 +1,16 @@
-# Bernard Polidario's Software Engineering Portfolio
+# My Portfolio Site
 
-Welcome to my web portfolio! This template is designed to assist you in initiating development using Vue 3 within the Vite framework.
+[Bernard Polidario — Software Engineer (1).webm](https://github.com/user-attachments/assets/45252d92-317f-4090-9212-3a5ba7bd6037)
 
-## Recommended IDE Setup
 
-For an optimal development experience, I recommend using [Visual Studio Code (VSCode)](https://code.visualstudio.com/) along with the [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension (please disable Vetur) and the [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Welcome to my web portfolio! This template is built to showcase my skills as a Software developer.
+
+## Tech used
+- Vuejs
+- Supabase / PostgreSQL
+- Vuetify
+- Motion
+- Typescript
 
 ## Customize Configuration
 
