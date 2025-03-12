@@ -46,6 +46,16 @@ import { RouterLink } from 'vue-router';
                 </div>
             </div>
         </div>
+        <div class="footer-overlay" style="
+                background-color: transparent;
+                backdrop-filter: blur(4px);
+                mask-image: linear-gradient(rgba(0, 0, 0, 0) 20%, rgb(0, 0, 0) 80%);
+                opacity: 1;
+                background-repeat: repeat;
+                background-image: radial-gradient(rgb(26, 26, 26) 10%, transparent 20%), radial-gradient(rgb(26, 26, 26) 10%, transparent 20%);
+                background-position: 0px 0px, 8px 8px;
+                background-size: 16px 16px;
+        "></div>
     </footer>
 </template>
 
@@ -71,7 +81,7 @@ footer {
 
         gap: var(--space-8);
 
-        z-index: 1;
+        z-index: 2;
 
         .upper-footer-section {
             display: flex;
@@ -126,6 +136,21 @@ footer {
             }
             
         }
+    }
+
+    .footer-overlay {
+        place-content: flex-start center;
+        align-items: flex-start;
+        inset: -20px;
+        display: flex;
+        flex: 0 0 auto;
+        flex-flow: row;
+        gap: 10px;
+        overflow: visible;
+        padding: 50px 0px 0px;
+        pointer-events: none;
+        position: absolute;
+        z-index: 1;
     }
 }
 
