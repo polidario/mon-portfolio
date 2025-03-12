@@ -15,7 +15,6 @@ const props = defineProps({
 })
 
 onMounted(() => {
-    console.log(props.icons)
     if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         animationInit();
     }
