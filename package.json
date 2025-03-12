@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "json-server ./database/db.json --port 3001",
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -35,6 +36,7 @@
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.33.0",
     "jsdom": "^23.0.1",
+    "json-server": "^1.0.0-beta.3",
     "prettier": "^3.0.3",
     "sass-embedded": "^1.85.0",
     "typescript": "^5.7.3",
