@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { animate, scroll } from 'motion'
+import { useDisplay } from 'vuetify'
+const { mobile } = useDisplay()
+
 
 onMounted(() => {
     const colA = document.querySelector(".col-a .item")
@@ -26,7 +29,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="container-fluid">
+    <div v-if="!mobile" class="container-fluid">
         <div class="wrapper-a">
             <div class="col-a">
                 <div class="item">
