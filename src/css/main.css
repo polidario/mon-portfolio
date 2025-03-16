@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 :root {
     --space-1: 0.25rem;
     --space-2: 0.5rem;
@@ -70,7 +72,7 @@ html {
 
 body {
     color: var(--paragraph-color);
-    font-family: Jakarta Display, sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.667em;

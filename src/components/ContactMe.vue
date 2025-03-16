@@ -25,9 +25,9 @@ const contactList = [
 
 <template>
     <div id="contactMe" class="my-16">
-        <h2 class="text-lg-h2 text-md-h4 text-sm-h5 text-center">Let's Get In Touch</h2>
+        <h2 class="text-lg-h2 text-white text-md-h4 text-sm-h5 text-center">Let's get in touch</h2>
 
-        <div class="text-container text-sm-h6 text-md-h5 mx-auto py-16 text-center">
+        <div class="text-container text-sm-h6 text-md-h5 mx-auto py-8 text-center">
             <p :class="theme.global.current.value.dark && 'text-glow'">If you have any exciting projects in mind that you'd like me to be part of, feel free to reach out. Let's make cool stuff together! 😊</p>
         </div>
 

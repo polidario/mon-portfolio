@@ -64,7 +64,7 @@ onMounted(fetchTechStacks);
     <section id="aboutMe">
       <GridFold>
         <template #item_a>
-          <h2 class="text-h1 font-weight-bold">6 Yrs.</h2>
+          <h2 class="text-h1 text-white font-weight-bold">6 Yrs.</h2>
           <div class="py-3">
             <p class="text-h4">of developing web applications that makes people's lives easier</p>
           </div>

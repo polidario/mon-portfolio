@@ -33,7 +33,7 @@ export default defineComponent({
                 </div>
 
                 <div class="list-item__title">
-                    <span class="text-h5">{{ item.name }}</span>
+                    <span class="text-h5 text-white">{{ item.name }}</span>
                     <p>{{ item.description }}</p>
                 </div>
                 
