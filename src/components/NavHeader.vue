@@ -76,6 +76,12 @@ export default defineComponent({
 </template>
 
 <style scoped>
+.header {
+    position: sticky;
+    top: 0;
+    background: #0d0914;
+    z-index: 100;
+}
 nav {
     display: flex;
     align-items: center;

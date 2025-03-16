@@ -64,7 +64,7 @@ footer {
     width: 100%;
     height: 50vh;
     padding: var(--space-13);
-    background: linear-gradient(to bottom, rgb(18, 18, 18), rgba(26, 12, 49, 1));
+    background: linear-gradient(to bottom, rgb(13, 9, 20), rgba(26, 12, 49, 1));
     overflow: hidden;
     position: relative;
 
