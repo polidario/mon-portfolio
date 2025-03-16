@@ -44,7 +44,6 @@ onMounted(() => {
                 :key="id"
                 class="scroller-item px-5 py-2"
                 rounded
-                :elevation="10"
             >
                 <v-icon :icon="icon" size="50"></v-icon>
             </v-sheet>
@@ -68,9 +67,15 @@ onMounted(() => {
     flex-wrap: wrap;
 }
 
+.scroller-inner .scroller-item {
+    background: none;
+    opacity: 0.5;
+}
+
 .scroller-inner .scroller-item:hover {
     scale: 1.2;
     transition: all 1s ease;
+    opacity: 1;
 }
 
 .scroller[data-animated="true"] {
