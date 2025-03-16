@@ -65,10 +65,20 @@ export default defineComponent({
     justify-content: space-between;
     gap: var(--space-5);
     padding: var(--space-5);
-    border-radius: 1rem;
-    background-color: var(--color-gray);
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, rgba(31, 31, 35, 0.95), rgba(35, 35, 40, 0.75));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
     box-sizing: border-box;
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.list-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px -1px rgba(0, 0, 0, 0.3);
 }
 
 .list-item__body {

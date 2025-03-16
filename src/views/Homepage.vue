@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { defineAsyncComponent, onMounted, ref } from 'vue';
 import { supabase } from '@/supabase/client';
+import { useDisplay } from 'vuetify'
+const { mobile } = useDisplay()
+
 import type { IconListItem } from '@/types/Components';
 
 // Assets
@@ -80,7 +83,7 @@ onMounted(fetchTechStacks);
         </template>
 
         <template #top_right_overlay>
-          <div class="cursor">
+          <div v-if="!mobile" class="cursor">
             <ObjectFloater>
               <IconSmiley />
             </ObjectFloater>
@@ -89,14 +92,16 @@ onMounted(fetchTechStacks);
 
         <template #overlay>
           <div class="overlay-card-text">
-            <div class="cursor">
+            <div v-if="!mobile" class="cursor">
               <CursorFollower>
                 <IconHeart width="400" height="400" color="#ff1f1f" />
               </CursorFollower>
             </div>
             <div class="content">
-              <h2 class="text-h5 font-weight-bold">Skilled in coding, loves sharing</h2>
-              <p class="text">I've been in a relationship with coding since I was young, I'd marry this if I could.</p>
+              <div class="content-card">
+                <h2 class="text-h5 text-white font-weight-bold">Skilled in coding, loves sharing</h2>
+                <p>I've been in a relationship with coding since I was young, I'd marry this if I could.</p>
+              </div>
             </div>
           </div>
         </template>
@@ -136,5 +141,21 @@ onMounted(fetchTechStacks);
   height: 100%;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.content-card {
+  background: linear-gradient(145deg, rgba(31, 31, 35, 0.95), rgba(35, 35, 40, 0.75));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: var(--space-5);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.content-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px -1px rgba(0, 0, 0, 0.3);
 }
 </style>

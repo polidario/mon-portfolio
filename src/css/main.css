@@ -147,8 +147,6 @@ a:hover {
 .overlay-card-text .content {
     display: flex;
     align-items: start;
-    background-color: #171717cf;
-    backdrop-filter: blur(10px);
     border-radius: var(--space-4);
     flex: none;
     flex-direction: column;
@@ -200,10 +198,6 @@ a:hover {
         left: calc(50% - 100% / 2);
         top:calc(80% - 294px / 2);
         width: 100%;
-    }
-
-    .overlay-card-text .cursor {
-        display: none;
     }
 
     .overlay-card-text .content {
