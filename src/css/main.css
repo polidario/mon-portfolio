@@ -172,6 +172,10 @@ a:hover {
     text-transform: none !important;
 }
 
+.tech-stack {
+    z-index: 1;
+}
+
 @media only screen and (max-width: 768px) {
     .overlay-card-text {
         height: 294px;
@@ -184,6 +188,10 @@ a:hover {
     .overlay-card-text .content .text {
         font-size: 1.25rem !important;
         line-height: 1.75rem;
+    }
+    
+    .tech-stack {
+        width: 100%;
     }
 }
 
