@@ -106,11 +106,11 @@ onMounted(fetchTechStacks);
     <img 
       src="/images/gradient-highlight.webp" 
       alt="Gradient Background"
-      class="position-absolute bottom-0 left-0 w-100 h-100 z-back" 
+      class="position-absolute bottom-0 left-0 w-100 h-100" 
       loading="lazy"
     />
 
-    <section id="tech-stack">
+    <section id="tech-stack" class="tech-stack">
       <HeadingTitle 
         title="The Stacks"
         subtitle="that I use to build web applications"
@@ -129,6 +129,11 @@ onMounted(fetchTechStacks);
 .home {
   position: relative;
   overflow: hidden;
+}
+
+.tech-stack {
+  width: 100%;
+  z-index: 1;
 }
 
 .grid-images {
