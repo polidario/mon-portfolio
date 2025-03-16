@@ -55,25 +55,19 @@ defineProps({
     flex-direction: column;
     justify-content: space-between;
     gap: var(--space-5);
-
     width: 100%;
     max-width: 992px;
-
     padding: var(--space-5);
-    border-radius: 1%;
-    background: rgb(35,28,48);
-    background: -moz-linear-gradient(318deg, rgb(32, 29, 37) 0%, rgb(57, 57, 57) 100%);
-    background: -webkit-linear-gradient(318deg, rgba(32, 29, 37) 0%, rgba(57, 57, 57) 100%);
-    background: linear-gradient(318deg, rgba(32, 29, 37) 0%, rgba(57, 57, 57) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#231c30",endColorstr="#4f4f4f",GradientType=1);
-    border: 2px solid var(--color-gray);
-    
-    transition: 1s ease-in-out;
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, rgba(31, 31, 35, 0.95), rgba(35, 35, 40, 0.75));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
 
     .card-text {
         width: 100%;
         color: var(--color-gray-400);
-
         padding-left: var(--space-4);
         padding-bottom: var(--space-4);
 
@@ -108,7 +102,7 @@ defineProps({
             width: 100%;
             aspect-ratio: 1/1;
             object-fit: cover;
-            border-radius: 2%;
+            border-radius: .5rem;
             filter: grayscale(100%);
             transition: .25s ease-in-out;
 
@@ -116,11 +110,12 @@ defineProps({
                 filter: grayscale(0%);
             }
         }
-
     }
-}
 
-.card:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px -1px rgba(0, 0, 0, 0.3);
+    }
 }
 </style>

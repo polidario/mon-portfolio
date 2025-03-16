@@ -53,6 +53,7 @@ onMounted(() => {
     gap: var(--space-9);
 
     position: relative;
+    z-index: 1;
 }
 
 .top-right-overlay {

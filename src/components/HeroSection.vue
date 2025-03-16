@@ -103,6 +103,7 @@ onMounted(() => {
   line-height: 1;
   letter-spacing: -0.0083333333em;
   transition: opacity 0.1s;
+  color: var(--color-white);
 }
 
 

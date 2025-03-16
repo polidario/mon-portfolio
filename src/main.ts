@@ -32,6 +32,7 @@ const vuetify = createVuetify({
         colors: {
           "textPrimary": colors.blue.darken1,
           primary: colors.blue.base,
+          background: '#0d0914'
         },
       }
     }

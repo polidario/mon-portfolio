@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 :root {
     --space-1: 0.25rem;
     --space-2: 0.5rem;
@@ -40,6 +42,9 @@
     --color-white: #ffffff;
     --color-dark-blue: #1f2226;
     --color-gray: #373737;
+    --color-gray-100: #f5f5f5;
+    --color-gray-200: #e5e5e5;
+    --color-gray-300: #c4c4c4;
     --color-gray-400: #99a1af;
     --color-black: #121212;
 
@@ -53,6 +58,7 @@
     --color-error-dark: #ff3d3d;
 
     --background-color: #0d0914;
+    --paragraph-color: #a4a5b6;
     
     --link-color: #a3a3a3;
     --link-color-hover: #e0e0e0;
@@ -62,6 +68,14 @@
 
 html {
     scroll-behavior: smooth;
+}
+
+body {
+    color: var(--paragraph-color);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.667em;
 }
 
 a {
@@ -132,14 +146,11 @@ a:hover {
 
 .overlay-card-text .content {
     display: flex;
-    align-items: center;
-    background-color: #171717cf;
-    backdrop-filter: blur(10px);
+    align-items: start;
     border-radius: var(--space-4);
     flex: none;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
-    gap:var(--space-12);
     height: min-content;
     justify-content: center;
     overflow: hidden;
@@ -150,12 +161,17 @@ a:hover {
 }
 
 .overlay-card-text .content .text {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
+    color: var(--color-gray-300);
     font-weight: 400;
     line-height: 2rem;
     letter-spacing: 0.0073529412em !important;
     font-family: "Roboto", sans-serif;
     text-transform: none !important;
+}
+
+.tech-stack {
+    z-index: 1;
 }
 
 @media only screen and (max-width: 768px) {
@@ -171,6 +187,10 @@ a:hover {
         font-size: 1.25rem !important;
         line-height: 1.75rem;
     }
+    
+    .tech-stack {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 980px) {
@@ -178,10 +198,6 @@ a:hover {
         left: calc(50% - 100% / 2);
         top:calc(80% - 294px / 2);
         width: 100%;
-    }
-
-    .overlay-card-text .cursor {
-        display: none;
     }
 
     .overlay-card-text .content {

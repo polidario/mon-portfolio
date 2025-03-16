@@ -9,6 +9,8 @@ let cursorPosition = { x: 0, y: 0 };
 let animationFrameId: number | null = null;
 
 onMounted(() => {
+    defaultPosition()
+
     originalPosition.x = window.innerWidth / 2;
     originalPosition.y = window.innerHeight / 2;
 
@@ -19,6 +21,11 @@ onMounted(() => {
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
     });
 });
+
+const defaultPosition = () => {
+    if (!cursor.value) return;
+    cursor.value.style.transform = `translate(${originalPosition.x}px, ${originalPosition.y}px)`;
+}
 
 const onMouseMove = (event: MouseEvent) => {
     if (!cursor.value) return;

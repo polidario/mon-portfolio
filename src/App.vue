@@ -8,7 +8,7 @@ import MainFooter from '@/components/MainFooter.vue';
 </script>
 
 <template>
-  <v-layout class="d-block" theme="dark">
+  <v-layout class="d-block" theme="dark" :style="{ background: $vuetify.theme.themes.dark.colors.background }">
     <AnnouncementBar message="This website is going through a redesign 😱. Please bear with me. ❤️" />
     <NavHeader />
 

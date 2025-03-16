@@ -35,6 +35,7 @@ defineProps({
   text-transform: none !important;
   font-weight: bold;
   width: 100%;
+  color: var(--color-white);
 }
 
 @media only screen and (max-width: 768px) {
