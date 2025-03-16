@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue';
 
-const props = defineProps({
+defineProps({
   icons: {
     type: Array,
     required: true
@@ -56,6 +56,7 @@ onMounted(() => {
 <style>
 .scroller {
     max-width: 512px;
+    margin: 0 auto;
 }
 
 .scroller-inner {
