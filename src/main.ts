@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createHead } from '@unhead/vue/client'
 import { createPinia } from 'pinia'
 
 import 'vuetify/styles'
@@ -42,7 +43,9 @@ const vuetify = createVuetify({
   })
 
 const app = createApp(App)
+const head = createHead()
 
+app.use(head)
 app.use(vuetify)
 app.use(createPinia())
 app.use(router)
