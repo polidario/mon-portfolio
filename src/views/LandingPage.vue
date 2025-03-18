@@ -2,6 +2,8 @@
 import { defineAsyncComponent, onMounted, ref } from 'vue';
 import { supabase } from '@/supabase/client';
 import { useDisplay } from 'vuetify'
+import { useHead } from '@unhead/vue';
+
 const { mobile } = useDisplay()
 
 import type { IconListItem } from '@/types/Components';
@@ -51,7 +53,21 @@ const fetchTechStacks = async () => {
 };
 
 // Lifecycle
-onMounted(fetchTechStacks);
+onMounted(() => {
+  fetchTechStacks();
+  useHead({
+    meta: [
+      {
+        name: 'description',
+        content: 'I design web apps for human satisfaction. I am a frontend developer based in France.'
+      },
+      {
+        name: 'keywords',
+        content: 'full-stack developer, frontend developer, shopify developer, web developer, bernard polidario'
+      }
+    ]
+  });
+});
 </script>
 
 <template>

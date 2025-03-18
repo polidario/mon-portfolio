@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { useHead } from '@unhead/vue';
+
+onMounted(() => {
+  useHead({
+    meta: [
+      {
+        name: 'description',
+        content: 'Page not found'
+      },
+      {
+        name: 'keywords',
+        content: '404, page not found'
+      }
+    ]
+  });
+});
+</script>
+
 <template>
     <div class="page-404">
       <h1>Page not found</h1>

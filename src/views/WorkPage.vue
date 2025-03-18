@@ -1,6 +1,24 @@
 <script setup lang="ts">
+import { useHead } from '@unhead/vue';
+import { onMounted } from 'vue';
+
 import CardWithImage from '@/components/CardWithImage.vue';
 import FadeInSection from '@/components/FadeInSection.vue';
+
+onMounted(() => {
+  useHead({
+    meta: [
+      {
+        name: 'description',
+        content: 'A collection of projects that I have worked on and companies I have worked with.'
+      },
+      {
+        name: 'keywords',
+        content: 'projects, work, portfolio, bernard polidario'
+      }
+    ]
+  });
+});
 
 </script>
 

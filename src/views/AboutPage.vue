@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { useHead } from '@unhead/vue';
+
+onMounted(() => {
+  useHead({
+    meta: [
+      {
+        name: 'description',
+        content: 'Learn more about how I got started as a software engineer, my experiences, skills and tech stacks.'
+      },
+      {
+        name: 'keywords',
+        content: 'about, bernard polidario, software engineer, frontend developer, shopify developer'
+      }
+    ]
+  });
+});
+</script>
+
 <template>
   <div class="about">
     <h1>This page is still under construction</h1>
