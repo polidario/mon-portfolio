@@ -30,7 +30,7 @@ defineProps({
 <template>
     <div class="card">
         <div class="card-image">
-            <img :src="image" alt="Card image">
+            <img :src="image" :alt="`${title} image`"/>
         </div>
         <div class="card-text">
             <BadgeWithIcon :text="category" :type="category_type" />
@@ -41,7 +41,11 @@ defineProps({
             </div>
 
             <div v-if="link" class="link">
-                <a :href="link" target="_blank">{{ link_text }}</a>
+                <a 
+                    :href="link" 
+                    target="_blank"
+                    :aria-label="`Read more about ${title}`"
+                >{{ link_text }}</a>
                 <v-icon icon="mdi-open-in-new" size="sm"/>
             </div>
             

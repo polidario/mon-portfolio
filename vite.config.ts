@@ -20,6 +20,9 @@ export default defineConfig({
       }
     }
   },
+  build: {
+    cssCodeSplit: false,
+  },
   plugins: [
     vue(),
   ],

@@ -38,8 +38,8 @@ onMounted(() => {
             </div>
             <div class="col-b">
                 <div class="item">
-                    <img src="/images/bernard-polidario-music-artist-homepage.png" alt="Reminisce AI homepage" width="100%"/>
-                    <img src="/images/weeklyhow-homepage.png" alt="Reminisce AI homepage" width="100%"/>
+                    <img src="/images/bernard-polidario-music-artist-homepage.png" alt="Bernard Polidario's artist homepage" width="100%"/>
+                    <img src="/images/weeklyhow-homepage.png" alt="WeeklyHow homepage screenshot" width="100%"/>
                 </div>
                 <div class="item"></div>
             </div>
@@ -48,7 +48,7 @@ onMounted(() => {
         <div class="wrapper-b">
             <div class="col-c">
                 <div class="item">
-                    <img src="/images/shrek-homepage-mobile.webp" alt="Shrek" width="100%"/>
+                    <img src="/images/shrek-homepage-mobile.webp" alt="Shrek Shopify theme homepage screenshot" width="100%"/>
                 </div>
                 <div class="item"></div>
             </div>

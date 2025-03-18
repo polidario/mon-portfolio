@@ -35,7 +35,12 @@ export default defineComponent({
                 
             </div>
             <div class="list-item__link">
-                <a :href="item.url" target="_blank" rel="noopener noreferrer">
+                <a 
+                    :href="item.url" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    :aria-label="`Visit ${item.name} website on a new browser tab`"
+                >
                     <v-icon icon="mdi-open-in-new" />
                 </a>
             </div>

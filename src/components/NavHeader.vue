@@ -43,7 +43,7 @@ export default defineComponent({
             </div>
             <div class="nav-mobile-section">
                 <div class="nav-links nav-mobile-close">
-                    <button v-on:click="toggleNav">
+                    <button role="button" v-on:click="toggleNav" aria-label="Close Navigation">
                         <v-icon icon="mdi-close"></v-icon>
                     </button>
                 </div>
@@ -68,7 +68,7 @@ export default defineComponent({
             <div class="action-button-section">
                 <a href="/cvs/bernard-polidario-resume.pdf" target="_blank">GET MY CV</a>
             </div>
-            <button type="button" class="nav-toggle-button" aria-label="Toggle Navigation" v-on:click="toggleNav">
+            <button role="button" type="button" class="nav-toggle-button" aria-label="Toggle Navigation" v-on:click="toggleNav">
                 <v-icon icon="mdi-menu"></v-icon>
             </button>
         </nav>

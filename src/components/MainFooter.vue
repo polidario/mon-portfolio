@@ -16,7 +16,7 @@ import { RouterLink } from 'vue-router';
                 <nav class="footer-content-nav">
                     <RouterLink to="/work">WORK</RouterLink>
                     <RouterLink to="/about">ABOUT</RouterLink>
-                    <a href="mailto:bernard@weeklyhow.com">CONTACT</a>
+                    <a href="mailto:bernard@weeklyhow.com" aria-label="Contact Bernard Polidario through his email address">CONTACT</a>
                 </nav>
 
                 <div class="footer-content-quote">
@@ -25,16 +25,16 @@ import { RouterLink } from 'vue-router';
                 </div>
 
                 <nav class="footer-content-social">
-                    <a href="https://www.linkedin.com/in/polidario/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/polidario/" target="_blank" rel="noopener noreferrer" aria-label="Visit Bernard Polidario's LinkedIn profile">
                         <v-icon icon="mdi-linkedin"></v-icon>
                     </a>
-                    <a href="https://youtube.com/@weeklyhow" target="_blank" rel="noopener noreferrer">
+                    <a href="https://youtube.com/@weeklyhow" target="_blank" rel="noopener noreferrer" aria-label="Visit WeeklyHow's YouTube channel">
                         <v-icon icon="mdi-youtube"></v-icon>
                     </a>
-                    <a href="https://instagram.com/weeklyhow" target="_blank" rel="noopener noreferrer">
+                    <a href="https://instagram.com/weeklyhow" target="_blank" rel="noopener noreferrer" aria-label="Visit WeeklyHow's Instagram profile">
                         <v-icon icon="mdi-instagram"></v-icon>
                     </a>
-                    <a href="https://github.com/polidario" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/polidario" target="_blank" rel="noopener noreferrer" aria-label="Visit Bernard Polidario's GitHub profile">
                         <v-icon icon="mdi-github"></v-icon>
                     </a>
                 </nav>

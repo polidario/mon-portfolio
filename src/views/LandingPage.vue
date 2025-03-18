@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { defineAsyncComponent, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { supabase } from '@/supabase/client';
 import { useDisplay } from 'vuetify'
+import { useHead } from '@unhead/vue';
+
 const { mobile } = useDisplay()
 
 import type { IconListItem } from '@/types/Components';
 
 // Assets
 import BernardImage from '@/assets/bernard-polidario-a.jpg';
+import PortfolioBanner from '@/assets/portfolio-banner.jpg';
 
 const HERO_CONFIG = {
   title: "Hi, I'm Bernard Polidario",
@@ -17,22 +20,22 @@ const HERO_CONFIG = {
 } as const;
 
 // Components
-const HeadingTitle = defineAsyncComponent(() => import('@/components/HeadingTitle.vue'));
-const HeroSection = defineAsyncComponent(() => import('@/components/HeroSection.vue'));
-const ImageComparison = defineAsyncComponent(() => import('@/components/ImageComparison.vue'));
-const GridFold = defineAsyncComponent(() => import('@/components/GridFold.vue'));
-const ContactMe = defineAsyncComponent(() => import('@/components/ContactMe.vue'));
-const IconList = defineAsyncComponent(() => import('@/components/IconList.vue'));
-const InfiniteScroll = defineAsyncComponent(() => import('@/components/InfiniteScroll.vue'));
-const ParallaxImages = defineAsyncComponent(() => import('@/components/ParallaxImages.vue'));
+import HeadingTitle from '@/components/HeadingTitle.vue';
+import HeroSection from '@/components/HeroSection.vue';
+import ImageComparison from '@/components/ImageComparison.vue';
+import GridFold from '@/components/GridFold.vue';
+import ContactMe from '@/components/ContactMe.vue';
+import IconList from '@/components/IconList.vue';
+import InfiniteScroll from '@/components/InfiniteScroll.vue';
+import ParallaxImages from '@/components/ParallaxImages.vue';
 
 //Animations
-const ObjectFloater = defineAsyncComponent(() => import('@/components/animations/ObjectFloater.vue'));
-const CursorFollower = defineAsyncComponent(() => import('@/components/animations/CursorFollower.vue'));
+import ObjectFloater from '@/components/animations/ObjectFloater.vue';
+import CursorFollower from '@/components/animations/CursorFollower.vue';
 
 // Icons
-const IconSmiley = defineAsyncComponent(() => import('@/components/icons/IconSmiley.vue'));
-const IconHeart = defineAsyncComponent(() => import('@/components/icons/IconHeart.vue'));
+import IconSmiley from '@/components/icons/IconSmiley.vue';
+import IconHeart from '@/components/icons/IconHeart.vue';
 
 // State
 const techIcons = ref<IconListItem[]>([]);
@@ -50,8 +53,30 @@ const fetchTechStacks = async () => {
   }
 };
 
-// Lifecycle
-onMounted(fetchTechStacks);
+onMounted(() => {
+  fetchTechStacks();
+  useHead({
+    meta: [
+      {
+        name: 'description',
+        content: 'I design web apps for human satisfaction. I am a frontend developer based in France.'
+      },
+      {
+        name: 'keywords',
+        content: 'full-stack developer, frontend developer, shopify developer, web developer, bernard polidario'
+      },
+      { name: 'author', content: 'Bernard Polidario'},
+      { name: 'robots', content: 'index, follow'},
+      { name: 'og:title', content: 'Bernard Polidario - Frontend Developer'},
+      { name: 'og:description', content: 'I design web apps for human satisfaction. A software engineer based in France.'},
+      { name: 'og:image',  content: PortfolioBanner},
+      { name: 'og:url',  content: 'https://polidario.com/'},
+      { name: 'og:type',  content: 'website'},
+      { name: 'og:site_name',  content: 'Bernard Polidario'},
+      { name: 'og:locale',  content: 'en_US' },
+    ]
+  });
+});
 </script>
 
 <template>
