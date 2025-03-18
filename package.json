@@ -14,12 +14,13 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@supabase/supabase-js": "^2.49.1",
+    "@unhead/vue": "^2.0.0-rc.13",
     "css-element-queries": "^1.2.3",
     "dotenv": "^16.4.7",
     "motion": "^12.4.12",
     "pinia": "^2.1.7",
     "sass-loader": "^16.0.5",
-    "vue": "^3.3.11",
+    "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vuetify": "^3.5.1"
   },
