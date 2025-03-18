@@ -33,13 +33,13 @@ onMounted(() => {
         <div class="wrapper-a">
             <div class="col-a">
                 <div class="item">
-                    <img src="/images/reminisce-ai-app.png" alt="Reminisce AI homepage" width="100%"/>
+                    <img src="/images/reminisce-ai-app.webp" alt="Reminisce AI homepage" width="100%"/>
                 </div>
             </div>
             <div class="col-b">
                 <div class="item">
-                    <img src="/images/bernard-polidario-music-artist-homepage.png" alt="Bernard Polidario's artist homepage" width="100%"/>
-                    <img src="/images/weeklyhow-homepage.png" alt="WeeklyHow homepage screenshot" width="100%"/>
+                    <img src="/images/bernard-polidario-music-artist-homepage.webp" alt="Bernard Polidario's artist homepage" width="100%"/>
+                    <img src="/images/weeklyhow-homepage.webp" alt="WeeklyHow homepage screenshot" width="100%"/>
                 </div>
                 <div class="item"></div>
             </div>
