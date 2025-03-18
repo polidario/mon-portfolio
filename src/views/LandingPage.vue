@@ -9,8 +9,8 @@ const { mobile } = useDisplay()
 import type { IconListItem } from '@/types/Components';
 
 // Assets
-import BernardImage from '@/assets/bernard-polidario-a.jpg';
-import PortfolioBanner from '@/assets/portfolio-banner.jpg';
+import BernardImage from '@/assets/bernard-polidario-a.webp';
+import PortfolioBanner from '@/assets/portfolio-banner.webp';
 
 const HERO_CONFIG = {
   title: "Hi, I'm Bernard Polidario",
@@ -81,7 +81,7 @@ onMounted(() => {
 
 <template>
   <main id="homepage" class="home d-flex flex-column align-center justify-center ga-16" style="min-height: 300vh;">
-    <div :style="{ maxWidth: '1080px' }" id="imageComparison">
+    <div :style="{ maxWidth: '1080px', zIndex: 1 }" id="imageComparison">
       <ImageComparison />
     </div>
 

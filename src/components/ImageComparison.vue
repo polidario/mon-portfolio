@@ -1,6 +1,6 @@
 <script setup>
 import Image1 from '@/assets/weeklyhow.webp'
-import Image2 from '@/assets/portfolio-banner.jpg'
+import Image2 from '@/assets/portfolio-banner.webp'
 import { animate } from 'motion';
 import { useTheme } from 'vuetify'
 
