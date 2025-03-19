@@ -13,16 +13,16 @@ onMounted(() => {
 
     if(!colA || !colB || !colC || !colD) return;
 
-    scroll(animate(colA, { y: [-100, 120] }, { ease: "easeIn" }), {
+    scroll(animate(colA, { y: [-100, 120], opacity: [0, 1] }, { ease: "easeIn" }), {
         target: colA,
     })
-    scroll(animate(colB, { y: [-50, 100] }, { ease: "easeIn" }), {
+    scroll(animate(colB, { y: [-50, 100], opacity: [0, 1] }, { ease: "easeIn" }), {
         target: colB,
     })
-    scroll(animate(colC, { y: [-50, 100] }, { ease: "easeIn" }), {
+    scroll(animate(colC, { y: [-50, 100], opacity: [0, 1] }, { ease: "easeIn" }), {
         target: colC,
     })
-    scroll(animate(colD, { y: [-100, 120] }, { ease: "easeIn" }), {
+    scroll(animate(colD, { y: [-100, 120], opacity: [0, 1] }, { ease: "easeIn" }), {
         target: colD,
     })
 })
