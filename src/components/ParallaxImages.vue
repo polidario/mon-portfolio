@@ -54,7 +54,7 @@ onMounted(() => {
             </div>
             <div class="col-d">
                 <div class="item">
-                    <img src="/images/youtube-thumbnail-a.webp" alt="My Goals For 2025 Thumbnail" width="100%"/>
+                    <img src="@/assets/youtube-thumbnail-a.webp" alt="My Goals For 2025 Thumbnail" width="100%"/>
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100px;
+    height: 0;
     z-index: 2;
 
     position: relative;
