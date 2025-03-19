@@ -13,16 +13,16 @@ onMounted(() => {
 
     if(!colA || !colB || !colC || !colD) return;
 
-    scroll(animate(colA, { y: [-100, 120] }, { ease: "easeIn" }), {
+    scroll(animate(colA, { y: [-100, 120], opacity: [0, 1] }, { ease: "easeIn" }), {
         target: colA,
     })
-    scroll(animate(colB, { y: [-50, 100] }, { ease: "easeIn" }), {
+    scroll(animate(colB, { y: [-50, 100], opacity: [0, 1] }, { ease: "easeIn" }), {
         target: colB,
     })
-    scroll(animate(colC, { y: [-50, 100] }, { ease: "easeIn" }), {
+    scroll(animate(colC, { y: [-50, 100], opacity: [0, 1] }, { ease: "easeIn" }), {
         target: colC,
     })
-    scroll(animate(colD, { y: [-100, 120] }, { ease: "easeIn" }), {
+    scroll(animate(colD, { y: [-100, 120], opacity: [0, 1] }, { ease: "easeIn" }), {
         target: colD,
     })
 })
@@ -33,13 +33,13 @@ onMounted(() => {
         <div class="wrapper-a">
             <div class="col-a">
                 <div class="item">
-                    <img src="/images/reminisce-ai-app.png" alt="Reminisce AI homepage" width="100%"/>
+                    <img src="/images/reminisce-ai-app.webp" alt="Reminisce AI homepage" width="100%"/>
                 </div>
             </div>
             <div class="col-b">
                 <div class="item">
-                    <img src="/images/bernard-polidario-music-artist-homepage.png" alt="Bernard Polidario's artist homepage" width="100%"/>
-                    <img src="/images/weeklyhow-homepage.png" alt="WeeklyHow homepage screenshot" width="100%"/>
+                    <img src="/images/bernard-polidario-music-artist-homepage.webp" alt="Bernard Polidario's artist homepage" width="100%"/>
+                    <img src="/images/weeklyhow-homepage.webp" alt="WeeklyHow homepage screenshot" width="100%"/>
                 </div>
                 <div class="item"></div>
             </div>
@@ -54,7 +54,7 @@ onMounted(() => {
             </div>
             <div class="col-d">
                 <div class="item">
-                    <img src="/images/youtube-thumbnail-a.webp" alt="My Goals For 2025 Thumbnail" width="100%"/>
+                    <img src="@/assets/youtube-thumbnail-a.webp" alt="My Goals For 2025 Thumbnail" width="100%"/>
                 </div>
             </div>
         </div>
@@ -69,7 +69,8 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100px;
+    height: 0;
+    z-index: 2;
 
     position: relative;
 

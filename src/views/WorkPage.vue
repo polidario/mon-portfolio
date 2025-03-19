@@ -28,7 +28,7 @@ onMounted(() => {
       <CardWithImage
         title="WeeklyHow"
         summary="A brand that I made to help people learn Shopify development"
-        image="/images/weeklyhow-homepage.png"
+        image="/images/weeklyhow-homepage.webp"
         link="https://weeklyhow.com/"
         link_text="Visit site"
         category="Brand"
@@ -39,7 +39,7 @@ onMounted(() => {
       <CardWithImage
         title="Shopify Theme Project"
         summary="A theme project developed during our live-coding sessions on WeeklyHow. (Password: weeklyhow)"
-        image="/images/weeklyhow-live-coding-session-theme-dev.png"
+        image="/images/weeklyhow-live-coding-session-theme-dev.webp"
         link="https://weeklyhow-live-coding-session.myshopify.com/"
         link_text="Visit store"
         category="Shopify"
@@ -51,7 +51,7 @@ onMounted(() => {
       <CardWithImage
         title="Charli3"
         summary="Website built using Squarespace for promoting my music"
-        image="/images/bernard-polidario-music-artist-homepage.png"
+        image="/images/bernard-polidario-music-artist-homepage.webp"
         link="https://bernardpolidario.com/"
         link_text="Visit site"
         category="Artist"
@@ -63,7 +63,7 @@ onMounted(() => {
       <CardWithImage
         title="Reminisce AI"
         summary="A chat bot AI project that I made just for fun"
-        image="/images/reminisce-ai-app.png"
+        image="/images/reminisce-ai-app.webp"
         link="https://github.com/polidario/Reminisce-AI"
         link_text="View on GitHub"
         category="AI"
