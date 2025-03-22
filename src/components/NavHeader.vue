@@ -48,7 +48,7 @@ export default defineComponent({
                     </button>
                 </div>
                 <div class="nav-links nav-texts">
-                    <RouterLink to="/work">WORK</RouterLink>
+                    <RouterLink to="/work" v-on:click="toggleNav">WORK</RouterLink>
                 </div>
                 <div class="nav-links nav-icons">
                     <a href="https://www.linkedin.com/in/polidario/" target="_blank" rel="noopener noreferrer">
