@@ -218,13 +218,14 @@ export default {
                     :style="leftImageStyle"
                     class="left-image"
                     ref="leftImageRef"
+                    alt="A video compilation of my weekly how-to videos"
                 />
                 
                 <div :style="leftImageStyle" class="left-label">
                 </div>
             
                 <div class="right-image">
-                    <img :alt="rightImageAlt" src="@/assets/portfolio-banner.webp" ref="rightImageRef" />
+                    <img :alt="rightImageAlt" src="@/assets/portfolio-banner.webp" ref="rightImageRef" alt="Bernard Polidario's open for work banner" />
                 </div>
 
                 <div :style="rightLabelStyle" ref="rightLabelRef" class="right-label">{{rightLabel}}</div>
