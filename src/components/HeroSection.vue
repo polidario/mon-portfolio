@@ -69,18 +69,6 @@ onMounted(() => {
     </div>
     
     <div id="hero_section__buttons" class="d-flex flex-column ga-3">
-      <v-btn 
-        id="hero_section__linkedin_button"
-        color="primary" 
-        class="rounded-pill font-weight-bold text-capitalize px-10" 
-        href="https://linkedin.com/in/polidario" 
-        target="_blank"
-        prepend-icon="mdi-linkedin"
-        size="x-large"
-        variant="flat"
-      >
-        Let's connect!
-      </v-btn>
     </div>
   </div>
 </template>
@@ -88,6 +76,7 @@ onMounted(() => {
 <style>
 .hero-section {
   height: 412px;
+  z-index: 1;
 }
 
 .hero-section .text-wrapper {
