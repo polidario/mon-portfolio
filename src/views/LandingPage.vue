@@ -80,7 +80,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main id="homepage" class="home d-flex flex-column align-center justify-center ga-16" style="min-height: 300vh;">
+  <div id="homepage" class="home d-flex flex-column align-center justify-center ga-16" style="min-height: 300vh;">
     <div :style="{ maxWidth: '1080px', zIndex: 1 }" id="imageComparison">
       <ImageComparison />
     </div>
@@ -132,13 +132,6 @@ onMounted(() => {
         </template>
       </GridFold>
     </section>
-    
-    <img 
-      src="/images/gradient-highlight.webp" 
-      alt="Gradient Background"
-      class="position-absolute bottom-0 left-0 w-100 h-100" 
-      loading="lazy"
-    />
 
     <section id="tech-stack" class="tech-stack">
       <HeadingTitle 
@@ -152,13 +145,28 @@ onMounted(() => {
     </section>
 
     <ContactMe />
-  </main>
+  </div>
 </template>
 
 <style scoped lang="scss">
 .home {
   position: relative;
   overflow: hidden;
+}
+
+.home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(65,41,76);
+  background: -moz-radial-gradient(circle, rgba(65,41,76,0.8295693277310925) 8%, rgba(32,41,69,0.865983893557423) 38%, rgba(13,9,20,0.7035189075630253) 70%);
+  background: -webkit-radial-gradient(circle, rgba(65,41,76,0.8295693277310925) 8%, rgba(32,41,69,0.865983893557423) 38%, rgba(13,9,20,0.7035189075630253) 70%);
+  background: radial-gradient(circle, rgba(65,41,76,0.8295693277310925) 8%, rgba(32,41,69,0.865983893557423) 38%, rgba(13,9,20,0.7035189075630253) 70%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#41294c",endColorstr="#0d0914",GradientType=1);
+  z-index: 0;
 }
 
 .grid-images {
