@@ -51,22 +51,22 @@ export default defineComponent({
                     <RouterLink to="/work" v-on:click="toggleNav">WORK</RouterLink>
                 </div>
                 <div class="nav-links nav-icons">
-                    <a href="https://www.linkedin.com/in/polidario/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/polidario/" target="_blank" rel="noopener noreferrer" aria-label="Open Bernard's LinkedIn profile">
                         <v-icon icon="mdi-linkedin"></v-icon>
                     </a>
-                    <a href="https://youtube.com/@weeklyhow" target="_blank" rel="noopener noreferrer">
+                    <a href="https://youtube.com/@weeklyhow" target="_blank" rel="noopener noreferrer" aria-label="Open Bernard's YouTube channel called WeeklyHow">
                         <v-icon icon="mdi-youtube"></v-icon>
                     </a>
-                    <a href="https://instagram.com/weeklyhow" target="_blank" rel="noopener noreferrer">
+                    <a href="https://instagram.com/weeklyhow" target="_blank" rel="noopener noreferrer" aria-label="Open WeeklyHow's Instagram account">
                         <v-icon icon="mdi-instagram"></v-icon>
                     </a>
-                    <a href="https://github.com/polidario" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/polidario" target="_blank" rel="noopener noreferrer" aria-label="Open Bernard's GitHub profile">
                         <v-icon icon="mdi-github"></v-icon>
                     </a>
                 </div>
             </div>
             <div class="action-button-section">
-                <a href="/cvs/bernard-polidario-resume.pdf" target="_blank">GET MY CV</a>
+                <a href="/cvs/bernard-polidario-resume.pdf" target="_blank" aria-label="Get Bernard Polidario's CV">GET MY CV</a>
             </div>
             <button role="button" type="button" class="nav-toggle-button" aria-label="Toggle Navigation" v-on:click="toggleNav">
                 <v-icon icon="mdi-menu"></v-icon>
