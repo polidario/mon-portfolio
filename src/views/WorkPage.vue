@@ -23,7 +23,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container-fluid work-grid">
+  <div class="container work-grid">
     <FadeInSection :useMargin="false">
       <CardWithImage
         title="WeeklyHow"
