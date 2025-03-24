@@ -6,7 +6,7 @@ import { useHead } from '@unhead/vue';
 
 const { mobile } = useDisplay()
 
-import type { IconListItem } from '@/types/Components';
+import { TimelineItem, type IconListItem } from '@/types/Components';
 
 // Assets
 import BernardImage from '@/assets/bernard-polidario-a.webp';
@@ -26,11 +26,9 @@ import ImageComparison from '@/components/ImageComparison.vue';
 import GridFold from '@/components/GridFold.vue';
 import ContactMe from '@/components/ContactMe.vue';
 import IconList from '@/components/IconList.vue';
-import InfiniteScroll from '@/components/InfiniteScroll.vue';
 import ParallaxImages from '@/components/ParallaxImages.vue';
 
 //Animations
-import ObjectFloater from '@/components/animations/ObjectFloater.vue';
 import CursorFollower from '@/components/animations/CursorFollower.vue';
 
 // Icons
@@ -41,40 +39,7 @@ import IconSun from '@/components/icons/IconSun.vue';
 
 // State
 const techIcons = ref<IconListItem[]>([]);
-const timelineItems = [
-  {
-    id: 1,
-    title: 'Full-stack Engineer',
-    subtitle: 'Differs',
-    description: 'Developed features to Differs\' web application (Analytics/Charts, Detailed product tables, A/B test results, Profile/Settings page, Chat bot integration, Project dashboard etc.) to improve user experience.',
-    date: 'Feb 2024 - Dec 2024',
-    url: 'https://differs.io'
-  },
-  {
-    id: 2,
-    title: 'Full-stack Developer',
-    subtitle: 'Upskyld',
-    description: 'Worked as an intern at Upskyld, a startup company that focuses on providing a platform for everyone to learn and improve their skills through podcasts. Main responsibilities include developing the frontend and backend of the platform (Optimizing UX, Stripe API integration, etc.).',
-    date: 'Aug 2023 - Jan 2024',
-    url: 'https://www.linkedin.com/company/upskyld/'
-  },
-  {
-    id: 3,
-    title: 'Shopify Developer / Content Creator',
-    subtitle: 'Freelance',
-    description: 'Produced video content for WeeklyHow on YouTube, with over 1.2M views. Collaborated and sponsored by Shopify to produce content and promote Shopify Edition.',
-    date: 'Jan 2020 - Present',
-    url: 'https://weeklyhow.com'
-  },
-  {
-    id: 4,
-    title: 'Game Content Developer',
-    subtitle: 'GameDevHQ',
-    description: 'Developed coding challenges and quizzes for GameDevHQ\'s platform.',
-    date: 'May 2020 - Aug 2020',
-    url: 'https://gamedevhq.com'
-  },
-];
+const timelineItems = ref<TimelineItem[]>([]);
 
 const fetchTechStacks = async () => {
   try {
@@ -89,8 +54,36 @@ const fetchTechStacks = async () => {
   }
 };
 
+const fetchWorkExperiences = async () => {
+  try {
+    const { data, error } = await supabase.from('work_experiences').select();
+    
+    if (error) throw error;
+    if (!data) throw new Error('No data found');
+
+    data.forEach((item) => {
+      const date = new Date(item.worked_from).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      timelineItems.value.push({
+        id: item.id,
+        title: item.title,
+        subtitle: item.company,
+        date,
+        description: item.description
+      });
+    });
+  } catch (error) {
+    console.error('Error fetching work experiences:', error);
+  }
+}
+
 onMounted(() => {
   fetchTechStacks();
+  fetchWorkExperiences();
   useHead({
     meta: [
       {
