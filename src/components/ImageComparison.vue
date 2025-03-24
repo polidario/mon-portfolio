@@ -103,7 +103,7 @@ export default {
         },
         sliderPositionPercentage: {
             type: Number,
-            default: 0.5,
+            default: 0.35,
         },
     },
     methods: {
