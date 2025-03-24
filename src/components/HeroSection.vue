@@ -1,4 +1,5 @@
 <script setup>
+import IconFranceFlag from './icons/IconFranceFlag.vue';
 import { motion } from 'motion-v';
 
 defineProps({
@@ -52,7 +53,7 @@ defineProps({
         :variants="{ offscreen: { opacity: 0, y: 50 }, onscreen: { opacity: 1, y: 0 } }"
         :transition="{ duration: 1, ease: 'easeInOut' }"
       >
-        Based in Paris, France
+        <IconFranceFlag /> Based in Paris, France
       </motion.span>
     </div>
     
@@ -91,6 +92,12 @@ defineProps({
   letter-spacing: normal;
 
   transition: opacity 0.1s;
+}
+
+.hero-section .location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 @media only screen and (max-width: 980px) {

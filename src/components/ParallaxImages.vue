@@ -8,11 +8,11 @@ const { mobile } = useDisplay();
     <div v-if="!mobile" class="container-fluid">
         <div class="wrapper-a">
             <div class="col-a">
-                <motion.div class="item" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 120 }, onscreen: { opacity: 1, y: -100 } }" :transition="{ duration: 1, ease: 'easeIn' }">
+                <motion.div class="item" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 120 }, onscreen: { opacity: 1, y: -100 } }" :transition="{ duration: 1.25, ease: 'easeIn', delay: 0.75 }">
                     <img src="/images/reminisce-ai-app.webp" alt="Reminisce AI homepage" width="100%"/>
                 </motion.div>
             </div>
-            <motion.div class="col-b" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 100 }, onscreen: { opacity: 1, y: -50 } }" :transition="{ duration: 1, ease: 'easeIn' }">
+            <motion.div class="col-b" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 100 }, onscreen: { opacity: 1, y: -50 } }" :transition="{ duration: 1, ease: 'easeIn', delay: 0.5 }">
                 <div class="item">
                     <img src="/images/bernard-polidario-music-artist-homepage.webp" alt="Bernard Polidario's artist homepage" width="100%"/>
                     <img src="/images/weeklyhow-homepage.webp" alt="WeeklyHow homepage screenshot" width="100%"/>
@@ -22,15 +22,15 @@ const { mobile } = useDisplay();
         </div>
         
         <div class="wrapper-b">
-            <motion.div class="col-c" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 100 }, onscreen: { opacity: 1, y: -50 } }" :transition="{ duration: 1, ease: 'easeIn' }">
+            <motion.div class="col-c" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 100 }, onscreen: { opacity: 1, y: -50 } }" :transition="{ duration: 1, ease: 'easeIn', delay: 0.5 }">
                 <div class="item">
-                    <img src="/images/shrek-homepage-mobile.webp" alt="Shrek Shopify theme homepage screenshot" width="100%"/>
+                    <img src="@/assets/liftmate-app-preview.webp" alt="Shrek Shopify theme homepage screenshot" width="100%"/>
                 </div>
                 <div class="item"></div>
             </motion.div>
             <div class="col-d">
-                <motion.div class="item" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 120 }, onscreen: { opacity: 1, y: -100 } }" :transition="{ duration: 1, ease: 'easeIn' }">
-                    <img src="@/assets/youtube-thumbnail-a.webp" alt="My Goals For 2025 Thumbnail" width="100%"/>
+                <motion.div class="item" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 120 }, onscreen: { opacity: 1, y: -100 } }" :transition="{ duration: 1.25, ease: 'easeIn', delay: 0.75 }">
+                    <img src="@/assets/weeklyhow-live-coding-session-theme-dev.webp" alt="My Goals For 2025 Thumbnail" width="100%"/>
                 </motion.div>
             </div>
         </div>
@@ -62,6 +62,10 @@ const { mobile } = useDisplay();
             display: flex;
             flex-direction: column;
             gap: var(--spacing-7);
+        }
+
+        .col-a, .col-d {
+            filter: blur(2px);
         }
     }
 

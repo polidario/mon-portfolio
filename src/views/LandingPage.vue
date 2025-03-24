@@ -15,7 +15,7 @@ import PortfolioBanner from '@/assets/portfolio-banner.webp';
 const HERO_CONFIG = {
   title: "Hi, I'm Bernard Polidario",
   subtext: "A Frontend Developer",
-  body: "I design web apps for human satisfaction",
+  body: "Software Engineer specializing in Full-Stack Development.",
   color: "primary"
 } as const;
 

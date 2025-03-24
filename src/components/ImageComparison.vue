@@ -148,14 +148,14 @@ onMounted(() => {
         translateY: [100, 0],
     }, {
         duration: 1,
+        delay: 0.5,
     });
 
     animate('#image_comparison', {
         opacity: [0, 1],
         translateY: [100, 0],
     }, {
-        duration: 0.5,
-        delay: 0.5,
+        duration: 1,
         easing: 'ease-in-out',
     });
 
@@ -264,7 +264,7 @@ onBeforeUnmount(() => {
         height: 100%;
         object-fit: cover;
         border-radius: 8px;
-        filter: blur(2px) brightness(0.7);
+        filter: blur(3px) brightness(0.7) grayscale(.45);
         transition: all 0.3s ease;
     }
 }
