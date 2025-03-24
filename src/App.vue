@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 
-import AnnouncementBar from '@/components/AnnouncementBar.vue';
 import NavHeader from '@/components/NavHeader.vue';
 import MainFooter from '@/components/MainFooter.vue';
 
@@ -9,7 +8,6 @@ import MainFooter from '@/components/MainFooter.vue';
 
 <template>
   <v-layout class="d-block" theme="dark" :style="{ background: $vuetify.theme.themes.dark.colors.background }">
-    <AnnouncementBar message="This website is going through a redesign 😱. Please bear with me. ❤️" />
     <NavHeader />
 
     <main>

@@ -6,7 +6,7 @@ import { useHead } from '@unhead/vue';
 
 const { mobile } = useDisplay()
 
-import type { IconListItem } from '@/types/Components';
+import { TimelineItem, type IconListItem } from '@/types/Components';
 
 // Assets
 import BernardImage from '@/assets/bernard-polidario-a.webp';
@@ -26,19 +26,18 @@ import ImageComparison from '@/components/ImageComparison.vue';
 import GridFold from '@/components/GridFold.vue';
 import ContactMe from '@/components/ContactMe.vue';
 import IconList from '@/components/IconList.vue';
-import InfiniteScroll from '@/components/InfiniteScroll.vue';
 import ParallaxImages from '@/components/ParallaxImages.vue';
 
 //Animations
-import ObjectFloater from '@/components/animations/ObjectFloater.vue';
 import CursorFollower from '@/components/animations/CursorFollower.vue';
 
 // Icons
-import IconSmiley from '@/components/icons/IconSmiley.vue';
 import IconHeart from '@/components/icons/IconHeart.vue';
+import TimelineVertical from '@/components/TimelineVertical.vue';
 
 // State
 const techIcons = ref<IconListItem[]>([]);
+const timelineItems = ref<TimelineItem[]>([]);
 
 const fetchTechStacks = async () => {
   try {
@@ -53,8 +52,36 @@ const fetchTechStacks = async () => {
   }
 };
 
+const fetchWorkExperiences = async () => {
+  try {
+    const { data, error } = await supabase.from('work_experiences').select();
+    
+    if (error) throw error;
+    if (!data) throw new Error('No data found');
+
+    data.forEach((item) => {
+      const date = new Date(item.worked_from).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      timelineItems.value.push({
+        id: item.id,
+        title: item.title,
+        subtitle: item.company,
+        date,
+        description: item.description
+      });
+    });
+  } catch (error) {
+    console.error('Error fetching work experiences:', error);
+  }
+}
+
 onMounted(() => {
   fetchTechStacks();
+  fetchWorkExperiences();
   useHead({
     meta: [
       {
@@ -107,14 +134,6 @@ onMounted(() => {
           >
         </template>
 
-        <template #top_right_overlay>
-          <div v-if="!mobile" class="cursor">
-            <ObjectFloater>
-              <IconSmiley />
-            </ObjectFloater>
-          </div>
-        </template>
-
         <template #overlay>
           <div class="overlay-card-text">
             <div v-if="!mobile" class="cursor">
@@ -133,6 +152,10 @@ onMounted(() => {
       </GridFold>
     </section>
 
+    <TimelineVertical :items="timelineItems">
+
+    </TimelineVertical>
+
     <section id="tech-stack" class="tech-stack">
       <HeadingTitle 
         title="The Stacks"
@@ -141,7 +164,6 @@ onMounted(() => {
         
       <IconList :items="techIcons" />
 
-      <InfiniteScroll :icons="techIcons"/>
     </section>
 
     <ContactMe />

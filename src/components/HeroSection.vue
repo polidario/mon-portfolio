@@ -21,7 +21,7 @@ defineProps({
 onMounted(() => {
   const title = document.querySelector('#hero_section__title');
   const body = document.querySelector('#hero_section__body');
-  const linkedinButton = document.querySelector('#hero_section__linkedin_button');
+  const locationSection = document.querySelector('#hero_section__location');
 
   inView('.hero-section', () => {
     animate(title, {
@@ -42,7 +42,7 @@ onMounted(() => {
       easing: 'ease-in-out',
     });
 
-    animate(linkedinButton, {
+    animate(locationSection, {
       opacity: [0, 1],
       translateY: [20, 0],
     }, {
@@ -57,7 +57,7 @@ onMounted(() => {
 
 <template>
   <div class="hero-section d-flex flex-column align-center justify-center ga-10 mt-16">
-    <div class="d-flex flex-column ga-10 pa-5">
+    <div class="d-flex flex-column align-center ga-10 pa-5">
       <div class="text-wrapper">
         <h2 id="hero_section__title" class="title">{{ title }}</h2>
       </div>
@@ -66,6 +66,8 @@ onMounted(() => {
         <v-icon icon="mdi-creation"></v-icon> 
         <p class="body-text">{{ body }}</p>
       </div>
+      
+      <span id="hero_section__location" class="location">Based in Paris, France</span>
     </div>
     
     <div id="hero_section__buttons" class="d-flex flex-column ga-3">

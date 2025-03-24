@@ -10,3 +10,15 @@ export interface IconListItem {
     icon?: string;
     colored_icon?: string;
 }
+
+export interface TimelineItem {
+    id: number;
+    title: string;
+    subtitle?: string;
+    description: string;
+    date: string;
+    icon?: string;
+    color?: string;
+    badge?: BadgeType;
+    url?: string;
+}

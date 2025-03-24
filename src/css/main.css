@@ -48,6 +48,9 @@
     --color-gray-400: #99a1af;
     --color-black: #121212;
 
+    --color-primary: #659cf6;
+    --color-primary-dark: #2962b1;
+
     --color-info: rgba(101, 156, 246, 0.47);
     --color-success: rgba(0, 230, 118, 0.47);
     --color-warning: rgba(255, 143, 0, 0.47);
@@ -76,6 +79,10 @@ body {
     font-size: 18px;
     font-weight: 400;
     line-height: 1.667em;
+}
+
+main {
+    padding-top: 120px;
 }
 
 a {

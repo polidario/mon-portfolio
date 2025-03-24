@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 
+const copyright_year = new Date().getFullYear();
+
 </script>
 
 <template>
@@ -42,7 +44,7 @@ import { RouterLink } from 'vue-router';
             </div>
             <div class="lower-footer-section">
                 <div class="footer-content-text">
-                    <p>© 2025 BP.</p>
+                    <p>© {{ copyright_year }} Bernard Polidario.</p>
                 </div>
             </div>
         </div>
@@ -127,9 +129,8 @@ footer {
         .lower-footer-section {
             .footer-content-text {
                 p {
-                    color: var(--color-white);
+                    color: var(--color-gray-400);
                     text-align: center;
-                    font-weight: var(--font-weight-bold);
 
                     transition: color 1s ease-in-out;
                 }
