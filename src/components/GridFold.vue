@@ -1,35 +1,31 @@
 <script setup>
-import { onMounted, useSlots } from 'vue'
-import { animate, scroll } from 'motion'
+import { useSlots } from 'vue'
+import { motion } from 'motion-v'
 const slots = useSlots()
 
-// document.querySelectorAll(".grid-fold ").forEach((section) => {
-//     const header = section.querySelector("h2")
-//     scroll(animate(header, { y: [-400, 400] }, { ease: "linear" }), {
-//         target: header,
-//     })
-// })
-
-onMounted(() => {
-    const gridItemA = document.querySelector(".grid-item-a")
-    const gridItemB = document.querySelector(".grid-item-b")
-    scroll(animate(gridItemA, { y: [-100, 100] }, { ease: "linear" }), {
-        target: gridItemA,
-    })
-    scroll(animate(gridItemB, { y: [0, 50] }, { ease: "linear" }), {
-        target: gridItemB,
-    })
-})
 </script>
 
 <template>
     <div class="grid-fold">
-        <div class="grid-item-a">
+        <motion.div 
+            class="grid-item-a"
+            initial="offscreen"
+            whileInView="onscreen"
+            :variants="{ offscreen: { opacity: 0, y: 100 }, onscreen: { opacity: 1, y: 0 } }"
+            :transition="{ duration: 1, ease: 'linear' }"
+        >
             <slot name="item_a"></slot>
-        </div>
-        <div v-if="slots.item_b" class="grid-item-b">
+        </motion.div>
+        <motion.div 
+            v-if="slots.item_b" 
+            class="grid-item-b"
+            initial="offscreen"
+            whileInView="onscreen"
+            :variants="{ offscreen: { opacity: 0, y: 0 }, onscreen: { opacity: 1, y: 50 } }"
+            :transition="{ duration: 1, ease: 'linear' }"
+        >
             <slot name="item_b"></slot>
-        </div>
+        </motion.div>
 
         <div v-if="slots.overlay" class="overlay-card">
             <slot name="overlay"></slot>

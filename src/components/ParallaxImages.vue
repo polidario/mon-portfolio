@@ -1,61 +1,37 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { animate, scroll } from 'motion'
-import { useDisplay } from 'vuetify'
-const { mobile } = useDisplay()
-
-
-onMounted(() => {
-    const colA = document.querySelector(".col-a .item")
-    const colB = document.querySelector(".col-b")
-    const colC = document.querySelector(".col-c")
-    const colD = document.querySelector(".col-d .item")
-
-    if(!colA || !colB || !colC || !colD) return;
-
-    scroll(animate(colA, { y: [-100, 120], opacity: [0, 1] }, { ease: "easeIn" }), {
-        target: colA,
-    })
-    scroll(animate(colB, { y: [-50, 100], opacity: [0, 1] }, { ease: "easeIn" }), {
-        target: colB,
-    })
-    scroll(animate(colC, { y: [-50, 100], opacity: [0, 1] }, { ease: "easeIn" }), {
-        target: colC,
-    })
-    scroll(animate(colD, { y: [-100, 120], opacity: [0, 1] }, { ease: "easeIn" }), {
-        target: colD,
-    })
-})
+import { motion } from 'motion-v';
+import { useDisplay } from 'vuetify';
+const { mobile } = useDisplay();
 </script>
 
 <template>
     <div v-if="!mobile" class="container-fluid">
         <div class="wrapper-a">
             <div class="col-a">
-                <div class="item">
+                <motion.div class="item" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 120 }, onscreen: { opacity: 1, y: -100 } }" :transition="{ duration: 1, ease: 'easeIn' }">
                     <img src="/images/reminisce-ai-app.webp" alt="Reminisce AI homepage" width="100%"/>
-                </div>
+                </motion.div>
             </div>
-            <div class="col-b">
+            <motion.div class="col-b" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 100 }, onscreen: { opacity: 1, y: -50 } }" :transition="{ duration: 1, ease: 'easeIn' }">
                 <div class="item">
                     <img src="/images/bernard-polidario-music-artist-homepage.webp" alt="Bernard Polidario's artist homepage" width="100%"/>
                     <img src="/images/weeklyhow-homepage.webp" alt="WeeklyHow homepage screenshot" width="100%"/>
                 </div>
                 <div class="item"></div>
-            </div>
+            </motion.div>
         </div>
         
         <div class="wrapper-b">
-            <div class="col-c">
+            <motion.div class="col-c" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 100 }, onscreen: { opacity: 1, y: -50 } }" :transition="{ duration: 1, ease: 'easeIn' }">
                 <div class="item">
                     <img src="/images/shrek-homepage-mobile.webp" alt="Shrek Shopify theme homepage screenshot" width="100%"/>
                 </div>
                 <div class="item"></div>
-            </div>
+            </motion.div>
             <div class="col-d">
-                <div class="item">
+                <motion.div class="item" initial="offscreen" whileInView="onscreen" :variants="{ offscreen: { opacity: 0, y: 120 }, onscreen: { opacity: 1, y: -100 } }" :transition="{ duration: 1, ease: 'easeIn' }">
                     <img src="@/assets/youtube-thumbnail-a.webp" alt="My Goals For 2025 Thumbnail" width="100%"/>
-                </div>
+                </motion.div>
             </div>
         </div>
         

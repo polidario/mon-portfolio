@@ -1,207 +1,193 @@
-<script>
+<script setup>
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { ResizeSensor } from 'css-element-queries';
+import { motion, useAnimate } from 'motion-v';
+import { useTheme } from 'vuetify';
 
-import { animate, scroll } from 'motion';
-import { useTheme } from 'vuetify'
+const [scope, animate] = useAnimate();
 
-export default {
-    setup() {
-        const theme = useTheme();
-        return { theme }; 
-    },
-    mounted() {
-        const backgroundImages = document.getElementById('backgroundImages');
-        const floatingImages = backgroundImages.querySelectorAll('.floating-image');
+const theme = useTheme();
 
-        floatingImages.forEach(image => {
-            animate(image, {
-                opacity: [0, 1],
-                translateY: [100, 0],
-            }, {
-                duration: 1,
-            });
+const props = defineProps({
+    leftImage: {
+        type: String,
+        default: '',
+    },
+    leftLabel: {
+        type: String,
+        default: '',
+    },
+    rightImage: {
+        type: String,
+        default: '',
+    },
+    rightLabel: {
+        type: String,
+        default: '',
+    },
+    hover: {
+        type: Boolean,
+        default: false,
+    },
+    handleSize: {
+        type: Number,
+        default: 40,
+    },
+    sliderLineWidth: {
+        type: Number,
+        default: 2,
+    },
+    sliderPositionPercentage: {
+        type: Number,
+        default: 0.35,
+    },
+});
 
-            scroll(animate(image, {
-                opacity: [0, 1],
-                translateY: [100, 0],
-            }, {
-                duration: 1,
-            }), {
-                target: image,
-            });
-        });
+const containerRef = ref(null);
+const leftImageRef = ref(null);
+const rightImageRef = ref(null);
+const rightLabelRef = ref(null);
 
-        animate('#image_comparison', {
-            opacity: [0, 1],
-            translateY: [100, 0],
-        }, {
-            duration: 0.5,
-            delay: 0.5,
-            easing: 'ease-in-out',
-        })
-        // eslint-disable-next-line
-        new ResizeSensor(this.$refs.containerRef, () => {
-            this.getAndSetImageWidth();
-        });
-    
-        const containerElement = this.$refs.containerRef;
-    
-        // for mobile
-        containerElement.addEventListener('touchstart', this.startSliding);
-        window.addEventListener('touchend', this.finishSliding);
-    
-        // for desktop
-        if (this.hover) {
-            containerElement.addEventListener('mouseenter', this.startSliding);
-            containerElement.addEventListener('mouseleave', this.finishSliding);
-        } else {
-            containerElement.addEventListener('mousedown', this.startSliding);
-            window.addEventListener('mouseup', this.finishSliding);
-        }
-    },
-    beforeUnmount() {
-        this.finishSliding();
-        window.removeEventListener('mouseup', this.finishSliding);
-        window.removeEventListener('touchend', this.finishSliding);
-    },
-    props: {
-        leftImage: {
-            type: String,
-            default: '',
-        },
-        leftLabel: {
-            type: String,
-            default: '',
-        },
-        rightImage: {
-            type: String,
-            default: '',
-        },
-        rightLabel: {
-            type: String,
-            default: '',
-        },
-        hover: {
-            type: Boolean,
-            default: false,
-        },
-        handleSize: {
-            type: Number,
-            default: 40,
-        },
-        sliderLineWidth: {
-            type: Number,
-            default: 2,
-        },
-        sliderPositionPercentage: {
-            type: Number,
-            default: 0.35,
-        },
-    },
-    methods: {
-        getAndSetImageWidth() {
-            this.imageWidth = this.$refs.rightImageRef.getBoundingClientRect().width;
-            this.rightLabelWidth = this.$refs.rightLabelRef.getBoundingClientRect().width;
-        },
-        startSliding(e) {
-            if (!('touches' in e)) {
-                e.preventDefault();
-            }
+const positionPct = ref(props.sliderPositionPercentage || 0.5);
+const imageWidth = ref(0);
+const rightLabelWidth = ref(0);
+const isSliding = ref(false);
 
-            if (e.target.classList.contains('handle')) {
-                this.isSliding = true;
-                this.updateSliderPosition(e);
-            }
-
-            window.addEventListener('mousemove', this.updateSliderPosition);
-            window.addEventListener('touchmove', this.updateSliderPosition);
-        },
-        finishSliding() {
-            this.isSliding = false;
-            window.removeEventListener('mousemove', this.updateSliderPosition);
-            window.removeEventListener('touchmove', this.updateSliderPosition);
-        },
-        updateSliderPosition(event) {
-            if (!this.isSliding) return;
-            
-            const e = event || window.event;
-    
-            const cursorXfromViewport = e.touches ? e.touches[0].pageX : e.pageX;
-            const cursorXfromWindow = cursorXfromViewport - window.pageXOffset;
-    
-            const imagePosition = this.$refs.rightImageRef.getBoundingClientRect();
-            let pos = cursorXfromWindow - imagePosition.left;
-    
-            const minPos = 0 + this.sliderLineWidth / 2;
-            const maxPos = this.imageWidth - this.sliderLineWidth / 2;
-    
-            if (pos < minPos) pos = minPos;
-            if (pos > maxPos) pos = maxPos;
-    
-            this.positionPct = pos / this.imageWidth;
-        },
-    },
-    data() {
-        return {
-            // slider position percentage(0 to 1)
-            positionPct: this.sliderPositionPercentage || 0.5,
-            imageWidth: 0,
-            isSliding: false,
-        };
-    },
-    computed: {
-    // eslint-disable
-    leftImageStyle() {
-        return {
-            clip: `rect(auto, ${this.imageWidth * this.positionPct}px, auto, auto)`,
-        };
-    },
-    rightLabelStyle() {
-        const cutLeft = Math.max(
-        0,
-        this.rightLabelWidth + this.imageWidth * (this.positionPct - 1),
-        );
-        return {
-        clip: `rect(auto, auto, auto, ${cutLeft}px)`,
-        };
-    },
-    sliderStyle() {
-        return {
-            left: this.imageWidth * this.positionPct - this.handleSize / 2 + 'px',
-            width: `${this.handleSize}px`,
-        };
-    },
-    sliderLineStyle() {
-        return { width: `${this.sliderLineWidth}px` };
-    },
-    sliderHandleStyle() {
-        return {
-        border: `${this.sliderLineWidth}px solid white`,
-        height: `${this.handleSize}px`,
-        width: `${this.handleSize}px`,
-        };
-    },
-    sliderLeftArrowStyle() {
-        return {
-        border: `inset ${this.handleSize * 0.15}px rgba(0,0,0,0)`,
-        borderRight: `${this.handleSize * 0.15}px solid white`,
-        marginLeft: `-${this.handleSize * 0.25}px`, // for IE11
-        marginRight: `${this.handleSize * 0.25}px`,
-        };
-    },
-    sliderRightArrowStyle() {
-        return {
-        border: `inset ${this.handleSize * 0.15}px rgba(0,0,0,0)`,
-        borderLeft: `${this.handleSize * 0.15}px solid white`,
-        marginRight: `-${this.handleSize * 0.25}px`, // for IE11
-        };
-    },
-    },
+const getAndSetImageWidth = () => {
+    imageWidth.value = rightImageRef.value.getBoundingClientRect().width;
+    rightLabelWidth.value = rightLabelRef.value.getBoundingClientRect().width;
 };
+
+const startSliding = (e) => {
+    if (!('touches' in e)) {
+        e.preventDefault();
+    }
+
+    if (e.target.classList.contains('handle')) {
+        isSliding.value = true;
+        updateSliderPosition(e);
+    }
+
+    window.addEventListener('mousemove', updateSliderPosition);
+    window.addEventListener('touchmove', updateSliderPosition);
+};
+
+const finishSliding = () => {
+    isSliding.value = false;
+    window.removeEventListener('mousemove', updateSliderPosition);
+    window.removeEventListener('touchmove', updateSliderPosition);
+};
+
+const updateSliderPosition = (event) => {
+    if (!isSliding.value) return;
+    
+    const e = event || window.event;
+    const cursorXfromViewport = e.touches ? e.touches[0].pageX : e.pageX;
+    const cursorXfromWindow = cursorXfromViewport - window.pageXOffset;
+
+    const imagePosition = rightImageRef.value.getBoundingClientRect();
+    let pos = cursorXfromWindow - imagePosition.left;
+
+    const minPos = 0 + props.sliderLineWidth / 2;
+    const maxPos = imageWidth.value - props.sliderLineWidth / 2;
+
+    if (pos < minPos) pos = minPos;
+    if (pos > maxPos) pos = maxPos;
+
+    positionPct.value = pos / imageWidth.value;
+};
+
+const leftImageStyle = computed(() => ({
+    clip: `rect(auto, ${imageWidth.value * positionPct.value}px, auto, auto)`,
+}));
+
+const rightLabelStyle = computed(() => {
+    const cutLeft = Math.max(
+        0,
+        rightLabelWidth.value + imageWidth.value * (positionPct.value - 1),
+    );
+    return {
+        clip: `rect(auto, auto, auto, ${cutLeft}px)`,
+    };
+});
+
+const sliderStyle = computed(() => ({
+    left: imageWidth.value * positionPct.value - props.handleSize / 2 + 'px',
+    width: `${props.handleSize}px`,
+}));
+
+const sliderLineStyle = computed(() => ({ 
+    width: `${props.sliderLineWidth}px` 
+}));
+
+const sliderHandleStyle = computed(() => ({
+    border: `${props.sliderLineWidth}px solid white`,
+    height: `${props.handleSize}px`,
+    width: `${props.handleSize}px`,
+}));
+
+const sliderLeftArrowStyle = computed(() => ({
+    border: `inset ${props.handleSize * 0.15}px rgba(0,0,0,0)`,
+    borderRight: `${props.handleSize * 0.15}px solid white`,
+    marginLeft: `-${props.handleSize * 0.25}px`,
+    marginRight: `${props.handleSize * 0.25}px`,
+}));
+
+const sliderRightArrowStyle = computed(() => ({
+    border: `inset ${props.handleSize * 0.15}px rgba(0,0,0,0)`,
+    borderLeft: `${props.handleSize * 0.15}px solid white`,
+    marginRight: `-${props.handleSize * 0.25}px`,
+}));
+
+onMounted(() => {
+    const backgroundImages = document.getElementById('backgroundImages');
+    const floatingImages = backgroundImages.querySelectorAll('.floating-image');
+
+    animate('.floating-image', {
+        opacity: [0, 1],
+        translateY: [100, 0],
+    }, {
+        duration: 1,
+    });
+
+    animate('#image_comparison', {
+        opacity: [0, 1],
+        translateY: [100, 0],
+    }, {
+        duration: 0.5,
+        delay: 0.5,
+        easing: 'ease-in-out',
+    });
+
+    new ResizeSensor(containerRef.value, () => {
+        getAndSetImageWidth();
+    });
+
+    const containerElement = containerRef.value;
+
+    // for mobile
+    containerElement.addEventListener('touchstart', startSliding);
+    window.addEventListener('touchend', finishSliding);
+
+    // for desktop
+    if (props.hover) {
+        containerElement.addEventListener('mouseenter', startSliding);
+        containerElement.addEventListener('mouseleave', finishSliding);
+    } else {
+        containerElement.addEventListener('mousedown', startSliding);
+        window.addEventListener('mouseup', finishSliding);
+    }
+});
+
+onBeforeUnmount(() => {
+    finishSliding();
+    window.removeEventListener('mouseup', finishSliding);
+    window.removeEventListener('touchend', finishSliding);
+});
 </script>
 
 <template>
-    <div class="position-relative">
+    <div ref="scope" class="position-relative">
         <div id="image_comparison" class="mb-8 position-relative z-2">
             <div :class="theme.global.current.value.dark ? 'image-container image-container-glow' : 'image-container'" ref="containerRef">
                 <img
@@ -233,24 +219,24 @@ export default {
         </div>
 
         <div id="backgroundImages" class="background-images">
-            <div class="floating-image" style="left: -5%; top: 20%;">
+            <motion.div class="floating-image" style="left: -5%; top: 20%;">
                 <img src="@/assets/youtube-thumbnail-f.webp" alt="My Biggest Ragrets Thumbnail" />
-            </div>
-            <div class="floating-image" style="left: -13%; top: 50%;">
+            </motion.div>
+            <motion.div class="floating-image" style="left: -13%; top: 50%;">
                 <img src="@/assets/youtube-thumbnail-e.webp" alt="How To Add Custom Metafields Thumbnail" />
-            </div>
-            <div class="floating-image" style="left: 15%; bottom: -15%;">
+            </motion.div>
+            <motion.div class="floating-image" style="left: 15%; bottom: -15%;">
                 <img src="@/assets/youtube-thumbnail-d.webp" alt="Shopify App Development with ChatGPT Thumbnail" />
-            </div>
-            <div class="floating-image" style="left: 41%; bottom: -25%;">
+            </motion.div>
+            <motion.div class="floating-image" style="left: 41%; bottom: -25%;">
                 <img src="@/assets/youtube-thumbnail-c.webp" alt="Vibe Coding for Shopify App Developers Thumbnail" />
-            </div>
-            <div class="floating-image" style="left: 71%; bottom: -12%;">
+            </motion.div>
+            <motion.div class="floating-image" style="left: 71%; bottom: -12%;">
                 <img src="@/assets/youtube-thumbnail-g.webp" alt="Why Programmers Quit Thumbnail" />
-            </div>
-            <div class="floating-image" style="right: -13%; top: 35%;">
+            </motion.div>
+            <motion.div class="floating-image" style="right: -13%; top: 35%;">
                 <img src="@/assets/youtube-thumbnail-b.webp" alt="My Goals For 2025 Thumbnail" />
-            </div>
+            </motion.div>
         </div>
     </div>
 </template>

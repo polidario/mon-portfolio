@@ -1,29 +1,27 @@
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import { animate, stagger, inView } from 'motion';
+<script setup lang="ts">
+import { defineProps, PropType } from 'vue';
+import { motion } from 'motion-v';
 import type { IconListItem } from '@/types/Components';
 
-
-export default defineComponent({
-    props: {
-        items: {
-            type: Array as PropType<IconListItem[]>,
-            required: true,
-        },
-    },
-    mounted() {
-        this.$el.querySelectorAll('.list-item').forEach((item: HTMLElement) => {
-            inView(item, () => {
-                animate(item, { opacity: 1, y: [100, 0] }, { delay: stagger(1, { ease: [.32, .23, .4, .9]}) });
-            });
-        });
-    },
+defineProps({
+    items: {
+        type: Array as PropType<IconListItem[]>,
+        required: true
+    }
 });
 </script>
 
 <template>
     <div class="list-items__container" v-if="items.length">
-        <div v-for="item in items" :key="item.id" class="list-item">
+        <motion.div 
+            v-for="item in items" 
+            :key="item.id" 
+            class="list-item"
+            initial="offscreen"
+            whileInView="onscreen"
+            :variants="{ offscreen: { opacity: 0, y: 50 }, onscreen: { opacity: 1, y: 0 } }"
+            :transition="{ duration: 1, ease: 'easeInOut' }"
+        >
             <div class="list-item__body">
                 <div class="list-item__icon" v-html="item.colored_icon">
                 </div>
@@ -44,7 +42,7 @@ export default defineComponent({
                     <v-icon icon="mdi-open-in-new" />
                 </a>
             </div>
-        </div>
+        </motion.div>
     </div>
     <div v-else class="list-items__empty">
         <p>No items found</p>
@@ -77,7 +75,6 @@ export default defineComponent({
     width: 100%;
     box-sizing: border-box;
     box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.25);
-    transition: all 0.3s ease;
 }
 
 .list-item:hover {

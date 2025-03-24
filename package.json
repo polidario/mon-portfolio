@@ -17,7 +17,6 @@
     "@unhead/vue": "^2.0.0-rc.13",
     "css-element-queries": "^1.2.3",
     "dotenv": "^16.4.7",
-    "motion": "^12.4.12",
     "motion-v": "^0.13.1",
     "pinia": "^2.1.7",
     "sass-loader": "^16.0.5",
