@@ -173,7 +173,6 @@ onMounted(() => {
         
       <IconList :items="techIcons" />
 
-      <InfiniteScroll :icons="techIcons"/>
     </section>
 
     <ContactMe />
