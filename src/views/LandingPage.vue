@@ -36,9 +36,45 @@ import CursorFollower from '@/components/animations/CursorFollower.vue';
 // Icons
 import IconSmiley from '@/components/icons/IconSmiley.vue';
 import IconHeart from '@/components/icons/IconHeart.vue';
+import TimelineVertical from '@/components/TimelineVertical.vue';
+import IconSun from '@/components/icons/IconSun.vue';
 
 // State
 const techIcons = ref<IconListItem[]>([]);
+const timelineItems = [
+  {
+    id: 1,
+    title: 'Full-stack Engineer',
+    subtitle: 'Differs',
+    description: 'Developed features to Differs\' web application (Analytics/Charts, Detailed product tables, A/B test results, Profile/Settings page, Chat bot integration, Project dashboard etc.) to improve user experience.',
+    date: 'Feb 2024 - Dec 2024',
+    url: 'https://differs.io'
+  },
+  {
+    id: 2,
+    title: 'Full-stack Developer',
+    subtitle: 'Upskyld',
+    description: 'Worked as an intern at Upskyld, a startup company that focuses on providing a platform for everyone to learn and improve their skills through podcasts. Main responsibilities include developing the frontend and backend of the platform (Optimizing UX, Stripe API integration, etc.).',
+    date: 'Aug 2023 - Jan 2024',
+    url: 'https://www.linkedin.com/company/upskyld/'
+  },
+  {
+    id: 3,
+    title: 'Shopify Developer / Content Creator',
+    subtitle: 'Freelance',
+    description: 'Produced video content for WeeklyHow on YouTube, with over 1.2M views. Collaborated and sponsored by Shopify to produce content and promote Shopify Edition.',
+    date: 'Jan 2020 - Present',
+    url: 'https://weeklyhow.com'
+  },
+  {
+    id: 4,
+    title: 'Game Content Developer',
+    subtitle: 'GameDevHQ',
+    description: 'Developed coding challenges and quizzes for GameDevHQ\'s platform.',
+    date: 'May 2020 - Aug 2020',
+    url: 'https://gamedevhq.com'
+  },
+];
 
 const fetchTechStacks = async () => {
   try {
@@ -107,14 +143,6 @@ onMounted(() => {
           >
         </template>
 
-        <template #top_right_overlay>
-          <div v-if="!mobile" class="cursor">
-            <ObjectFloater>
-              <IconSmiley />
-            </ObjectFloater>
-          </div>
-        </template>
-
         <template #overlay>
           <div class="overlay-card-text">
             <div v-if="!mobile" class="cursor">
@@ -132,6 +160,10 @@ onMounted(() => {
         </template>
       </GridFold>
     </section>
+
+    <TimelineVertical :items="timelineItems">
+
+    </TimelineVertical>
 
     <section id="tech-stack" class="tech-stack">
       <HeadingTitle 

@@ -13,15 +13,11 @@ const slots = useSlots()
 onMounted(() => {
     const gridItemA = document.querySelector(".grid-item-a")
     const gridItemB = document.querySelector(".grid-item-b")
-    const topRightOverlay = document.querySelector(".top-right-overlay")
     scroll(animate(gridItemA, { y: [-100, 100] }, { ease: "linear" }), {
         target: gridItemA,
     })
-    scroll(animate(gridItemB, { y: [-50, 50] }, { ease: "linear" }), {
+    scroll(animate(gridItemB, { y: [0, 50] }, { ease: "linear" }), {
         target: gridItemB,
-    })
-    scroll(animate(topRightOverlay, { y: [200, -70] }, { ease: "linear" }), {
-        target: topRightOverlay,
     })
 })
 </script>
