@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, onMounted, PropType } from 'vue';
+import { defineProps, PropType } from 'vue';
 import { motion } from 'motion-v'
 import type { TimelineItem } from '@/types/Components';
 
@@ -9,19 +9,6 @@ defineProps({
         required: true
     }
 });
-
-onMounted(() => {
-    // document.querySelectorAll('.content').forEach((content, index) => {
-    //     animate(content, {
-    //         translateY: [`${index * 0.5}rem`, 0],
-    //     }, {
-    //         duration: 0.5,
-    //         delay: index * 0.1,
-    //         ease: 'easeInOut',
-    //     });
-    // });
-});
-
 </script>
 
 <template>

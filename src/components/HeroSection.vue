@@ -1,6 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
-import { animate, inView } from 'motion';
+import { motion } from 'motion-v';
 
 defineProps({
   title: {
@@ -16,58 +15,45 @@ defineProps({
   color: {
     type: String
   }
-})
-
-onMounted(() => {
-  const title = document.querySelector('#hero_section__title');
-  const body = document.querySelector('#hero_section__body');
-  const locationSection = document.querySelector('#hero_section__location');
-
-  inView('.hero-section', () => {
-    animate(title, {
-      opacity: [0, 1],
-      translateY: [20, 0],
-    }, {
-      duration: 1,
-      delay: 0.25,
-      easing: 'ease-in-out',
-    });
-
-    animate(body, {
-      opacity: [0, 1],
-      translateY: [20, 0],
-    }, {
-      duration: 1,
-      delay: 0.5,
-      easing: 'ease-in-out',
-    });
-
-    animate(locationSection, {
-      opacity: [0, 1],
-      translateY: [20, 0],
-    }, {
-      duration: 1,
-      delay: 0.75,
-      easing: 'ease-in-out',
-    });
-  });
 });
-
 </script>
 
 <template>
   <div class="hero-section d-flex flex-column align-center justify-center ga-10 mt-16">
     <div class="d-flex flex-column align-center ga-10 pa-5">
       <div class="text-wrapper">
-        <h2 id="hero_section__title" class="title">{{ title }}</h2>
+        <motion.h2 
+          id="hero_section__title" 
+          class="title"
+          initial="offscreen"
+          whileInView="onscreen"
+          :variants="{ offscreen: { opacity: 0, y: 50 }, onscreen: { opacity: 1, y: 0 } }"
+          :transition="{ duration: 1, ease: 'easeInOut' }"
+        >{{ title }}</motion.h2>
       </div>
       
-      <div id="hero_section__body" class="d-flex flex-rows ga-5 position-relative">
+      <motion.div 
+        id="hero_section__body" 
+        class="d-flex flex-rows ga-5 position-relative"
+        initial="offscreen"
+        whileInView="onscreen"
+        :variants="{ offscreen: { opacity: 0, y: 50 }, onscreen: { opacity: 1, y: 0 } }"
+        :transition="{ duration: 1, ease: 'easeInOut' }"
+      >
         <v-icon icon="mdi-creation"></v-icon> 
         <p class="body-text">{{ body }}</p>
-      </div>
+      </motion.div>
       
-      <span id="hero_section__location" class="location">Based in Paris, France</span>
+      <motion.span 
+        id="hero_section__location" 
+        class="location"
+        initial="offscreen"
+        whileInView="onscreen"
+        :variants="{ offscreen: { opacity: 0, y: 50 }, onscreen: { opacity: 1, y: 0 } }"
+        :transition="{ duration: 1, ease: 'easeInOut' }"
+      >
+        Based in Paris, France
+      </motion.span>
     </div>
     
     <div id="hero_section__buttons" class="d-flex flex-column ga-3">
