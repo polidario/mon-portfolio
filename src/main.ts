@@ -38,9 +38,9 @@ const vuetify = createVuetify({
       }
     }
   },
-    components,
-    directives,
-  })
+  components,
+  directives,
+})
 
 const app = createApp(App)
 const head = createHead()

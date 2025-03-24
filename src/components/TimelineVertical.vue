@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { defineProps, PropType } from 'vue';
+import { defineProps, onMounted, PropType } from 'vue';
+import { motion } from 'motion-v'
 import type { TimelineItem } from '@/types/Components';
-
 
 defineProps({
     items: {
@@ -10,12 +10,33 @@ defineProps({
     }
 });
 
+onMounted(() => {
+    // document.querySelectorAll('.content').forEach((content, index) => {
+    //     animate(content, {
+    //         translateY: [`${index * 0.5}rem`, 0],
+    //     }, {
+    //         duration: 0.5,
+    //         delay: index * 0.1,
+    //         ease: 'easeInOut',
+    //     });
+    // });
+});
+
 </script>
 
 <template>
     <div class="timeline-vertical container">
         <div class="wrapper">
-            <div v-for="item in items" :key="item.id" class="content">
+            <motion.div 
+                v-for="item in items" 
+                :key="item.id" 
+                class="content" 
+                id="timeline_content"
+                initial="offscreen"
+                whileInView="onscreen"
+                :variants="{ offscreen: { opacity: 0, y: 50 }, onscreen: { opacity: 1, y: 0 } }"
+                :transition="{ duration: 1, ease: 'easeInOut' }"
+            >
                 <div class="group">
                     <div v-if="item.subtitle" class="subtitle">{{ item.subtitle }}</div>
                     <div class="title-container">
@@ -24,7 +45,7 @@ defineProps({
                     </div>
                     <div class="description">{{ item.description }}</div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     </div>
 </template>
