@@ -69,10 +69,6 @@ export default {
             type: String,
             default: '',
         },
-        leftImageAlt: {
-            type: String,
-            default: null,
-        },
         leftLabel: {
             type: String,
             default: '',
@@ -80,10 +76,6 @@ export default {
         rightImage: {
             type: String,
             default: '',
-        },
-        rightImageAlt: {
-            type: String,
-            default: null,
         },
         rightLabel: {
             type: String,
@@ -213,7 +205,6 @@ export default {
         <div id="image_comparison" class="mb-8 position-relative z-2">
             <div :class="theme.global.current.value.dark ? 'image-container image-container-glow' : 'image-container'" ref="containerRef">
                 <img
-                    :alt="leftImageAlt"
                     src="@/assets/weeklyhow.webp"
                     :style="leftImageStyle"
                     class="left-image"
@@ -225,7 +216,7 @@ export default {
                 </div>
             
                 <div class="right-image">
-                    <img :alt="rightImageAlt" src="@/assets/portfolio-banner.webp" ref="rightImageRef" alt="Bernard Polidario's open for work banner" />
+                    <img src="@/assets/portfolio-banner.webp" ref="rightImageRef" alt="Bernard Polidario's open for work banner" />
                 </div>
 
                 <div :style="rightLabelStyle" ref="rightLabelRef" class="right-label">{{rightLabel}}</div>

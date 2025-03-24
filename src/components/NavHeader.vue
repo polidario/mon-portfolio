@@ -77,10 +77,13 @@ export default defineComponent({
 
 <style scoped>
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     background: #0d0914;
     z-index: 100;
+    width: 100%;
 }
 nav {
     display: flex;

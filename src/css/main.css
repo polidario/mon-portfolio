@@ -81,6 +81,10 @@ body {
     line-height: 1.667em;
 }
 
+main {
+    padding-top: 120px;
+}
+
 a {
     color: var(--link-color);
     text-decoration: none;
