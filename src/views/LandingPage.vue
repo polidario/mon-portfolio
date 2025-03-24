@@ -32,10 +32,8 @@ import ParallaxImages from '@/components/ParallaxImages.vue';
 import CursorFollower from '@/components/animations/CursorFollower.vue';
 
 // Icons
-import IconSmiley from '@/components/icons/IconSmiley.vue';
 import IconHeart from '@/components/icons/IconHeart.vue';
 import TimelineVertical from '@/components/TimelineVertical.vue';
-import IconSun from '@/components/icons/IconSun.vue';
 
 // State
 const techIcons = ref<IconListItem[]>([]);
