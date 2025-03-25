@@ -167,7 +167,7 @@ nav .nav-toggle-button {
     }
 
     .nav-mobile-section {
-        background-color: var(--color-gray);
+        background-color: var(--background-color);
         position: fixed;
         top: 0;
         left: 0;
