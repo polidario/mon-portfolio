@@ -25,7 +25,10 @@ defineProps({
                 :transition="{ duration: 1, ease: 'easeInOut' }"
             >
                 <div class="group">
-                    <div v-if="item.subtitle" class="subtitle">{{ item.subtitle }}</div>
+                    <a v-if="item.subtitle && item.subtitle" :href="item.url">
+                        <div class="subtitle">{{ item.subtitle }}</div>
+                    </a>
+                    <div v-else-if="item.subtitle" class="subtitle">{{ item.subtitle }}</div>
                     <div class="title-container">
                         <div class="title">{{ item.title }}</div>
                         <div class="date">{{ item.date }}</div>

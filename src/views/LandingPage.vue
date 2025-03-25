@@ -54,7 +54,7 @@ const fetchTechStacks = async () => {
 
 const fetchWorkExperiences = async () => {
   try {
-    const { data, error } = await supabase.from('work_experiences').select();
+    const { data, error } = await supabase.from('work_experiences').select().order('worked_from', { ascending: false });
     
     if (error) throw error;
     if (!data) throw new Error('No data found');
@@ -63,15 +63,26 @@ const fetchWorkExperiences = async () => {
       const date = new Date(item.worked_from).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
-        day: 'numeric'
       });
 
+      let date_until;
+
+      if(item.worked_until !== null) {
+        date_until = new Date(item.worked_until).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+        });
+      } else {
+        date_until = 'Present';
+      }
+       
       timelineItems.value.push({
         id: item.id,
         title: item.title,
         subtitle: item.company,
-        date,
-        description: item.description
+        date: `${date} - ${date_until}`,
+        description: item.description,
+        url: item.url
       });
     });
   } catch (error) {
