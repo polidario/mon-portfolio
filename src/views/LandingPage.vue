@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { supabase } from '@/supabase/client';
 import { useDisplay } from 'vuetify'
 import { useHead } from '@unhead/vue';
@@ -34,10 +34,18 @@ import CursorFollower from '@/components/animations/CursorFollower.vue';
 // Icons
 import IconHeart from '@/components/icons/IconHeart.vue';
 import TimelineVertical from '@/components/TimelineVertical.vue';
+import { motion, animate, useMotionValue, useTransform, RowValue } from 'motion-v';
 
 // State
+const _isLoading = ref(true);
 const techIcons = ref<IconListItem[]>([]);
 const timelineItems = ref<TimelineItem[]>([]);
+const count = useMotionValue(0);
+const roundedExperience = useTransform(count, (value) => Math.floor(value));
+let numYearsOfExperienceControl = animate(count, 0, {
+  duration: 2,
+  ease: 'easeInOut',
+});
 
 const fetchTechStacks = async () => {
   try {
@@ -51,6 +59,23 @@ const fetchTechStacks = async () => {
     console.error('Error fetching tech stacks:', error);
   }
 };
+
+const fetchYearsOfExperiences = async () => {
+  try {
+    const { data, error } = await supabase.rpc('calculate_total_experience_years');
+
+    if (error) throw error;
+    if (!data) throw new Error('No data found');
+
+    numYearsOfExperienceControl = animate(count, data, {
+      duration: 2,
+      ease: 'easeInOut',
+    });
+
+  } catch (error) {
+    console.error('Error fetching years of experiences:', error);
+  }
+}
 
 const fetchWorkExperiences = async () => {
   try {
@@ -93,6 +118,7 @@ const fetchWorkExperiences = async () => {
 onMounted(() => {
   fetchTechStacks();
   fetchWorkExperiences();
+  fetchYearsOfExperiences();
   useHead({
     meta: [
       {
@@ -114,11 +140,28 @@ onMounted(() => {
       { name: 'og:locale',  content: 'en_US' },
     ]
   });
+
+  _isLoading.value = false;
+});
+
+onUnmounted(() => {
+  numYearsOfExperienceControl.stop();
 });
 </script>
 
 <template>
-  <div id="homepage" class="home d-flex flex-column align-center justify-center ga-16" style="min-height: 300vh;">
+  <div v-if="_isLoading"  class="spinner-container">
+    <motion.div 
+      class="spinner"
+        :animate="{ rotate: 360 }"
+        :transition="{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: 'linear',
+        }"
+    />
+  </div>
+  <div v-else id="homepage" class="home d-flex flex-column align-center justify-center ga-16" style="min-height: 300vh;">
     <div :style="{ maxWidth: '1080px', zIndex: 1 }" id="imageComparison">
       <ImageComparison />
     </div>
@@ -130,7 +173,7 @@ onMounted(() => {
     <section id="aboutMe">
       <GridFold>
         <template #item_a>
-          <h2 class="text-h1 text-white font-weight-bold">6 Yrs.</h2>
+          <h2 class="text-h1 text-white font-weight-bold"><RowValue :value="roundedExperience" /> Yrs.</h2>
           <div class="py-3">
             <p class="text-h4">of developing web applications that makes people's lives easier</p>
           </div>
