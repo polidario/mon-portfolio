@@ -4,6 +4,9 @@ import { ResizeSensor } from 'css-element-queries';
 import { motion, useAnimate } from 'motion-v';
 import { useTheme } from 'vuetify';
 
+import weeklyhowImage from '@/assets/weeklyhow.webp';
+import portfolioBannerImage from '@/assets/portfolio-banner.webp';
+
 const [scope, animate] = useAnimate();
 
 const theme = useTheme();
@@ -11,7 +14,7 @@ const theme = useTheme();
 const props = defineProps({
     leftImage: {
         type: String,
-        default: '',
+        default: weeklyhowImage,
     },
     leftLabel: {
         type: String,
@@ -19,7 +22,7 @@ const props = defineProps({
     },
     rightImage: {
         type: String,
-        default: '',
+        default: portfolioBannerImage,
     },
     rightLabel: {
         type: String,
@@ -140,33 +143,37 @@ const sliderRightArrowStyle = computed(() => ({
 }));
 
 onMounted(() => {
-    const backgroundImages = document.getElementById('backgroundImages');
-    const floatingImages = backgroundImages.querySelectorAll('.floating-image');
+    requestAnimationFrame(() => {
+        const backgroundImages = document.getElementById('backgroundImages');
+        const floatingImages = backgroundImages.querySelectorAll('.floating-image');
 
-    animate('.floating-image', {
-        opacity: [0, 1],
-        translateY: [100, 0],
-    }, {
-        duration: 1,
-        delay: 0.5,
-    });
+        floatingImages.forEach((image) => {
+            animate(image, {
+                opacity: [0, 1],
+                translateY: [100, 0],
+            }, {
+                duration: 1,
+                delay: Math.floor(Math.random() * 2) + 1,
+            });
+        });
 
-    animate('#image_comparison', {
-        opacity: [0, 1],
-        translateY: [100, 0],
-    }, {
-        duration: 1,
-        easing: 'ease-in-out',
-    });
+        animate('#image_comparison', {
+            opacity: [0, 1],
+            translateY: [100, 0],
+        }, {
+            duration: 1,
+            easing: 'ease-in-out',
+        });
 
-    new ResizeSensor(containerRef.value, () => {
+        new ResizeSensor(containerRef.value, getAndSetImageWidth);
+    
         getAndSetImageWidth();
     });
 
     const containerElement = containerRef.value;
 
     // for mobile
-    containerElement.addEventListener('touchstart', startSliding);
+    containerElement.addEventListener('touchstart', startSliding, { passive: true });
     window.addEventListener('touchend', finishSliding);
 
     // for desktop
@@ -181,6 +188,18 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
     finishSliding();
+    
+    if (containerRef.value) {
+        containerRef.value.removeEventListener('touchstart', startSliding);
+        
+        if (props.hover) {
+            containerRef.value.removeEventListener('mouseenter', startSliding);
+            containerRef.value.removeEventListener('mouseleave', finishSliding);
+        } else {
+            containerRef.value.removeEventListener('mousedown', startSliding);
+        }
+    }
+    
     window.removeEventListener('mouseup', finishSliding);
     window.removeEventListener('touchend', finishSliding);
 });
@@ -191,18 +210,22 @@ onBeforeUnmount(() => {
         <div id="image_comparison" class="mb-8 position-relative z-2">
             <div :class="theme.global.current.value.dark ? 'image-container image-container-glow' : 'image-container'" ref="containerRef">
                 <img
-                    src="@/assets/weeklyhow.webp"
+                    :src="leftImage"
                     :style="leftImageStyle"
                     class="left-image"
                     ref="leftImageRef"
-                    alt="A video compilation of my weekly how-to videos"
+                    :alt="leftLabel || 'A video compilation of my weekly how-to videos'"
                 />
                 
                 <div :style="leftImageStyle" class="left-label">
                 </div>
             
                 <div class="right-image">
-                    <img src="@/assets/portfolio-banner.webp" ref="rightImageRef" alt="Bernard Polidario's open for work banner" />
+                    <img 
+                        :src="rightImage"
+                        ref="rightImageRef" 
+                        :alt="rightLabel || 'Bernard Polidario\'s open for work banner'" 
+                    />
                 </div>
 
                 <div :style="rightLabelStyle" ref="rightLabelRef" class="right-label">{{rightLabel}}</div>
