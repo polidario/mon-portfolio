@@ -5,6 +5,16 @@
 
 Welcome to my web portfolio! This template is built to showcase my skills as a Software developer.
 
+## BIG CHANGES COMING
+
+When I built this app, its main purpose is to provide information about my skills as a Software engineer. However, the more I work on this project this 2025, the more I started to think about how I can make this into a bigger project (not to mention, problems I encountered along the way). A project where I can provide, not only my skills, but also topics and projects that I care about. That said, this app will have a BIG change to it: From being an SPA (I know there's a work page but you know what I mean) to Nuxt app where I can have full control of this app.
+
+So, yeah.. That's all I wanted to write here.
+
+#### Now, when is this gonna happen?
+
+Hmmm... can't say the exact date yet since I have other stuff to prioritize but all I can say is I'm now working on it. So.. before 2026, it should be released.
+
 ## Tech used
 - Vuejs
 - Supabase / PostgreSQL
