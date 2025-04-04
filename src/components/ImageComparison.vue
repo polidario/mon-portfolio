@@ -188,6 +188,18 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
     finishSliding();
+    
+    if (containerRef.value) {
+        containerRef.value.removeEventListener('touchstart', startSliding);
+        
+        if (props.hover) {
+            containerRef.value.removeEventListener('mouseenter', startSliding);
+            containerRef.value.removeEventListener('mouseleave', finishSliding);
+        } else {
+            containerRef.value.removeEventListener('mousedown', startSliding);
+        }
+    }
+    
     window.removeEventListener('mouseup', finishSliding);
     window.removeEventListener('touchend', finishSliding);
 });
