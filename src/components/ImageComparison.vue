@@ -143,12 +143,14 @@ onMounted(() => {
     const backgroundImages = document.getElementById('backgroundImages');
     const floatingImages = backgroundImages.querySelectorAll('.floating-image');
 
-    animate('.floating-image', {
-        opacity: [0, 1],
-        translateY: [100, 0],
-    }, {
-        duration: 1,
-        delay: 0.5,
+    floatingImages.forEach((image) => {
+        animate(image, {
+            opacity: [0, 1],
+            translateY: [100, 0],
+        }, {
+            duration: 1,
+            delay: Math.floor(Math.random() * 2) + 1,
+        });
     });
 
     animate('#image_comparison', {
