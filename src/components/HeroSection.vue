@@ -20,7 +20,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="hero-section d-flex flex-column align-center justify-center ga-10 mt-16">
+  <section class="hero-section">
     <div class="d-flex flex-column align-center ga-10 pa-5">
       <div class="text-wrapper">
         <motion.h2 
@@ -56,70 +56,84 @@ defineProps({
         <IconFranceFlag /> Based in Paris, France
       </motion.span>
     </div>
-    
-    <div id="hero_section__buttons" class="d-flex flex-column ga-3">
-    </div>
-  </div>
+  </section>
 </template>
 
-<style>
+<style scoped lang="scss">
 .hero-section {
-  height: 412px;
-  z-index: 1;
-}
-
-.hero-section .text-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
-}
+  justify-content: center;
+  gap: var(--space-8);
+  margin-top: var(--space-16);
+  height: 412px;
+  z-index: 1;
+  
+  .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
 
-.hero-section .title {
-  font-size: 3.75rem;
-  font-weight: bold;
-  line-height: 1;
-  letter-spacing: -0.0083333333em;
-  transition: opacity 0.1s;
-  color: var(--color-white);
-}
+  .title {
+    font-size: 3.75rem;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: -0.0083333333em;
+    transition: opacity 0.1s;
+    color: var(--color-white);
 
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
 
-.hero-section .body-text {
-  font-size: 3rem;
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: normal;
+  .body-text {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: normal;
+    margin: 0;
+    transition: opacity 0.1s;
+  }
 
-  transition: opacity 0.1s;
-}
+  .location {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 1rem;
 
-.hero-section .location {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
+    span {
+      white-space: nowrap;
+    }
+  }
 }
 
 @media only screen and (max-width: 980px) {
-  .hero-section .title {
-    font-size: 2.25em;
-    font-weight: bold;
-    text-align: center;
-  }
+  .hero-section {
+    .title {
+      font-size: 2.25em;
+      line-height: 1.2;
+      font-weight: bold;
+      text-align: center;
+    }
 
-  .hero-section #hero_section__body i {
-    position: absolute;
-    font-size: var(--text-xl);
-    top: -70px;
-    left: -40px;
-    z-index: -1;
-    opacity: 0.25;
-  }
+    .body-text {
+      font-size: 1.75em;
+      line-height: 1.2;
+      text-align: center;
+    }
 
-  .hero-section .body-text {
-    font-size: 1.75em;
-    font-weight: bold;
-    text-align: center;
+    #hero_section__body {
+      i {
+        position: absolute;
+        font-size: var(--text-xl);
+        top: -70px;
+        left: -40px;
+        z-index: -1;
+        opacity: 0.25;
+      }
+    }
   }
 }
 </style>
