@@ -5,7 +5,6 @@ const { data: links, error } = await useFetch('/api/links');
 if (error.value) {
     console.error('Error fetching links:', error.value);
 }
-console.log('Links:', links.value);
 
 const linklist : AppLinksResponse = links.value || {
   links: [],
@@ -14,13 +13,6 @@ const linklist : AppLinksResponse = links.value || {
 
 const isToggled = ref(false);
 const navRef = ref<HTMLElement | null>(null);
-
-const socialLinks = [
-  { url: 'https://www.linkedin.com/in/polidario/', icon: 'mdi-linkedin', label: "Bernard's LinkedIn profile" },
-  { url: 'https://youtube.com/@weeklyhow', icon: 'mdi-youtube', label: "Bernard's YouTube channel called WeeklyHow" },
-  { url: 'https://instagram.com/weeklyhow', icon: 'mdi-instagram', label: "WeeklyHow's Instagram account" },
-  { url: 'https://github.com/polidario', icon: 'mdi-github', label: "Bernard's GitHub profile" }
-];
 
 let resizeTimer: number | null = null;
 const handleResize = () => {
@@ -84,7 +76,7 @@ onBeforeUnmount(() => {
             <div class="nav-mobile-section" :class="{ 'nav-mobile-active': isToggled }">
                 <div class="nav-links nav-mobile-close">
                     <button role="button" v-on:click="toggleNav" aria-label="Close Navigation">
-                        <v-icon icon="mdi-close"></v-icon>
+                        <Icon name="mdi-close" aria-label="Close Navigation" />
                     </button>
                 </div>
                 <div class="nav-links nav-texts">
@@ -99,14 +91,14 @@ onBeforeUnmount(() => {
                 </div>
                 <div class="nav-links nav-icons">
                     <a 
-                        v-for="link in socialLinks" 
+                        v-for="link in linklist.social_links" 
                         :key="link.url" 
                         :href="link.url" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         :aria-label="`Open ${link.label}`"
                     >
-                        <v-icon :icon="link.icon"></v-icon>
+                        <Icon :name="link.icon" :aria-label="link.label" />
                     </a>
                 </div>
             </div>
@@ -117,7 +109,7 @@ onBeforeUnmount(() => {
                 >GET MY CV</a>
             </div>
             <button role="button" type="button" class="nav-toggle-button" aria-label="Toggle Navigation" v-on:click="toggleNav">
-                <v-icon icon="mdi-menu"></v-icon>
+                <Icon name="mdi-menu" aria-label="Menu" />
             </button>
         </nav>
     </header>

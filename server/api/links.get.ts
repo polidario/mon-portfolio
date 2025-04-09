@@ -19,17 +19,18 @@ export default defineEventHandler(async (event) => {
   const supabase = await serverSupabaseClient(event)
 
   const { data, error } = await supabase.from('links').select('*')
+  const { data: socialData, error: socialError } = await supabase.from('socials').select('*')
 
-  if (error) {
+  if (error || socialError) {
     return {
       links: [],
       social_links: [],
-      error: error.message
+      error: error!.message || socialError!.message
     }
   }
 
   return {
     links: data,
-    social_links: []
+    social_links: socialData
   }
 })
