@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/eslint',
     '@nuxt/test-utils',
-    '@nuxtjs/supabase'
+    '@nuxtjs/supabase',
+    'motion-v/nuxt'
   ]
 })
