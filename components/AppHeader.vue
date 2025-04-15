@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-
 const { data: links, error } = await useFetch('/api/links');
-if (error.value) {
-    console.error('Error fetching links:', error.value);
-}
+if (error.value) console.error('Error fetching links:', error.value);
 
 const linklist : AppLinksResponse = links.value || {
   links: [],
