@@ -175,6 +175,7 @@ onBeforeUnmount(() => {
 
     .nav-toggle-button {
         color: var(--link-color);
+        background: none;
         display: none;
         padding: var(--space-6) var(--space-8);
         align-items: center;
