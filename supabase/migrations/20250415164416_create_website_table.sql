@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "public"."websites" (
+CREATE TABLE IF NOT EXISTS "public"."website" (
     "id" "uuid" DEFAULT "gen_random_uuid"() NOT NULL PRIMARY KEY,
     "name" "text",
     "description" "text",
@@ -15,13 +15,13 @@ CREATE TABLE IF NOT EXISTS "public"."websites" (
 );
 
 -- Enable Row Level Security
-ALTER TABLE "public"."websites" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "public"."website" ENABLE ROW LEVEL SECURITY;
 
--- Create a policy that allows all users to read from the websites table
+-- Create a policy that allows all users to read from the website table
 CREATE POLICY "Allow read access for all users" 
-ON "public"."websites"
+ON "public"."website"
 FOR SELECT
 USING (true);
 
 -- Create an index on the URL for faster lookups
-CREATE INDEX IF NOT EXISTS websites_url_idx ON "public"."websites" ("url");
+CREATE INDEX IF NOT EXISTS website_url_idx ON "public"."website" ("url");
