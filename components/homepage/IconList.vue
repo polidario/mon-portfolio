@@ -6,8 +6,6 @@ const { data, error } = await useFetch<IconListItem[]>('/api/stacks');
 if (error.value) console.error('Error fetching experiences:', error.value);
 
 const items = data.value;
-
-console.log(items);
 </script>
 
 <template>
