@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import type { TimelineItem } from '~/types/components';
+import type { IconListItem, TimelineItem } from '~/types/components';
+
+definePageMeta({
+    layout: 'homepage'
+});
 
 const { data, error } = await useFetch<TimelineItem[]>('/api/experiences');
 if (error.value) console.error('Error fetching experiences:', error.value);
+
+
 </script>
 <template>
     <div class="homepage d-flex flex-column align-center justify-center ga-16">
@@ -14,5 +20,7 @@ if (error.value) console.error('Error fetching experiences:', error.value);
 
         <HomepageHeroSection />
         <HomepageTimelineVertical :items="data || []" />
+
+        <HomepageIconList />
     </div>
 </template>
