@@ -15,6 +15,10 @@ export default defineNuxtConfig({
   supabase: {
     redirect: false,
   },
+  image: {
+    dir: 'assets/images',
+    domains: ['avatars0.githubusercontent.com']
+  },
   modules: [
     'motion-v/nuxt',
     '@nuxt/image',
