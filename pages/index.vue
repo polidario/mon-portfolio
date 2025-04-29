@@ -14,10 +14,10 @@ if (error.value) console.error('Error fetching experiences:', error.value);
     <div class="homepage d-flex flex-column align-center justify-center ga-16">
         
         <HomepageHeroSection />
-        
-        <div :style="{ maxWidth: '1080px', zIndex: 1 }" id="imageComparison">
+
+        <!-- <div :style="{ maxWidth: '1080px', zIndex: 1 }" id="imageComparison">
             <HomepageImageComparison />
-        </div>
+        </div> -->
 
         <HomepageParallaxImages />
 
