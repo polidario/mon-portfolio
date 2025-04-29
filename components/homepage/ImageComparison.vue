@@ -2,15 +2,12 @@
 import { ResizeSensor } from 'css-element-queries';
 import { motion, useAnimate } from 'motion-v';
 
-import weeklyhowImage from '@/assets/images/weeklyhow.webp';
-import portfolioBannerImage from '@/assets/images/portfolio-banner.webp';
-
 const [scope, animate] = useAnimate();
 
 const props = defineProps({
     leftImage: {
         type: String,
-        default: weeklyhowImage,
+        default: '/weeklyhow.webp',
     },
     leftLabel: {
         type: String,
@@ -18,7 +15,7 @@ const props = defineProps({
     },
     rightImage: {
         type: String,
-        default: portfolioBannerImage,
+        default: '/portfolio-banner.webp',
     },
     rightLabel: {
         type: String,
@@ -53,6 +50,7 @@ const rightLabelWidth = ref(0);
 const isSliding = ref(false);
 
 const getAndSetImageWidth = () => {
+    if(!rightImageRef && !rightLabelRef) return; 
     imageWidth.value = rightImageRef.value.getBoundingClientRect().width;
     rightLabelWidth.value = rightLabelRef.value.getBoundingClientRect().width;
 };
@@ -205,7 +203,7 @@ onBeforeUnmount(() => {
     <div ref="scope" class="image-comparison">
         <div id="image_comparison" class="image-comparison-wrapper">
             <div class="image-container image-container-glow" ref="containerRef">
-                <img
+                <NuxtImg
                     :src="leftImage"
                     :style="leftImageStyle"
                     class="left-image"
@@ -217,7 +215,7 @@ onBeforeUnmount(() => {
                 </div>
             
                 <div class="right-image">
-                    <img 
+                    <NuxtImg 
                         :src="rightImage"
                         ref="rightImageRef" 
                         :alt="rightLabel || 'Bernard Polidario\'s open for work banner'" 
@@ -239,22 +237,22 @@ onBeforeUnmount(() => {
 
         <div id="backgroundImages" class="background-images">
             <motion.div class="floating-image" style="left: -5%; top: 20%;">
-                <img src="@/assets/images/youtube-thumbnail-f.webp" alt="My Biggest Ragrets Thumbnail" />
+                <NuxtImg src="/youtube-thumbnail-f.webp" alt="My Biggest Ragrets Thumbnail" />
             </motion.div>
             <motion.div class="floating-image" style="left: -13%; top: 50%;">
-                <img src="@/assets/images/youtube-thumbnail-e.webp" alt="How To Add Custom Metafields Thumbnail" />
+                <NuxtImg src="/youtube-thumbnail-e.webp" alt="How To Add Custom Metafields Thumbnail" />
             </motion.div>
             <motion.div class="floating-image" style="left: 15%; bottom: -15%;">
-                <img src="@/assets/images/youtube-thumbnail-d.webp" alt="Shopify App Development with ChatGPT Thumbnail" />
+                <NuxtImg src="/youtube-thumbnail-d.webp" alt="Shopify App Development with ChatGPT Thumbnail" />
             </motion.div>
             <motion.div class="floating-image" style="left: 41%; bottom: -25%;">
-                <img src="@/assets/images/youtube-thumbnail-c.webp" alt="Vibe Coding for Shopify App Developers Thumbnail" />
+                <NuxtImg src="/youtube-thumbnail-c.webp" alt="Vibe Coding for Shopify App Developers Thumbnail" />
             </motion.div>
             <motion.div class="floating-image" style="left: 71%; bottom: -12%;">
-                <img src="@/assets/images/youtube-thumbnail-g.webp" alt="Why Programmers Quit Thumbnail" />
+                <NuxtImg src="/youtube-thumbnail-g.webp" alt="Why Programmers Quit Thumbnail" />
             </motion.div>
             <motion.div class="floating-image" style="right: -13%; top: 35%;">
-                <img src="@/assets/images/youtube-thumbnail-b.webp" alt="My Goals For 2025 Thumbnail" />
+                <NuxtImg src="/youtube-thumbnail-b.webp" alt="My Goals For 2025 Thumbnail" />
             </motion.div>
         </div>
     </div>
