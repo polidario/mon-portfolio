@@ -1,22 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
   ssr: true,
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => ['motion'].includes(tag),
     },
   },
-
-  css: [
-    '@/assets/css/main.scss',
-  ],
+  css: ['@/assets/css/main.scss'],
   supabase: {
     redirect: false,
-  },
-  image: {
-    dir: 'assets/images',
-    domains: ['avatars0.githubusercontent.com']
   },
   modules: [
     'motion-v/nuxt',
