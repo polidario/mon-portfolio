@@ -1,17 +1,6 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": ".output",
-  "framework": "nuxtjs",
-  "regions": ["cdg1"],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ]
+  "outputDirectory": "dist",
+  "framework": "nuxtjs"
 }
