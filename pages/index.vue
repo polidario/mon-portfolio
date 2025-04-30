@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IconListItem, TimelineItem } from '~/types/components';
+import type { TimelineItem } from '~/types/components';
 
 definePageMeta({
     layout: 'homepage'
@@ -18,8 +18,8 @@ if (error.value) console.error('Error fetching experiences:', error.value);
         <!-- <div :style="{ maxWidth: '1080px', zIndex: 1 }" id="imageComparison">
             <HomepageImageComparison />
         </div> -->
-
-        <HomepageParallaxImages />
+        <!-- 
+        <HomepageParallaxImages /> -->
 
         <HomepageTimelineVertical :items="data || []" />
 
