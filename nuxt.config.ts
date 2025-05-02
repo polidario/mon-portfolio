@@ -18,5 +18,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/test-utils',
     '@nuxtjs/supabase',
+    '@nuxtjs/device'
   ]
 })
