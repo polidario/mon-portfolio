@@ -72,7 +72,7 @@ onBeforeUnmount(() => {
             <div class="nav-mobile-section" :class="{ 'nav-mobile-active': isToggled }">
                 <div class="nav-links nav-mobile-close">
                     <button role="button" v-on:click="toggleNav" aria-label="Close Navigation">
-                        <Icon name="mdi-close" aria-label="Close Navigation" />
+                        <Icon size="3em" name="mdi-close" aria-label="Close Navigation" />
                     </button>
                 </div>
                 <div class="nav-links nav-texts">
@@ -85,7 +85,7 @@ onBeforeUnmount(() => {
                         {{ item.label }}
                     </RouterLink>
                 </div>
-                <div class="nav-links nav-icons">
+                <div v-if="$device.isMobileOrTablet" class="nav-links nav-icons">
                     <a 
                         v-for="link in linklist.social_links" 
                         :key="link.url" 
@@ -110,142 +110,3 @@ onBeforeUnmount(() => {
         </nav>
     </header>
 </template>
-
-<style scoped lang="scss">
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: #0d0914;
-    z-index: 100;
-    width: 100%;
-
-    padding-right: calc(100vw - 100%); 
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-
-    .nav-mobile-section {
-        display: flex;
-        flex-basis: calc(100% * (2 / 3));
-    }
-
-    .nav-links {
-        display: flex;
-        gap: var(--space-4);
-        align-items: center;
-        justify-content: center;
-    }
-
-    .nav-mobile-close {
-        display: none;
-        flex-basis: 25%;
-    }
-
-    .nav-texts, .nav-icons {
-        flex-basis: 50%;
-        gap: var(--space-13);
-    }
-
-    .nav-logo-section {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: var(--space-4);
-        padding: var(--space-8);
-        flex-basis: calc(100% / 3);
-    }
-
-    .action-button-section {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding: 3rem;
-        flex-basis: calc(100% / 3);
-    }
-
-    .action-button-section, .nav-mobile-section {
-        flex-grow: 1;
-    }
-
-    .nav-toggle-button {
-        color: var(--link-color);
-        background: none;
-        display: none;
-        padding: var(--space-6) var(--space-8);
-        align-items: center;
-        justify-content: center;
-        border: none;
-        outline: none;
-        position: relative;
-        height: 100%;
-
-        font-size: 1.25rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-container {
-        justify-content: space-between;
-
-        .nav-links {
-            font-size: var(--text-h4);
-        }
-
-        .nav-mobile-section {
-            background-color: var(--background-color);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            transform: translateX(100%);
-            transition: transform 1s ease-in-out;
-            flex-direction: column;
-            animation: fadeIn 1s;
-            
-            z-index: 100;
-            backface-visibility: hidden;
-        }
-
-        .action-button-section {
-            display: none;
-        }
-
-        .nav-toggle-button {
-            display: flex;
-        }
-
-        .nav-mobile-close {
-            display: flex;
-        }
-
-        .nav-texts, .nav-icons {
-            gap: var(--space-7);
-        }
-    }
-
-    .nav-container[aria-expanded="true"] > .nav-mobile-section {
-        display: flex;
-        gap: var(--space-4);
-        transform: translateX(0);
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        99% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-}
-</style>
