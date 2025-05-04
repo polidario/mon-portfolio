@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     'motion-v/nuxt',
     '@nuxt/image',
     '@nuxt/icon',
+    '@nuxt/content',
     '@nuxt/fonts',
     '@nuxt/eslint',
     '@nuxt/test-utils',
