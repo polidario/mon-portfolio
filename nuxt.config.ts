@@ -22,6 +22,14 @@ export default defineNuxtConfig({
     cookieName: 'strapi_jwt',
   },
 
+  apollo: {
+    clients: {
+      default: {
+        httpEndpoint: 'http://localhost:1337/graphql'
+      }
+    }
+  },
+
   modules: [
     'motion-v/nuxt',
     '@nuxt/image',
@@ -31,7 +39,8 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxtjs/supabase',
     '@nuxtjs/device',
-    '@nuxtjs/strapi'
+    '@nuxtjs/strapi',
+    '@nuxtjs/apollo'
   ],
 
   compatibilityDate: '2025-05-04'
