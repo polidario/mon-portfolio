@@ -34,7 +34,6 @@ export default defineNuxtConfig({
     'motion-v/nuxt',
     '@nuxt/image',
     '@nuxt/icon',
-    '@nuxt/fonts',
     '@nuxt/eslint',
     '@nuxt/test-utils',
     '@nuxtjs/supabase',
@@ -42,6 +41,16 @@ export default defineNuxtConfig({
     '@nuxtjs/strapi',
     '@nuxtjs/apollo'
   ],
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/css/_variables.scss" as *;'
+        }
+      }
+    }
+  },
 
   compatibilityDate: '2025-05-04'
 })
