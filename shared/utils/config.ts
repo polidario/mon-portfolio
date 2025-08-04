@@ -1,4 +1,4 @@
-export default {
+export const config = {
     title: "Bernard Polidario — Software Engineer",
     description: "I design web apps for human satisfaction. I am a frontend developer based in France.",
     keywords: "full-stack developer, frontend developer, shopify developer, web developer, bernard polidario",

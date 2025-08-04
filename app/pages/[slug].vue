@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { contentQuery } from "~/queries/content";
 import type { GraphQLResponse } from "~/types/page"
-import { getErrorMessage, getStatusCode } from "~/utils/errors"
+import { getErrorMessage, getStatusCode } from "~~/shared/utils/errors"
 
 interface StrapiError {
   statusCode?: number;
