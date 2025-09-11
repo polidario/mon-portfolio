@@ -1,65 +1,75 @@
-# My Portfolio Site
+# Nuxt Minimal Starter
 
-[Bernard Polidario — Software Engineer (1).webm](https://github.com/user-attachments/assets/45252d92-317f-4090-9212-3a5ba7bd6037)
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+## Setup
 
-Welcome to my web portfolio! This template is built to showcase my skills as a Software developer.
+Make sure to install dependencies:
 
-## BIG CHANGES COMING
-
-When I built this app, its main purpose is to provide information about my skills as a Software engineer. However, the more I work on this project this 2025, the more I started to think about how I can make this into a bigger project (not to mention, problems I encountered along the way). A project where I can provide, not only my skills, but also topics and projects that I care about. That said, this app will have a BIG change to it: From being an SPA (I know there's a work page but you know what I mean) to Nuxt app where I can have full control of this app.
-
-So, yeah.. That's all I wanted to write here.
-
-#### Now, when is this gonna happen?
-
-Hmmm... can't say the exact date yet since I have other stuff to prioritize but all I can say is I'm now working on it. So.. before 2026, it should be released.
-
-## Tech used
-- Vuejs
-- Supabase / PostgreSQL
-- Vuetify
-- Motion
-- Typescript
-
-## Customize Configuration
-
-To tailor the configuration according to your needs, refer to the [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-To get started, install the necessary dependencies with the following command:
-
-```sh
+```bash
+# npm
 npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
-### Compile and Hot-Reload for Development
+## Development Server
 
-For production deployment, use the following command to compile and minify the project:
+Start the development server on `http://localhost:3000`:
 
-```sh
+```bash
+# npm
 npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
-### Compile and Minify for Production
+## Production
 
-For production deployment, use the following command to compile and minify the project:
+Build the application for production:
 
-```sh
+```bash
+# npm
 npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+Locally preview production build:
 
-Execute the following command to run unit tests using Vitest:
+```bash
+# npm
+npm run preview
 
-```sh
-npm run test:unit
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
