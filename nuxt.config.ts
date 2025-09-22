@@ -2,6 +2,14 @@
 export default defineNuxtConfig({
   ssr: true,
 
+  runtimeConfig: {
+    public: {
+      performanceEndpoint: process.env.PERFORMANCE_ENDPOINT || '',
+      errorEndpoint: process.env.ERROR_ENDPOINT || '',
+      buildVersion: process.env.BUILD_VERSION || '1.0.0'
+    }
+  },
+
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => ['motion'].includes(tag),
