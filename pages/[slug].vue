@@ -1,37 +1,12 @@
 <script lang="ts" setup>
-// This page now sources content from Supabase instead of Strapi.
-// Expected table: "pages" with columns:
-// - slug (text, unique)
-// - title (text)
-// - content (json/jsonb) shaped for <ContentGrid />
-// - enabled (boolean)
-
-interface SupabasePage {
-  enabled?: boolean
-  slug: string
-  title: string
-  content: Array<Record<string, any>> | null
-}
+// This page fetches content from a server route backed by Supabase.
+// It calls /api/pages/[slug] which returns: { enabled, title, content, slug }
 
 const route = useRoute()
 const slug = route.params.slug as string
-const supabase = useSupabaseClient()
 
-const { data, error, pending } = await useAsyncData(`page-${slug}`, async () => {
-  const { data, error } = await supabase
-    .from('pages')
-    .select('enabled, title, content, slug')
-    .eq('slug', slug)
-    .maybeSingle<SupabasePage>()
-
-  if (error) {
-    throw createError({ statusCode: 500, statusMessage: error.message })
-  }
-  if (!data || data.enabled === false) {
-    throw createError({ statusCode: 404, statusMessage: `Page with slug "${slug}" not found` })
-  }
-
-  return data
+const { data, error, pending } = await useFetch(`/api/pages/${slug}`, {
+  key: `page-${slug}`
 })
 
 if (error.value) {
