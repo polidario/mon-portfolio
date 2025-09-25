@@ -14,21 +14,7 @@ export default defineNuxtConfig({
     redirect: false,
   },
 
-  strapi: {
-    url: process.env.STRAPI_URL || 'http://localhost:1337',
-    prefix: '/api',
-    version: 'v4',
-    cookie: {},
-    cookieName: 'strapi_jwt',
-  },
 
-  apollo: {
-    clients: {
-      default: {
-        httpEndpoint: 'http://localhost:1337/graphql'
-      }
-    }
-  },
 
   modules: [
     'motion-v/nuxt',
@@ -37,9 +23,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/test-utils',
     '@nuxtjs/supabase',
-    '@nuxtjs/device',
-    '@nuxtjs/strapi',
-    '@nuxtjs/apollo'
+    '@nuxtjs/device'
   ],
 
   vite: {

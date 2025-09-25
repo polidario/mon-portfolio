@@ -1,56 +1,43 @@
 <script lang="ts" setup>
-import { contentQuery } from "~/queries/content";
-import type { GraphQLResponse } from "~/types/page"
-import { getErrorMessage, getStatusCode } from "~/utils/errors"
+// This page now sources content from Supabase instead of Strapi.
+// Expected table: "pages" with columns:
+// - slug (text, unique)
+// - title (text)
+// - content (json/jsonb) shaped for <ContentGrid />
+// - enabled (boolean)
 
-interface StrapiError {
-  statusCode?: number;
-  message: string;
-  data?: any;
+interface SupabasePage {
+  enabled?: boolean
+  slug: string
+  title: string
+  content: Array<Record<string, any>> | null
 }
 
 const route = useRoute()
 const slug = route.params.slug as string
+const supabase = useSupabaseClient()
 
-// Use useAsyncData for proper SSR handling
 const { data, error, pending } = await useAsyncData(`page-${slug}`, async () => {
-  try {
-    const graphql = useStrapiGraphQL()
-    const result = await graphql<GraphQLResponse>(contentQuery, { "Slug": slug })
-    
-    // Check if we got any pages
-    if (!result.data?.pages || result.data.pages.length === 0) {
-      throw createError({
-        statusCode: 404,
-        statusMessage: `Page with slug "${slug}" not found`
-      })
-    }
-    
-    return result.data.pages[0]
-  } catch (err: unknown) {
-    console.error('GraphQL Error:', err)
-  
-    const statusCode = getStatusCode(err)
-    const message = getErrorMessage(err)
-    
-    // Handle different types of errors
-    if (statusCode === 404) {
-        throw err
-    }
-    
-    throw createError({
-        statusCode: statusCode || 500,
-        statusMessage: `Failed to fetch page: ${message}`
-    })
+  const { data, error } = await supabase
+    .from('pages')
+    .select('enabled, title, content, slug')
+    .eq('slug', slug)
+    .maybeSingle<SupabasePage>()
+
+  if (error) {
+    throw createError({ statusCode: 500, statusMessage: error.message })
   }
+  if (!data || data.enabled === false) {
+    throw createError({ statusCode: 404, statusMessage: `Page with slug "${slug}" not found` })
+  }
+
+  return data
 })
 
-// Handle error state
 if (error.value) {
   throw error.value
 }
 
-// Set page meta
 useHead({
   title: data.value?.title || 'Page'
 })
