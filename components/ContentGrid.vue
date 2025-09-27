@@ -1,27 +1,31 @@
 <template>
   <div class="page page-content">
     <section v-for="section in content" :key="section.id" class="">
-      <div class="sub-text" v-if="section.__typename === 'ComponentSectionsHeadline'">
+      <div 
+      v-if="section.__typename === 'ComponentSectionsHeadline'"
+      class="sub-text">
         <h2>{{ section.headlineTitle }}</h2>
         <p>{{ section.subtitle }}</p>
       </div>
 
-      <div class="image-section" v-if="section.__typename === 'ComponentSectionsImage' && section.image">
+      <div
+      v-if="section.__typename === 'ComponentSectionsImage' && section.image" 
+      class="image-section">
         <img :src="section.image?.url" :alt="section.image?.alternativeText || ''" />
       </div>
 
       <div 
-        class="text-block" 
         v-if="section.__typename === 'ComponentSectionsTextBlock'"
+        class="text-block" 
         :class="[
           `text-align-${section.textAlign || 'left'}`,
           `text-size-${section.textSize || 'medium'}`
         ]"
       >
-        <div v-html="section.content"></div>
+        <div v-html="sanitizeContent(section.content)"></div>
       </div>
 
-      <div class="button-wrapper" v-if="section.__typename === 'ComponentSectionsButton'">
+      <div v-if="section.__typename === 'ComponentSectionsButton'" class="button-wrapper">
         <a
           v-if="section.url"
           :href="section.url"
@@ -49,7 +53,7 @@
         </button>
       </div>
 
-      <div class="card" v-if="section.__typename === 'ComponentSectionsCard'">
+      <div v-if="section.__typename === 'ComponentSectionsCard'" class="card">
         <div 
           :class="[
             'card-content',
@@ -69,7 +73,7 @@
         </div>
       </div>
 
-      <div class="testimonial" v-if="section.__typename === 'ComponentSectionsTestimonial'">
+      <div v-if="section.__typename === 'ComponentSectionsTestimonial'" class="testimonial">
         <blockquote class="testimonial-quote">
           "{{ section.quote }}"
         </blockquote>
@@ -94,8 +98,8 @@
       </div>
 
       <div 
-        class="content grid" 
         v-if="section.__typename === 'ComponentSectionsGrid' && section.blocks"
+        class="content grid" 
         :class="[
           `grid-columns-${section.columns || 'three'}`,
           `grid-gap-${section.gap || 'medium'}`,
@@ -104,27 +108,29 @@
         ]"
       >
         <div v-for="block in section.blocks" :key="block.id" class="grid-item">
-          <div class="sub-text" v-if="block.__typename === 'ComponentSectionsHeadline'">
+          <div v-if="block.__typename === 'ComponentSectionsHeadline'" class="sub-text">
             <h3>{{ block.headlineTitle }}</h3>
             <p>{{ block.subtitle }}</p>
           </div>
 
-          <div class="image-section" v-if="block.__typename === 'ComponentSectionsImage' && block.image?.url">
+          <div 
+          v-if="block.__typename === 'ComponentSectionsImage' && block.image?.url"
+          class="image-section">
             <img :src="block.image.url" :alt="block.image?.alternativeText || ''" />
           </div>
 
           <div 
-            class="text-block" 
             v-if="block.__typename === 'ComponentSectionsTextBlock'"
+            class="text-block" 
             :class="[
               `text-align-${block.textAlign || 'left'}`,
               `text-size-${block.textSize || 'medium'}`
             ]"
           >
-            <div v-html="block.content"></div>
+            <div v-html="sanitizeContent(block.content)"></div>
           </div>
 
-          <div class="button-wrapper" v-if="block.__typename === 'ComponentSectionsButton'">
+          <div v-if="block.__typename === 'ComponentSectionsButton'" class="button-wrapper">
             <a
               v-if="block.url"
               :href="block.url"
@@ -152,7 +158,7 @@
             </button>
           </div>
 
-          <div class="card" v-if="block.__typename === 'ComponentSectionsCard'">
+          <div v-if="block.__typename === 'ComponentSectionsCard'" class="card">
             <div 
               :class="[
                 'card-content',
@@ -181,7 +187,7 @@
             </div>
           </div>
 
-          <div class="testimonial" v-if="block.__typename === 'ComponentSectionsTestimonial'">
+          <div v-if="block.__typename === 'ComponentSectionsTestimonial'" class="testimonial">
             <blockquote class="testimonial-quote">
               "{{ block.quote }}"
             </blockquote>
@@ -210,11 +216,15 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  content: Object,
-  title: String
-})
+<script setup lang="ts">
+interface Props {
+  content: any
+  title?: string
+}
+
+defineProps<Props>()
+
+const { sanitizeContent } = useSanitize()
 </script>
 
 <style scoped>
