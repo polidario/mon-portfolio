@@ -35,8 +35,6 @@ if (error.value) console.error('Error fetching experiences:', error.value);
         <!-- 
         <HomepageParallaxImages /> -->
 
-        <UButton color="primary">Hello world</UButton>
-
         <HomepageTimelineVertical :items="data || []" />
 
         <HomepageIconList />
