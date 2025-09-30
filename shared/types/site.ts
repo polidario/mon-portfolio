@@ -12,6 +12,7 @@ declare global {
         contact_phone_number: string;
         copyright: string;
         logo_url: string;
+        profile_photo_url: string;
         created_at: Date;
         updated_at: Date;
         is_active: boolean;
