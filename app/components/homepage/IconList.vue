@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
-import type { IconListItem } from '~/types/components';
 
 const { data, error } = await useFetch<IconListItem[]>('/api/stacks');
 if (error.value) console.error('Error fetching experiences:', error.value);

@@ -17,8 +17,6 @@ export default defineNuxtConfig({
     redirect: false,
   },
 
-
-
   modules: [
     'motion-v/nuxt',
     '@nuxt/image',
