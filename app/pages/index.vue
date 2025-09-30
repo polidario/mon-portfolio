@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import config from '#shared/config/index.seo'
+const { meta } = useAppConfig()
 
 useHead({
-  title: config.title,
+  title: meta.title,
   meta: [
-    { name: "description", content: config.description },
-    { name: "keywords", content: config.keywords },
-    { name: "og:site_name", content: config.og.site_name },
-    { name: "og:title", content: config.og.title },
-    { name: "og:description", content: config.og.description },
-    { name: "og:image", content: config.og.image },
-    { name: "og:url", content: config.og.url },
-    { name: "og:type", content: config.og.type },
-    { name: "twitter:title", content: config.og.title },
-    { name: "twitter:description", content: config.og.description },
-    { name: "twitter:image", content: config.og.image },
+    { name: "description", content: meta.description },
+    { name: "keywords", content: meta.keywords },
+    { name: "og:site_name", content: meta.og.site_name },
+    { name: "og:title", content: meta.og.title },
+    { name: "og:description", content: meta.og.description },
+    { name: "og:image", content: meta.og.image },
+    { name: "og:url", content: meta.og.url },
+    { name: "og:type", content: meta.og.type },
+    { name: "twitter:title", content: meta.og.title },
+    { name: "twitter:description", content: meta.og.description },
+    { name: "twitter:image", content: meta.og.image },
     { name: "twitter:card", content: "summary_large_image" },
   ],
 });

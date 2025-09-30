@@ -17,7 +17,9 @@ export default defineNuxtConfig({
     redirect: false,
   },
 
-
+  alias: {
+    '#shared': './shared'
+  },
 
   modules: [
     'motion-v/nuxt',
