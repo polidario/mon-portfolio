@@ -8,7 +8,10 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['@/assets/css/main.scss'],
+  css: [
+    '~/assets/css/main.scss',
+    '~/assets/css/import.css'
+  ],
 
   supabase: {
     redirect: false,
@@ -19,6 +22,7 @@ export default defineNuxtConfig({
   modules: [
     'motion-v/nuxt',
     '@nuxt/image',
+    '@nuxt/ui',
     '@nuxt/icon',
     '@nuxt/eslint',
     '@nuxtjs/supabase',
