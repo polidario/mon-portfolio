@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { TimelineItem } from '~/types/components';
-import config from '~/config/index.seo'
+import config from '#shared/config/index.seo'
 definePageMeta({
     layout: 'homepage'
 });
@@ -38,6 +37,8 @@ if (error.value) console.error('Error fetching experiences:', error.value);
         </div> -->
         <!-- 
         <HomepageParallaxImages /> -->
+
+        <UButton color="primary">Hello world</UButton>
 
         <HomepageTimelineVertical :items="data || []" />
 
