@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import type { TimelineItem } from '~/types/components';
-import config from '~/config/index.seo'
-definePageMeta({
-    layout: 'homepage'
-});
+import config from '#shared/config/index.seo'
 
 useHead({
   title: config.title,

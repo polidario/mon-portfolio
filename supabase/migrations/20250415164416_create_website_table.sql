@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS "public"."website" (
     "logo_url" "text",
     "created_at" TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     "updated_at" TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
-    "is_active" BOOLEAN DEFAULT true,
+    "is_active" BOOLEAN DEFAULT true
 );
 
 -- Enable Row Level Security

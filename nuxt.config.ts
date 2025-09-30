@@ -8,38 +8,25 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['@/assets/css/main.scss'],
+  css: [
+    '~/assets/css/main.scss',
+    '~/assets/css/import.css'
+  ],
 
   supabase: {
     redirect: false,
   },
 
-  strapi: {
-    url: process.env.STRAPI_URL || 'http://localhost:1337',
-    prefix: '/api',
-    version: 'v4',
-    cookie: {},
-    cookieName: 'strapi_jwt',
-  },
 
-  apollo: {
-    clients: {
-      default: {
-        httpEndpoint: 'http://localhost:1337/graphql'
-      }
-    }
-  },
 
   modules: [
     'motion-v/nuxt',
     '@nuxt/image',
+    '@nuxt/ui',
     '@nuxt/icon',
     '@nuxt/eslint',
-    '@nuxt/test-utils',
     '@nuxtjs/supabase',
-    '@nuxtjs/device',
-    '@nuxtjs/strapi',
-    '@nuxtjs/apollo'
+    '@nuxtjs/device'
   ],
 
   vite: {
