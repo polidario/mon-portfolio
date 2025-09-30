@@ -1,4 +1,4 @@
-import { sanitize } from 'isomorphic-dompurify'
+import DOMPurify from 'isomorphic-dompurify'
 
 const HTML_ALLOWED_TAGS = [
   'p', 'br', 'strong', 'em', 'u', 's', 'sup', 'sub',
@@ -23,14 +23,14 @@ const SVG_ALLOWED_ATTR = [
 
 export function useSanitize() {
   const sanitizeContent = (html?: string | null) =>
-    html ? sanitize(html, {
+    html ? DOMPurify.sanitize(html, {
       ALLOWED_TAGS: HTML_ALLOWED_TAGS,
       ALLOWED_ATTR: HTML_ALLOWED_ATTR,
       USE_PROFILES: { html: true }
     }) : ''
 
   const sanitizeSvg = (svg?: string | null) =>
-    svg ? sanitize(svg, {
+    svg ? DOMPurify.sanitize(svg, {
       ALLOWED_TAGS: SVG_ALLOWED_TAGS,
       ALLOWED_ATTR: SVG_ALLOWED_ATTR,
       USE_PROFILES: { svg: true, svgFilters: true }
