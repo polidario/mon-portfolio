@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { motion } from 'motion-v'
-import type { TimelineItem } from '~/types/components';
 
 defineProps({
     items: {

@@ -85,18 +85,6 @@ onBeforeUnmount(() => {
                         {{ item.label }}
                     </RouterLink>
                 </div>
-                <div v-if="$device.isMobileOrTablet" class="nav-links nav-icons">
-                    <a 
-                        v-for="link in linklist.social_links" 
-                        :key="link.url" 
-                        :href="link.url" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        :aria-label="`Open ${link.label}`"
-                    >
-                        <Icon :name="link.icon" :aria-label="link.label" />
-                    </a>
-                </div>
             </div>
             <div class="action-button-section">
                 <a href="/cvs/bernard-polidario-resume.pdf" 

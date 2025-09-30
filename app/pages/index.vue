@@ -35,7 +35,7 @@ if (error.value) console.error('Error fetching experiences:', error.value);
         <!-- 
         <HomepageParallaxImages /> -->
 
-        <HomepageTimelineVertical :items="data || []" />
+        <HomepageTimelineVertical :items="data ?? []" />
 
         <HomepageIconList />
     </div>
