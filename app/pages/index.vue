@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import config from '#shared/config/index.seo'
-definePageMeta({
-    layout: 'homepage'
-});
 
 useHead({
   title: config.title,

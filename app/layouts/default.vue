@@ -1,9 +1,13 @@
+<script setup lang="ts">
+</script>
+
 <template>
-    <AppHeader />
-    <main>
-        <div class="container">
+    <div>
+        <UContainer class="sm:border-x border-default pt-10">
+            <AppHeader />
             <slot />
-        </div>
-    </main>
-    <AppFooter />
+        </UContainer>
+        
+        <AppFooter />
+  </div>
 </template>
