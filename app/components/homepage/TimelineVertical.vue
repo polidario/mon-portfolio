@@ -21,7 +21,7 @@ defineProps({
                 id="timeline_content"
                 initial="offscreen"
                 whileInView="onscreen"
-                :variants="{ offscreen: { opacity: 0, y: 50 }, onscreen: { opacity: 1, y: 0 } }"
+                :variants="{ offscreen: { opacity: 0, filter: 'blur(12px)' }, onscreen: { opacity: 1, filter: 'blur(0)' } }"
                 :transition="{ duration: 1, ease: 'easeInOut' }"
             >
                 <div class="group">
