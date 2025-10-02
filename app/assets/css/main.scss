@@ -405,10 +405,35 @@ a:hover {
             align-items: start;
 
             .group {
+
+                &:before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: -1rem;
+                        width: 0.15rem;
+                        height: 100%;
+                        background-color: var(--color-gray-400);
+
+                        margin-top: 2rem
+                    }
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        top: 2rem;
+                        left: -1.5rem;
+                        width: 1.25rem;
+                        height: 1.25rem;
+                        background-color: var(--color-primary);
+                        border-radius: 50%;
+                        border: 0.15rem solid var(--color-gray-400);
+                    }
+
                 position: relative;
                 padding-left: 2.5rem;
-                padding-top: 1.5rem;
-                padding-bottom: 1.5rem;
+                padding-bottom: 3rem;
+                margin-top: 1rem;
 
                 margin: 0;
 
@@ -434,28 +459,6 @@ a:hover {
                         font-size: 0.875rem;
                         font-weight: 500;
                         color: var(--color-gray-400);
-                    }
-
-                    &:before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 0.15rem;
-                        height: 100%;
-                        background-color: var(--color-gray-400);
-                    }
-
-                    &:after {
-                        content: '';
-                        position: absolute;
-                        top: 2rem;
-                        left: -.5rem;
-                        width: 1.25rem;
-                        height: 1.25rem;
-                        background-color: var(--color-primary);
-                        border-radius: 50%;
-                        border: 0.15rem solid var(--color-gray-400);
                     }
                 }
             }
