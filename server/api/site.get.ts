@@ -15,8 +15,9 @@
  */
 
 import { serverSupabaseClient } from '#supabase/server'
+import type { H3Event, EventHandlerRequest } from 'h3'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): Promise<WebsiteResponse | ApiError> => {
   const supabase = await serverSupabaseClient(event)
 
   const { data, error } = await supabase.from('website').select('*')
@@ -24,9 +25,16 @@ export default defineEventHandler(async (event) => {
   if (error) {
     return {
       data: [],
-      error: error!.message
+      error: error.message
     }
   }
 
-  return data[0]
+  if (!data || data.length === 0) {
+    return {
+      data: [],
+      error: 'No website data found'
+    }
+  }
+
+  return data[0] as WebsiteResponse
 })

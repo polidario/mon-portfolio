@@ -1,14 +1,8 @@
-import { getRouterParam, createError } from 'h3'
+import { getRouterParam, createError, type H3Event, type EventHandlerRequest } from 'h3'
 import { serverSupabaseClient } from '#supabase/server'
+import type { PageData } from '#shared/types'
 
-interface PageData {
-  enabled: boolean
-  title: string
-  slug: string
-  content: Array<Record<string, unknown>> | null
-}
-
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): Promise<PageData> => {
   const slug = getRouterParam(event, 'slug')
   if (!slug) {
     throw createError({ statusCode: 400, statusMessage: 'Missing slug' })

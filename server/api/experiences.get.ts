@@ -7,22 +7,13 @@
  * - company: The name of the company
  * - worked_from: Date - When did you start to work?
  * - worked_until: Date - When did you stop working?
- * - url: The URL of the company
+ * - url?: The URL of the company
  * - description: Job description
  * 
  */
 
 import { serverSupabaseClient } from '#supabase/server'
-
-interface WorkExperience {
-    id: number | string;
-    title: string;
-    company: string;
-    worked_from: string;
-    worked_until: string;
-    url: string;
-    description: string;
-}
+import type { H3Event, EventHandlerRequest } from 'h3'
 
 function formatDateRange(from: string, until: string | null): string {
     const fromDate = new Date(from);
@@ -38,7 +29,7 @@ function formatDateRange(from: string, until: string | null): string {
     return `${fromFormatted} - ${untilFormatted}`;
 }
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): Promise<TimelineItemResponse[] | ApiError> => {
     const supabase = await serverSupabaseClient(event)
 
     const { data, error } = await supabase.from('work_experiences').select('*').order('worked_from', { ascending: false });
@@ -46,17 +37,17 @@ export default defineEventHandler(async (event) => {
     if (error) {
         return {
         data: [],
-        error: error!.message
+        error: error.message
         }
     }
 
-    return data.map((exp: WorkExperience) => ({
+    return data.map((exp: WorkExperienceDB) => ({
         id: exp.id,
         title: exp.title,
         subtitle: exp.company,
         description: exp.description,
         date: formatDateRange(exp.worked_from, exp.worked_until),
-        url: exp.url || null
+        url: exp.url ?? undefined
     }));
     
 })

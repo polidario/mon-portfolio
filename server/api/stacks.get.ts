@@ -11,8 +11,9 @@
  */
 
 import { serverSupabaseClient } from '#supabase/server'
+import type { H3Event, EventHandlerRequest } from 'h3'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): Promise<StackResponse[] | ApiError> => {
   const supabase = await serverSupabaseClient(event)
 
   const { data, error } = await supabase.from('stacks').select('*')
@@ -20,9 +21,9 @@ export default defineEventHandler(async (event) => {
   if (error) {
     return {
       data: [],
-      error: error!.message
+      error: error.message
     }
   }
 
-  return data
+  return data as StackResponse[]
 })

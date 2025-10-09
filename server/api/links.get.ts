@@ -14,8 +14,9 @@
  */
 
 import { serverSupabaseClient } from '#supabase/server'
+import type { H3Event, EventHandlerRequest } from 'h3'
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): Promise<AppLinksResponse> => {
   const supabase = await serverSupabaseClient(event)
 
   const { data, error } = await supabase.from('links').select('*')
@@ -25,12 +26,12 @@ export default defineEventHandler(async (event) => {
     return {
       links: [],
       social_links: [],
-      error: error!.message || socialError!.message
+      error: error?.message || socialError?.message
     }
   }
 
   return {
-    links: data,
-    social_links: socialData
+    links: data as AppLink[],
+    social_links: socialData as AppSocialLink[]
   }
 })
