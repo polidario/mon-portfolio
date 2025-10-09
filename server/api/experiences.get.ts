@@ -7,22 +7,12 @@
  * - company: The name of the company
  * - worked_from: Date - When did you start to work?
  * - worked_until: Date - When did you stop working?
- * - url: The URL of the company
+ * - url?: The URL of the company
  * - description: Job description
  * 
  */
 
 import { serverSupabaseClient } from '#supabase/server'
-
-interface WorkExperience {
-    id: number | string;
-    title: string;
-    company: string;
-    worked_from: string;
-    worked_until: string;
-    url: string;
-    description: string;
-}
 
 function formatDateRange(from: string, until: string | null): string {
     const fromDate = new Date(from);
@@ -38,25 +28,40 @@ function formatDateRange(from: string, until: string | null): string {
     return `${fromFormatted} - ${untilFormatted}`;
 }
 
-export default defineEventHandler(async (event) => {
-    const supabase = await serverSupabaseClient(event)
+export default defineEventHandler(async (event): Promise<TimelineItemResponse[]> => {
+    try {
+        const supabase = await serverSupabaseClient(event)
 
-    const { data, error } = await supabase.from('work_experiences').select('*').order('worked_from', { ascending: false });
+        const { data, error } = await supabase.from('work_experiences').select('*').order('worked_from', { ascending: false });
 
-    if (error) {
-        return {
-        data: [],
-        error: error!.message
+        if (error) {
+            throw createError({
+                statusCode: 500,
+                statusMessage: 'Failed to fetch your work experiences',
+                data: error.message
+            })
         }
-    }
 
-    return data.map((exp: WorkExperience) => ({
-        id: exp.id,
-        title: exp.title,
-        subtitle: exp.company,
-        description: exp.description,
-        date: formatDateRange(exp.worked_from, exp.worked_until),
-        url: exp.url || null
-    }));
-    
+        if (!data) return []
+
+        return data.map((exp: WorkExperienceDB) => ({
+            id: exp.id,
+            title: exp.title,
+            subtitle: exp.company,
+            description: exp.description,
+            date: formatDateRange(exp.worked_from, exp.worked_until),
+            url: exp.url ?? undefined
+        }))
+
+    } catch (error) {
+        if (error && typeof error === 'object' && 'statusCode' in error) {
+            throw error
+        }
+        
+        throw createError({
+            statusCode: 500,
+            statusMessage: 'Internal server error',
+            data: error instanceof Error ? error.message : 'Unknown error'
+        })
+    }
 })
