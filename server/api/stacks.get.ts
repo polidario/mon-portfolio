@@ -11,19 +11,32 @@
  */
 
 import { serverSupabaseClient } from '#supabase/server'
-import type { H3Event, EventHandlerRequest } from 'h3'
 
-export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): Promise<StackResponse[] | ApiError> => {
-  const supabase = await serverSupabaseClient(event)
-
-  const { data, error } = await supabase.from('stacks').select('*')
-
-  if (error) {
-    return {
-      data: [],
-      error: error.message
+export default defineEventHandler(async (event): Promise<StackResponse[]> => {
+  try {
+    const supabase = await serverSupabaseClient(event)
+  
+    const { data, error } = await supabase.from('stacks').select('*')
+  
+    if (error) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Failed to fetch website data',
+        data: error.message
+      })
     }
-  }
+  
+    return data as StackResponse[]
 
-  return data as StackResponse[]
+  } catch (error) {
+    if (error && typeof error === 'object' && 'statusCode' in error) {
+      throw error
+    }
+
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Internal server error',
+      data: error instanceof Error ? error.message : 'Unknown error'
+    })
+  }
 })

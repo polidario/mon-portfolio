@@ -13,7 +13,6 @@
  */
 
 import { serverSupabaseClient } from '#supabase/server'
-import type { H3Event, EventHandlerRequest } from 'h3'
 
 function formatDateRange(from: string, until: string | null): string {
     const fromDate = new Date(from);
@@ -29,25 +28,40 @@ function formatDateRange(from: string, until: string | null): string {
     return `${fromFormatted} - ${untilFormatted}`;
 }
 
-export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): Promise<TimelineItemResponse[] | ApiError> => {
-    const supabase = await serverSupabaseClient(event)
+export default defineEventHandler(async (event): Promise<TimelineItemResponse[]> => {
+    try {
+        const supabase = await serverSupabaseClient(event)
 
-    const { data, error } = await supabase.from('work_experiences').select('*').order('worked_from', { ascending: false });
+        const { data, error } = await supabase.from('work_experiences').select('*').order('worked_from', { ascending: false });
 
-    if (error) {
-        return {
-        data: [],
-        error: error.message
+        if (error) {
+            throw createError({
+                statusCode: 500,
+                statusMessage: 'Failed to fetch your work experiences',
+                data: error.message
+            })
         }
-    }
 
-    return data.map((exp: WorkExperienceDB) => ({
-        id: exp.id,
-        title: exp.title,
-        subtitle: exp.company,
-        description: exp.description,
-        date: formatDateRange(exp.worked_from, exp.worked_until),
-        url: exp.url ?? undefined
-    }));
-    
+        if (!data) return []
+
+        return data.map((exp: WorkExperienceDB) => ({
+            id: exp.id,
+            title: exp.title,
+            subtitle: exp.company,
+            description: exp.description,
+            date: formatDateRange(exp.worked_from, exp.worked_until),
+            url: exp.url ?? undefined
+        }))
+
+    } catch (error) {
+        if (error && typeof error === 'object' && 'statusCode' in error) {
+            throw error
+        }
+        
+        throw createError({
+            statusCode: 500,
+            statusMessage: 'Internal server error',
+            data: error instanceof Error ? error.message : 'Unknown error'
+        })
+    }
 })

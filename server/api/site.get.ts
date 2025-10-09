@@ -15,26 +15,38 @@
  */
 
 import { serverSupabaseClient } from '#supabase/server'
-import type { H3Event, EventHandlerRequest } from 'h3'
 
-export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): Promise<WebsiteResponse | ApiError> => {
-  const supabase = await serverSupabaseClient(event)
-
-  const { data, error } = await supabase.from('website').select('*')
-
-  if (error) {
-    return {
-      data: [],
-      error: error.message
+export default defineEventHandler(async (event): Promise<WebsiteResponse> => {
+  try {
+    const supabase = await serverSupabaseClient(event)
+  
+    const { data, error } = await supabase.from('website').select('*')
+  
+    if (error) {
+     throw createError({
+        statusCode: 500,
+        statusMessage: 'Failed to fetch website data',
+        data: error.message
+      })
     }
-  }
-
-  if (!data || data.length === 0) {
-    return {
-      data: [],
-      error: 'No website data found'
+     if (!data || data.length === 0) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Website data not found',
+        data: 'No website configuration exists in the database'
+      })
     }
-  }
 
-  return data[0] as WebsiteResponse
+    return data[0] as WebsiteResponse
+  } catch (error) {
+    if (error && typeof error === 'object' && 'statusCode' in error) {
+      throw error
+    }
+
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Internal server error',
+      data: error instanceof Error ? error.message : 'Unknown error'
+    })
+  }
 })
