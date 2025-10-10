@@ -16,10 +16,6 @@ const copyright_year = new Date().getFullYear();
         <div class="wrapper">
             <div class="upper-footer-section">
                 <div class="footer-content-logo">
-                    <RouterLink to="/">
-                        <span>BP</span>
-                    </RouterLink>
-
                     <p class="quote">“The only way to do great work is to love what you do.”</p>
                     <span class="quote__name">- Steve Jobs</span>
                 </div>
@@ -29,10 +25,11 @@ const copyright_year = new Date().getFullYear();
                         v-for="item in linklist.links" 
                         :key="item.path" 
                         :to="item.path" 
+                        :class="'underline'"
                     >
                         {{ item.label }}
                     </RouterLink>
-                    <a href="mailto:bernard@weeklyhow.com" aria-label="Contact Bernard Polidario through his email address">Contact</a>
+                    <a href="mailto:bernard@weeklyhow.com" aria-label="Contact Bernard Polidario through his email address" class="underline">Contact</a>
                 </nav>
             </div>
             <div class="lower-footer-section">
@@ -60,7 +57,7 @@ const copyright_year = new Date().getFullYear();
                 mask-image: linear-gradient(rgba(0, 0, 0, 0) 20%, rgb(0, 0, 0) 80%);
                 opacity: 1;
                 background-repeat: repeat;
-                background-image: radial-gradient(rgb(26, 26, 26) 10%, transparent 20%), radial-gradient(rgb(26, 26, 26) 10%, transparent 20%);
+                background-image: radial-gradient(rgb(5, 5, 5) 10%, transparent 20%), radial-gradient(rgb(5, 5, 5) 10%, transparent 20%);
                 background-position: 0px 0px, 8px 8px;
                 background-size: 16px 16px;
         "></div>

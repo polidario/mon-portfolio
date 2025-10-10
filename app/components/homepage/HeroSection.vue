@@ -32,6 +32,12 @@ const website = data.value || {} as WebsiteResponse;
             >
                 <UColorModeAvatar
                     class="size-18 ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
+                    :chip="{
+                        size: '3xl',
+                        ui: {
+                            root: 'badge-profile'
+                        }
+                    }"
                     :light="website.profile_photo_url"
                     :dark="website.profile_photo_url"
                 />
@@ -76,8 +82,7 @@ const website = data.value || {} as WebsiteResponse;
                     delay: 0.3
                 }"
             >
-                <p class="text-base">{{ website.description }}</p>
-                <p class="text-sm">Based in Paris, France</p>
+                <p class="text-2xl">{{ website.description }}<br />Based in Paris, France</p>
             </Motion>
         </template>
     </UPageHero>
