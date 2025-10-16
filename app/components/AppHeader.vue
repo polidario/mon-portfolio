@@ -69,7 +69,7 @@ onBeforeUnmount(() => {
                     <span>BP</span>
                 </RouterLink>
             </div>
-            <div class="nav-mobile-section" :class="{ 'nav-mobile-active': isToggled }">
+            <div v-if="linklist.links.length > 0" class="nav-mobile-section" :class="{ 'nav-mobile-active': isToggled }">
                 <div class="nav-links nav-mobile-close">
                     <button role="button" v-on:click="toggleNav" aria-label="Close Navigation">
                         <Icon size="3em" name="mdi-close" aria-label="Close Navigation" />
@@ -92,7 +92,7 @@ onBeforeUnmount(() => {
                     aria-label="Get Bernard Polidario's CV"
                 >GET MY CV</a>
             </div>
-            <button role="button" type="button" class="nav-toggle-button" aria-label="Toggle Navigation" v-on:click="toggleNav">
+            <button v-if="linklist.links.length > 0" role="button" type="button" class="nav-toggle-button" aria-label="Toggle Navigation" v-on:click="toggleNav">
                 <Icon name="mdi-menu" aria-label="Menu" />
             </button>
         </nav>

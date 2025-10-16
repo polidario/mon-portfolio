@@ -95,7 +95,8 @@ a:hover {
     top: 0;
     left: 0;
     right: 0;
-    background: var(--background-color);
+    background: linear-gradient(to bottom, #000, transparent);
+    backdrop-filter: blur(5px);
     z-index: 100;
     width: 100%;
 
