@@ -5,7 +5,7 @@ const config = useRuntimeConfig()
 const url = config.public.apiMediasURL;
 const { data, error } = await supabase.storage.from('medias').list()
 
-if (error && error?.message) console.error('Error fetching experiences:', error.message);
+if (error && error?.message) console.error('Error fetching media:', error.message);
 </script>
 
 <template>
