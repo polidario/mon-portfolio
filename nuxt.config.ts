@@ -2,6 +2,12 @@
 export default defineNuxtConfig({
   ssr: true,
 
+  runtimeConfig: {
+    public: {
+      apiMediasURL: process.env.NUXT_PUBLIC_MEDIAS_URL
+    }
+  },
+
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => ['motion'].includes(tag),
