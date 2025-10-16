@@ -29,11 +29,7 @@ if (error.value) console.error('Error fetching experiences:', error.value);
         
         <HomepageHeroSection />
 
-        <!-- <div :style="{ maxWidth: '1080px', zIndex: 1 }" id="imageComparison">
-            <HomepageImageComparison />
-        </div> -->
-        <!-- 
-        <HomepageParallaxImages /> -->
+        <HomepageVideoThumbnails />
 
         <HomepageTimelineVertical :items="data ?? []" />
 
